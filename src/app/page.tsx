@@ -151,10 +151,10 @@ export default function Home() {
             <IPhoneFrame src="/screens/home.png" alt="Home screen" className="iphone-frame-lg" />
           </div>
           <div className="animate-on-scroll stagger-2 hidden md:block parallax-phone" style={{ marginTop: "60px" }}>
-            <IPhoneFrame src="/screens/stats.png" alt="Stats screen" className="iphone-frame-lg" />
+            <IPhoneFrame src="/screens/cycle.png" alt="Cycle tracker" className="iphone-frame-lg" />
           </div>
           <div className="animate-on-scroll stagger-3 hidden lg:block parallax-phone" style={{ marginTop: "120px" }}>
-            <IPhoneFrame src="/screens/log.png" alt="Log screen" className="iphone-frame-lg" />
+            <IPhoneFrame src="/screens/log.png" alt="Food log screen" className="iphone-frame-lg" />
           </div>
         </div>
       </section>
@@ -223,18 +223,18 @@ export default function Home() {
       <section className="w-full max-w-5xl mx-auto px-6 py-16">
         <div className="flex flex-col md:flex-row items-center gap-12">
           <div className="animate-on-scroll stagger-1 parallax-phone">
-            <IPhoneFrame src="/screens/stats.png" alt="Stats and insights" />
+            <IPhoneFrame src="/screens/gut.png" alt="Gut health forecast" />
           </div>
           <div className="animate-on-scroll stagger-2 flex-1">
             <h2 className="text-3xl font-semibold text-[var(--ink)] mb-4">
               Insights that actually help
             </h2>
             <p className="text-[var(--ink-soft)] mb-6 leading-relaxed">
-              Your macros, micronutrients, gut score, and recovery data in one place.
+              Your macros, gut score, cycle phase, and weight trends in one place.
               No more jumping between apps. No more guessing.
             </p>
             <div className="flex flex-wrap gap-3">
-              {["Macro rings", "Gut forecast", "Weight trends", "Sleep recovery"].map((tag) => (
+              {["Macro rings", "Gut forecast", "Weight trends", "Cycle tracking"].map((tag) => (
                 <span
                   key={tag}
                   className="px-4 py-2 rounded-full bg-[var(--paper)] border-2 border-[var(--border)] text-sm font-medium text-[var(--ink-soft)]"
