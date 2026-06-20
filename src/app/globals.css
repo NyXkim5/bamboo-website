@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #F3EBDA;
+  --paper: #FBF6EA;
+  --ink: #2E2E2A;
+  --ink-soft: #8C887B;
+  --coral: #7B9E5B;
+  --coral-d: #5E7E42;
+  --leaf: #6F9150;
+  --honey: #D6A95A;
+  --berry: #9B7BA0;
+  --night: #6E8CA8;
+  --border: #E7DECB;
+}
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--ink);
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body), "Zen Maru Gothic", sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading), "Klee One", cursive;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.mascot-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.waitlist-input:focus {
+  outline: none;
+  border-color: var(--coral);
+  box-shadow: 0 0 0 3px rgba(123, 158, 91, 0.2);
+}
