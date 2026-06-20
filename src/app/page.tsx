@@ -73,13 +73,14 @@ export default function Home() {
         <div className="flex flex-col lg:flex-row items-center gap-12">
           {/* Left: text + form */}
           <div className="flex-1 text-center lg:text-left">
-            <div className="mascot-float inline-block mb-6">
+            <div className="inline-block mb-6">
               <Image
-                src="/mascot/panda-excited.png"
-                alt="Bao the panda mascot"
-                width={140}
-                height={140}
+                src="/app-icon.png"
+                alt="Bamboo app icon"
+                width={120}
+                height={120}
                 priority
+                className="rounded-[28px] shadow-lg"
               />
             </div>
 
@@ -135,9 +136,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* App showcase: scrolling screens */}
-      <section className="w-full max-w-5xl mx-auto px-6 py-20">
-        <div className="animate-on-scroll">
+      {/* App showcase: all screens */}
+      <section className="w-full py-20 overflow-hidden">
+        <div className="animate-on-scroll max-w-5xl mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-semibold text-center text-[var(--ink)] mb-4">
             See it in action
           </h2>
@@ -146,16 +147,20 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="flex justify-center gap-8 items-center">
-          <div className="animate-on-scroll stagger-1 parallax-phone">
-            <IPhoneFrame src="/screens/home.png" alt="Home screen" className="iphone-frame-lg" />
-          </div>
-          <div className="animate-on-scroll stagger-2 hidden md:block parallax-phone" style={{ marginTop: "60px" }}>
-            <IPhoneFrame src="/screens/cycle.png" alt="Cycle tracker" className="iphone-frame-lg" />
-          </div>
-          <div className="animate-on-scroll stagger-3 hidden lg:block parallax-phone" style={{ marginTop: "120px" }}>
-            <IPhoneFrame src="/screens/log.png" alt="Food log screen" className="iphone-frame-lg" />
-          </div>
+        <div className="flex gap-6 px-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide justify-start md:justify-center">
+          {[
+            { src: "/screens/home.png", label: "Dashboard" },
+            { src: "/screens/log.png", label: "Food log" },
+            { src: "/screens/stats.png", label: "Stats" },
+            { src: "/screens/gut.png", label: "Gut health" },
+            { src: "/screens/cycle.png", label: "Cycle tracker" },
+            { src: "/screens/profile.png", label: "Profile" },
+          ].map((screen, i) => (
+            <div key={screen.label} className={`animate-on-scroll stagger-${i + 1} snap-center flex-shrink-0 flex flex-col items-center gap-3`}>
+              <IPhoneFrame src={screen.src} alt={screen.label} />
+              <span className="text-sm font-medium text-[var(--ink-soft)]">{screen.label}</span>
+            </div>
+          ))}
         </div>
       </section>
 
