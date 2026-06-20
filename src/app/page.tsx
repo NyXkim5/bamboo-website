@@ -149,9 +149,10 @@ export default function Home() {
 
         <div className="flex gap-6 px-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide justify-start md:justify-center">
           {[
+            { src: "/screens/onboarding.png", label: "Onboarding" },
             { src: "/screens/home.png", label: "Dashboard" },
             { src: "/screens/log.png", label: "Food log" },
-            { src: "/screens/stats.png", label: "Stats" },
+            { src: "/screens/stats.png", label: "Recovery" },
             { src: "/screens/gut.png", label: "Gut health" },
             { src: "/screens/cycle.png", label: "Cycle tracker" },
             { src: "/screens/profile.png", label: "Profile" },
