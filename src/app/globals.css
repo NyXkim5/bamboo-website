@@ -102,6 +102,18 @@ h1, h2, h3 {
 .iphone-frame::before {
   content: "";
   position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 44px;
+  background: #F3EBDA;
+  z-index: 5;
+  border-radius: 38px 38px 0 0;
+}
+
+.iphone-frame::after {
+  content: "";
+  position: absolute;
   top: 8px;
   left: 50%;
   transform: translateX(-50%);
@@ -114,9 +126,11 @@ h1, h2, h3 {
 
 .iphone-frame img {
   width: 100%;
-  height: 100%;
+  height: calc(100% - 44px);
   object-fit: cover;
-  border-radius: 38px;
+  object-position: top;
+  margin-top: 44px;
+  border-radius: 0 0 38px 38px;
 }
 
 .iphone-frame-lg {
