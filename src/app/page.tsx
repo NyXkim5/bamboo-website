@@ -73,14 +73,13 @@ export default function Home() {
         <div className="flex flex-col lg:flex-row items-center gap-12">
           {/* Left: text + form */}
           <div className="flex-1 text-center lg:text-left">
-            <div className="inline-block mb-6">
+            <div className="mascot-float inline-block mb-6">
               <Image
-                src="/app-icon.png"
-                alt="Bamboo app icon"
-                width={120}
-                height={120}
+                src="/mascot/panda-excited.png"
+                alt="Bao the panda"
+                width={140}
+                height={140}
                 priority
-                className="rounded-[28px] shadow-lg"
               />
             </div>
 
@@ -149,12 +148,9 @@ export default function Home() {
 
         <div className="flex gap-6 px-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide justify-start md:justify-center">
           {[
-            { src: "/screens/onboarding.png", label: "Onboarding" },
             { src: "/screens/home.png", label: "Dashboard" },
-            { src: "/screens/log.png", label: "Food log" },
-            { src: "/screens/stats.png", label: "Recovery" },
             { src: "/screens/gut.png", label: "Gut health" },
-            { src: "/screens/cycle.png", label: "Cycle tracker" },
+            { src: "/screens/stats.png", label: "Recovery" },
             { src: "/screens/profile.png", label: "Profile" },
           ].map((screen, i) => (
             <div key={screen.label} className={`animate-on-scroll stagger-${i + 1} snap-center flex-shrink-0 flex flex-col items-center gap-3`}>
