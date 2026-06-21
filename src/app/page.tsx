@@ -44,10 +44,10 @@ const FEATURES = [
 ];
 
 const APP_SCREENS = [
-  { src: "/screens/home.png", label: "Dashboard" },
-  { src: "/screens/gut.png", label: "Gut health" },
-  { src: "/screens/stats.png", label: "Recovery" },
-  { src: "/screens/onboarding.png", label: "Onboarding" },
+  "/screens/home.png",
+  "/screens/gut.png",
+  "/screens/stats.png",
+  "/screens/onboarding.png",
 ];
 
 const SOCIAL_PROOF_COUNT = 2847;
@@ -126,15 +126,17 @@ export default function Home() {
               src="/screens/home.png"
               alt="Bamboo dashboard"
               width={220}
-              height={476}
-              className="rounded-[32px] shadow-xl"
+              height={440}
+              className="shadow-xl"
+              style={{ width: 220, height: 440, objectFit: 'cover', objectPosition: 'top', borderRadius: 2 }}
             />
             <Image
               src="/screens/gut.png"
               alt="Gut health forecast"
               width={220}
-              height={476}
-              className="rounded-[32px] shadow-xl mt-12 hidden md:block"
+              height={440}
+              className="shadow-xl mt-12 hidden md:block"
+              style={{ width: 220, height: 440, objectFit: 'cover', objectPosition: 'top', borderRadius: 2 }}
             />
           </div>
         </div>
@@ -151,17 +153,17 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="flex gap-6 px-8 justify-center items-start">
-          {APP_SCREENS.map((screen, i) => (
-            <div key={screen.label} className={`animate-on-scroll stagger-${i + 1} flex flex-col items-center gap-3`}>
+        <div className="flex gap-5 px-6 justify-center items-center">
+          {APP_SCREENS.map((src, i) => (
+            <div key={src} className={`animate-on-scroll stagger-${i + 1}`}>
               <Image
-                src={screen.src}
-                alt={screen.label}
+                src={src}
+                alt="Bamboo app"
                 width={240}
-                height={520}
-                className="rounded-[32px] shadow-lg hover:-translate-y-2 transition-transform"
+                height={480}
+                className="rounded-[2px] shadow-lg hover:-translate-y-2 transition-transform"
+                style={{ width: 240, height: 480, objectFit: 'cover', objectPosition: 'top' }}
               />
-              <span className="text-sm font-medium text-[var(--ink-soft)]">{screen.label}</span>
             </div>
           ))}
         </div>
@@ -225,8 +227,9 @@ export default function Home() {
               src="/screens/stats.png"
               alt="Recovery and sleep tracking"
               width={260}
-              height={563}
-              className="rounded-[32px] shadow-lg"
+              height={520}
+              className="shadow-lg"
+              style={{ width: 260, height: 520, objectFit: 'cover', objectPosition: 'top', borderRadius: 2 }}
             />
           </div>
           <div className="animate-on-scroll stagger-2 flex-1">
