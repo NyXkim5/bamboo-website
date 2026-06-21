@@ -89,43 +89,38 @@ h1, h2, h3 {
   box-shadow: 0 0 0 3px rgba(123, 158, 91, 0.2);
 }
 
-/* iPhone frame */
+/* Clean phone frame - no thick border */
 .iphone-frame {
   position: relative;
-  width: 280px;
-  height: 572px;
-  border-radius: 44px;
-  border: 6px solid #2E2E2A;
-  background: #000;
-  box-shadow: 0 30px 60px rgba(46, 46, 42, 0.25), 0 0 0 2px rgba(46, 46, 42, 0.08);
+  width: 260px;
+  height: 560px;
+  border-radius: 36px;
+  background: #F3EBDA;
+  box-shadow: 0 20px 50px rgba(46, 46, 42, 0.15);
   overflow: hidden;
   flex-shrink: 0;
 }
 
-/* No fake Dynamic Island needed - screenshots already include the real status bar */
-
 .iphone-frame img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   object-position: top;
-  border-radius: 38px;
-  background: #F3EBDA;
+  border-radius: 36px;
 }
 
 .iphone-frame-lg {
-  width: 320px;
-  height: 654px;
+  width: 300px;
+  height: 648px;
 }
 
-/* Parallax scroll container */
+/* Subtle hover lift */
 .parallax-phone {
-  transform: perspective(1000px) rotateY(-5deg) rotateX(2deg);
-  transition: transform 0.5s ease;
+  transition: transform 0.3s ease;
 }
 
 .parallax-phone:hover {
-  transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+  transform: translateY(-4px);
 }
 
 /* Screen scroll animation inside phone */
@@ -140,12 +135,4 @@ h1, h2, h3 {
   animation: scrollScreen 12s ease-in-out infinite;
 }
 
-/* Gradient overlay for phone screens */
-.phone-gradient {
-  position: absolute;
-  inset: 0;
-  border-radius: 38px;
-  background: linear-gradient(180deg, transparent 70%, rgba(0,0,0,0.3) 100%);
-  z-index: 5;
-  pointer-events: none;
-}
+/* No gradient overlay needed */

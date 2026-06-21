@@ -45,11 +45,10 @@ const FEATURES = [
 
 const SOCIAL_PROOF_COUNT = 2847;
 
-function IPhoneFrame({ src, alt, className = "" }: { src: string; alt: string; className?: string }) {
+function PhoneScreen({ src, alt, className = "" }: { src: string; alt: string; className?: string }) {
   return (
     <div className={`iphone-frame ${className}`}>
-      <div className="phone-gradient" />
-      <Image src={src} alt={alt} width={320} height={654} className="object-cover" />
+      <Image src={src} alt={alt} width={520} height={1124} />
     </div>
   );
 }
@@ -126,10 +125,10 @@ export default function Home() {
           {/* Right: iPhone mockups */}
           <div className="flex gap-6 items-start">
             <div className="parallax-phone">
-              <IPhoneFrame src="/screens/home.png" alt="Bamboo home screen" />
+              <PhoneScreen src="/screens/home.png" alt="Bamboo home screen" />
             </div>
             <div className="parallax-phone hidden md:block mt-16">
-              <IPhoneFrame src="/screens/log.png" alt="Bamboo food log screen" />
+              <PhoneScreen src="/screens/log.png" alt="Bamboo food log screen" />
             </div>
           </div>
         </div>
@@ -154,7 +153,7 @@ export default function Home() {
             { src: "/screens/profile.png", label: "Profile" },
           ].map((screen, i) => (
             <div key={screen.label} className={`animate-on-scroll stagger-${i + 1} snap-center flex-shrink-0 flex flex-col items-center gap-3`}>
-              <IPhoneFrame src={screen.src} alt={screen.label} />
+              <PhoneScreen src={screen.src} alt={screen.label} />
               <span className="text-sm font-medium text-[var(--ink-soft)]">{screen.label}</span>
             </div>
           ))}
@@ -225,7 +224,7 @@ export default function Home() {
       <section className="w-full max-w-5xl mx-auto px-6 py-16">
         <div className="flex flex-col md:flex-row items-center gap-12">
           <div className="animate-on-scroll stagger-1 parallax-phone">
-            <IPhoneFrame src="/screens/gut.png" alt="Gut health forecast" />
+            <PhoneScreen src="/screens/gut.png" alt="Gut health forecast" />
           </div>
           <div className="animate-on-scroll stagger-2 flex-1">
             <h2 className="text-3xl font-semibold text-[var(--ink)] mb-4">
