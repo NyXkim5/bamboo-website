@@ -43,15 +43,14 @@ const FEATURES = [
   },
 ];
 
-const SOCIAL_PROOF_COUNT = 2847;
+const APP_SCREENS = [
+  { src: "/screens/home.png", label: "Dashboard" },
+  { src: "/screens/gut.png", label: "Gut health" },
+  { src: "/screens/stats.png", label: "Recovery" },
+  { src: "/screens/onboarding.png", label: "Onboarding" },
+];
 
-function PhoneScreen({ src, alt, className = "" }: { src: string; alt: string; className?: string }) {
-  return (
-    <div className={`iphone-frame ${className}`}>
-      <Image src={src} alt={alt} width={520} height={1124} />
-    </div>
-  );
-}
+const SOCIAL_PROOF_COUNT = 2847;
 
 export default function Home() {
   const [email, setEmail] = useState("");
@@ -70,7 +69,6 @@ export default function Home() {
       {/* Hero */}
       <section className="w-full max-w-6xl mx-auto px-6 pt-16 pb-12">
         <div className="flex flex-col lg:flex-row items-center gap-12">
-          {/* Left: text + form */}
           <div className="flex-1 text-center lg:text-left">
             <div className="mascot-float inline-block mb-6">
               <Image
@@ -122,20 +120,28 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Right: iPhone mockups */}
-          <div className="flex gap-6 items-start">
-            <div className="parallax-phone">
-              <PhoneScreen src="/screens/home.png" alt="Bamboo home screen" />
-            </div>
-            <div className="parallax-phone hidden md:block mt-16">
-              <PhoneScreen src="/screens/log.png" alt="Bamboo food log screen" />
-            </div>
+          {/* Right: two app screenshots */}
+          <div className="flex gap-4 items-start">
+            <Image
+              src="/screens/home.png"
+              alt="Bamboo dashboard"
+              width={220}
+              height={476}
+              className="rounded-[32px] shadow-xl"
+            />
+            <Image
+              src="/screens/gut.png"
+              alt="Gut health forecast"
+              width={220}
+              height={476}
+              className="rounded-[32px] shadow-xl mt-12 hidden md:block"
+            />
           </div>
         </div>
       </section>
 
-      {/* App showcase: all screens */}
-      <section className="w-full py-20 overflow-hidden">
+      {/* App screens showcase */}
+      <section className="w-full py-20">
         <div className="animate-on-scroll max-w-5xl mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-semibold text-center text-[var(--ink)] mb-4">
             See it in action
@@ -145,15 +151,16 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="flex gap-6 px-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide justify-start md:justify-center">
-          {[
-            { src: "/screens/home.png", label: "Dashboard" },
-            { src: "/screens/gut.png", label: "Gut health" },
-            { src: "/screens/stats.png", label: "Recovery" },
-            { src: "/screens/profile.png", label: "Profile" },
-          ].map((screen, i) => (
-            <div key={screen.label} className={`animate-on-scroll stagger-${i + 1} snap-center flex-shrink-0 flex flex-col items-center gap-3`}>
-              <PhoneScreen src={screen.src} alt={screen.label} />
+        <div className="flex gap-6 px-8 justify-center items-start">
+          {APP_SCREENS.map((screen, i) => (
+            <div key={screen.label} className={`animate-on-scroll stagger-${i + 1} flex flex-col items-center gap-3`}>
+              <Image
+                src={screen.src}
+                alt={screen.label}
+                width={240}
+                height={520}
+                className="rounded-[32px] shadow-lg hover:-translate-y-2 transition-transform"
+              />
               <span className="text-sm font-medium text-[var(--ink-soft)]">{screen.label}</span>
             </div>
           ))}
@@ -175,20 +182,10 @@ export default function Home() {
               className={`animate-on-scroll stagger-${i + 1} bg-[var(--paper)] border-2 border-[var(--border)] rounded-3xl p-6 hover:shadow-lg hover:-translate-y-1 transition-all`}
             >
               <div className="mb-4">
-                <Image
-                  src={feature.img}
-                  alt=""
-                  width={64}
-                  height={64}
-                  className="object-contain"
-                />
+                <Image src={feature.img} alt="" width={64} height={64} className="object-contain" />
               </div>
-              <h3 className="text-lg font-semibold text-[var(--ink)] mb-2">
-                {feature.title}
-              </h3>
-              <p className="text-sm text-[var(--ink-soft)] leading-relaxed">
-                {feature.description}
-              </p>
+              <h3 className="text-lg font-semibold text-[var(--ink)] mb-2">{feature.title}</h3>
+              <p className="text-sm text-[var(--ink-soft)] leading-relaxed">{feature.description}</p>
             </div>
           ))}
         </div>
@@ -220,11 +217,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Feature highlight with phone */}
+      {/* Feature highlight with screenshot */}
       <section className="w-full max-w-5xl mx-auto px-6 py-16">
         <div className="flex flex-col md:flex-row items-center gap-12">
-          <div className="animate-on-scroll stagger-1 parallax-phone">
-            <PhoneScreen src="/screens/gut.png" alt="Gut health forecast" />
+          <div className="animate-on-scroll stagger-1">
+            <Image
+              src="/screens/stats.png"
+              alt="Recovery and sleep tracking"
+              width={260}
+              height={563}
+              className="rounded-[32px] shadow-lg"
+            />
           </div>
           <div className="animate-on-scroll stagger-2 flex-1">
             <h2 className="text-3xl font-semibold text-[var(--ink)] mb-4">
@@ -296,12 +299,8 @@ export default function Home() {
           &copy; 2026 Bamboo. Built with care for your gut, macros, and mood.
         </p>
         <div className="flex gap-6 justify-center mt-3">
-          <a href="/privacy" className="text-sm text-[var(--ink-soft)] hover:text-[var(--coral)] transition-colors">
-            Privacy
-          </a>
-          <a href="/terms" className="text-sm text-[var(--ink-soft)] hover:text-[var(--coral)] transition-colors">
-            Terms
-          </a>
+          <a href="/privacy" className="text-sm text-[var(--ink-soft)] hover:text-[var(--coral)] transition-colors">Privacy</a>
+          <a href="/terms" className="text-sm text-[var(--ink-soft)] hover:text-[var(--coral)] transition-colors">Terms</a>
         </div>
       </footer>
     </main>
