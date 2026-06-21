@@ -70,19 +70,15 @@ export default function Home() {
       <section className="w-full max-w-6xl mx-auto px-6 pt-16 pb-12">
         <div className="flex flex-col lg:flex-row items-center gap-12">
           <div className="flex-1 text-center lg:text-left">
-            <div className="mascot-float inline-block mb-6">
+            <div className="inline-block mb-4">
               <Image
-                src="/mascot/panda-excited.png"
-                alt="Bao the panda"
-                width={140}
-                height={140}
+                src="/app-icon.png"
+                alt="Bamboo app icon"
+                width={160}
+                height={147}
                 priority
               />
             </div>
-
-            <h1 className="text-5xl md:text-6xl font-semibold text-[var(--ink)] mb-4 leading-tight">
-              bamboo
-            </h1>
 
             <p className="text-lg md:text-xl text-[var(--ink-soft)] max-w-xl mb-8 leading-relaxed">
               Your gut, macros &amp; mood - tracked like a game you actually win.
