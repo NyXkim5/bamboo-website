@@ -19,7 +19,7 @@ export function useScrollReveal() {
 
     const el = ref.current;
     if (el) {
-      el.querySelectorAll(".animate-on-scroll").forEach((child) => {
+      el.querySelectorAll(".reveal").forEach((child) => {
         observer.observe(child);
       });
     }
