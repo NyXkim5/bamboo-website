@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { WaitlistForm } from "./waitlist-form";
+import { WaitlistCounter } from "./waitlist-counter";
 import { ScrollReveal } from "./scroll-reveal";
 import { ScreenShowcase } from "./screen-showcase";
 
@@ -115,6 +116,7 @@ export default function Home() {
             <p className="text-sm text-[var(--ink-muted)]">
               Early signups get free access to every feature on day one.
             </p>
+            <WaitlistCounter />
           </div>
 
           {/* Hero phone */}
@@ -304,6 +306,7 @@ export default function Home() {
           <div className="flex justify-center">
             <WaitlistForm id="cta-email" />
           </div>
+          <WaitlistCounter />
         </div>
       </section>
 
