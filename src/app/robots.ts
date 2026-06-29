@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://bamboo-website.vercel.app/sitemap.xml",
+    sitemap: "https://bamboonutrition.app/sitemap.xml",
   };
 }

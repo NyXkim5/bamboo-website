@@ -15,7 +15,7 @@ const zenMaru = Zen_Maru_Gothic({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bamboo-website.vercel.app"),
+  metadataBase: new URL("https://bamboonutrition.app"),
   title: "Bamboo - Nutrition tracking that feels like a game",
   description:
     "Track macros, gut health, and your wellness journey with Bao the panda. Gamified nutrition that actually sticks. Join the waitlist.",
