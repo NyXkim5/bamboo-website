@@ -49,32 +49,41 @@ export async function POST(request: Request) {
 
     const resend = new Resend(process.env.RESEND_API_KEY);
 
-    if (process.env.RESEND_AUDIENCE_ID) {
-      await resend.contacts.create({
-        audienceId: process.env.RESEND_AUDIENCE_ID,
-        email,
-      });
+    if (!process.env.RESEND_AUDIENCE_ID) {
+      return Response.json(
+        { error: "Waitlist not configured" },
+        { status: 503 }
+      );
     }
 
-    await resend.emails.send({
-      from: process.env.FROM_EMAIL || "Bamboo <onboarding@resend.dev>",
-      to: email,
-      subject: "You're on the Bamboo waitlist!",
-      html: `
-        <div style="font-family: -apple-system, BlinkMacSystemFont, sans-serif; max-width: 480px; margin: 0 auto; padding: 40px 20px;">
-          <h1 style="font-size: 24px; color: #1A1A1A; margin-bottom: 16px;">Welcome to Bamboo</h1>
-          <p style="font-size: 16px; color: #6B7280; line-height: 1.6;">
-            You're on the list. We'll let you know as soon as Bamboo is ready for download.
-          </p>
-          <p style="font-size: 16px; color: #6B7280; line-height: 1.6;">
-            In the meantime, Bao is doing a little happy dance for you.
-          </p>
-          <p style="font-size: 14px; color: #9CA3AF; margin-top: 32px;">
-            The Bamboo Team
-          </p>
-        </div>
-      `,
+    await resend.contacts.create({
+      audienceId: process.env.RESEND_AUDIENCE_ID,
+      email,
     });
+
+    const fromEmail = process.env.FROM_EMAIL;
+    if (fromEmail) {
+      await resend.emails.send({
+        from: fromEmail,
+        to: email,
+        subject: "You're on the Bamboo waitlist!",
+        html: `
+          <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 480px; margin: 0 auto; padding: 32px 24px;">
+            <h1 style="font-size: 24px; color: #1a1a1a; margin-bottom: 16px;">You're in!</h1>
+            <p style="font-size: 16px; color: #444; line-height: 1.6; margin-bottom: 16px;">
+              Bao is doing a happy dance. You just secured early access to Bamboo.
+            </p>
+            <p style="font-size: 16px; color: #444; line-height: 1.6; margin-bottom: 16px;">
+              When we launch this summer, you will be first in line. Every feature. No charge.
+            </p>
+            <p style="font-size: 16px; color: #444; line-height: 1.6; margin-bottom: 8px;">
+              That is it for now. No spam. Just one more email when it is time.
+            </p>
+            <p style="font-size: 14px; color: #888; margin-top: 32px;">The Bamboo team</p>
+          </div>
+        `,
+      });
+    }
 
     return Response.json({ success: true });
   } catch {
