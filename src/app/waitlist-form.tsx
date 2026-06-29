@@ -42,7 +42,7 @@ export function WaitlistForm({ id }: { id: string }) {
           You&apos;re in!
         </p>
         <p className="text-sm text-[var(--ink-soft)] mt-1">
-          Check your inbox. Bao is doing a happy dance.
+          Check your inbox (or Promotions tab). Bao is doing a happy dance.
         </p>
       </div>
     );
