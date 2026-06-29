@@ -66,22 +66,8 @@ export async function POST(request: Request) {
       await resend.emails.send({
         from: fromEmail,
         to: email,
-        subject: "You're on the Bamboo waitlist!",
-        html: `
-          <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 480px; margin: 0 auto; padding: 32px 24px;">
-            <h1 style="font-size: 24px; color: #1a1a1a; margin-bottom: 16px;">You're in!</h1>
-            <p style="font-size: 16px; color: #444; line-height: 1.6; margin-bottom: 16px;">
-              Bao is doing a happy dance. You just secured early access to Bamboo.
-            </p>
-            <p style="font-size: 16px; color: #444; line-height: 1.6; margin-bottom: 16px;">
-              When we launch this summer, you will be first in line. Every feature. No charge.
-            </p>
-            <p style="font-size: 16px; color: #444; line-height: 1.6; margin-bottom: 8px;">
-              That is it for now. No spam. Just one more email when it is time.
-            </p>
-            <p style="font-size: 14px; color: #888; margin-top: 32px;">The Bamboo team</p>
-          </div>
-        `,
+        subject: "You're on the list",
+        text: `You're in.\n\nYou just secured early access to Bamboo. When we launch this summer, you will be first in line. Every feature. No charge.\n\nThat is it for now. No spam. Just one more email when it is time.\n\n- The Bamboo team`,
       });
     }
 
