@@ -86,7 +86,8 @@ export async function POST(request: Request) {
     }
 
     return Response.json({ success: true });
-  } catch {
+  } catch (err) {
+    console.error("[waitlist]", err);
     return Response.json(
       { error: "Something went wrong. Please try again." },
       { status: 500 }
