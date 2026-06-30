@@ -116,8 +116,9 @@ export default function PrivacyPage() {
 
         <Section title="Apple HealthKit">
           <p className="text-[15px]">
-            The app can read steps, sleep hours, and active calories from Apple HealthKit to display recovery insights.
-            HealthKit data is read locally and never transmitted to us or any third party.
+            Apple HealthKit integration is planned for a future release. When available, the app will read
+            steps, sleep hours, and active calories locally to display recovery insights. HealthKit data will
+            never be transmitted to us or any third party.
           </p>
         </Section>
 
