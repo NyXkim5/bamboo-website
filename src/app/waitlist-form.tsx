@@ -74,7 +74,9 @@ export function WaitlistForm({ id }: { id: string }) {
         body: JSON.stringify({ email }),
       });
 
-      const data = (await res.json()) as { error?: string; already?: boolean };
+      const data = (await res
+        .json()
+        .catch(() => ({}))) as { error?: string; already?: boolean };
       if (!res.ok) {
         throw new Error(data.error || "Something went wrong");
       }
