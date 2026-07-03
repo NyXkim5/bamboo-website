@@ -1,17 +1,18 @@
 import { Resend } from "resend";
-
-const EMAIL_RE =
-  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*\.[a-zA-Z]{2,}$/;
+import { normalizeEmail, processSignup } from "./waitlist-logic";
 
 const rateLimit = new Map<string, number>();
 const RATE_LIMIT_MS = 60_000;
+
+const WELCOME_SUBJECT = "You're on the list";
+const WELCOME_TEXT = `You're in.\n\nYou just secured early access to Bamboo. When we launch this summer, you will be first in line. Every feature. No charge.\n\nThat is it for now. No spam. Just one more email when it is time.\n\n- The Bamboo team`;
 
 function isRateLimited(ip: string): boolean {
   const last = rateLimit.get(ip);
   const now = Date.now();
   if (last && now - last < RATE_LIMIT_MS) return true;
   rateLimit.set(ip, now);
-  // Clean old entries every 100 requests
+  // Clean old entries once the map grows
   if (rateLimit.size > 1000) {
     const cutoff = now - RATE_LIMIT_MS;
     for (const [key, ts] of rateLimit) {
@@ -34,45 +35,43 @@ export async function POST(request: Request) {
     }
 
     const body = (await request.json()) as { email?: string };
-    const email = body.email?.trim().toLowerCase();
-
-    if (!email || !EMAIL_RE.test(email)) {
+    const email = normalizeEmail(body.email);
+    if (!email) {
       return Response.json({ error: "Valid email required" }, { status: 400 });
     }
 
-    if (!process.env.RESEND_API_KEY) {
-      return Response.json(
-        { error: "Waitlist not configured" },
-        { status: 503 }
-      );
+    const apiKey = process.env.RESEND_API_KEY;
+    const audienceId = process.env.RESEND_AUDIENCE_ID;
+    if (!apiKey || !audienceId) {
+      return Response.json({ error: "Waitlist not configured" }, { status: 503 });
     }
 
-    const resend = new Resend(process.env.RESEND_API_KEY);
+    const resend = new Resend(apiKey);
+    const fromEmail = process.env.FROM_EMAIL;
 
-    if (!process.env.RESEND_AUDIENCE_ID) {
-      return Response.json(
-        { error: "Waitlist not configured" },
-        { status: 503 }
-      );
-    }
-
-    await resend.contacts.create({
-      audienceId: process.env.RESEND_AUDIENCE_ID,
-      email,
+    const result = await processSignup(email, {
+      getContact: (e) => resend.contacts.get({ audienceId, email: e }),
+      createContact: (e) => resend.contacts.create({ audienceId, email: e }),
+      sendWelcome: (e) =>
+        fromEmail
+          ? resend.emails.send({
+              from: fromEmail,
+              to: e,
+              subject: WELCOME_SUBJECT,
+              text: WELCOME_TEXT,
+            })
+          : // No FROM_EMAIL configured: skip the welcome email without failing.
+            Promise.resolve({ data: null, error: null }),
+      logError: (context, detail) => console.error("[waitlist]", context, detail),
     });
 
-    const fromEmail = process.env.FROM_EMAIL;
-    if (fromEmail) {
-      await resend.emails.send({
-        from: fromEmail,
-        to: email,
-        subject: "You're on the list",
-        text: `You're in.\n\nYou just secured early access to Bamboo. When we launch this summer, you will be first in line. Every feature. No charge.\n\nThat is it for now. No spam. Just one more email when it is time.\n\n- The Bamboo team`,
-      });
+    if (!result.ok) {
+      return Response.json({ error: result.error }, { status: 500 });
     }
 
-    return Response.json({ success: true });
+    return Response.json({ success: true, already: result.already });
   } catch (err) {
+    // JSON parse failures and unexpected runtime errors land here.
     console.error("[waitlist]", err);
     return Response.json(
       { error: "Something went wrong. Please try again." },
