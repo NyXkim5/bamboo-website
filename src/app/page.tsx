@@ -4,6 +4,8 @@ import { WaitlistForm } from "./waitlist-form";
 import { WaitlistCounter } from "./waitlist-counter";
 import { ScrollReveal } from "./scroll-reveal";
 import { ScreenShowcase } from "./screen-showcase";
+import { Faq } from "./faq";
+import { StructuredData } from "./structured-data";
 
 const FEATURES = [
   {
@@ -64,6 +66,7 @@ const SCREENS = [
 export default function Home() {
   return (
     <ScrollReveal>
+      <StructuredData />
       {/* Nav */}
       <nav aria-label="Main navigation" className="w-full sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-[var(--border)]">
         <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
@@ -286,6 +289,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <Faq />
 
       {/* Final CTA */}
       <section className="w-full py-20 bg-gradient-to-b from-[var(--bg-warm)] to-[var(--bg-accent)]">
