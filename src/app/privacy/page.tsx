@@ -1,24 +1,15 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { LegalSection } from "../legal-section";
 
 export const metadata: Metadata = {
   title: "Privacy Policy - Bamboo",
   description: "How Bamboo handles your nutrition and wellness data.",
 };
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <section className="mt-8">
-      <h2 className="font-[family-name:var(--font-heading)] text-xl text-[var(--green-dark)] mb-2">
-        {title}
-      </h2>
-      {children}
-    </section>
-  );
-}
-
 export default function PrivacyPage() {
   return (
-    <main className="min-h-screen bg-[var(--cream)] text-[var(--ink)]">
+    <main className="min-h-screen bg-[var(--bg)] text-[var(--ink)]">
       <div className="max-w-2xl mx-auto px-6 py-16">
         <h1 className="font-[family-name:var(--font-heading)] text-3xl mb-1">
           Privacy Policy
@@ -31,7 +22,7 @@ export default function PrivacyPage() {
           how to remove your data.
         </p>
 
-        <Section title="The short version">
+        <LegalSection title="The short version">
           <ul className="list-disc pl-5 space-y-2 text-[15px]">
             <li>Everything you log stays on your device. We do not store food, weight, cycle, or wellness data on any server.</li>
             <li>You get an anonymous account automatically. No name or email required.</li>
@@ -41,9 +32,9 @@ export default function PrivacyPage() {
             <li>Food search goes to USDA FoodData Central. Barcode scans go to Open Food Facts.</li>
             <li>You can delete your account and all associated data at any time from Settings.</li>
           </ul>
-        </Section>
+        </LegalSection>
 
-        <Section title="What we store and where">
+        <LegalSection title="What we store and where">
           <h3 className="font-[family-name:var(--font-body)] font-bold text-base mt-4 mb-1">On your device only</h3>
           <p className="text-sm mb-2">
             All of the following is saved only in on-device storage. It never reaches our servers:
@@ -67,9 +58,9 @@ export default function PrivacyPage() {
           <p className="text-sm mt-2">
             If you add email or Apple sign-in, your email is stored in Supabase Auth. Your app data remains on-device only.
           </p>
-        </Section>
+        </LegalSection>
 
-        <Section title="What leaves your device">
+        <LegalSection title="What leaves your device">
           <div className="space-y-4 text-[15px]">
             <div>
               <h3 className="font-bold">1. USDA FoodData Central</h3>
@@ -92,9 +83,9 @@ export default function PrivacyPage() {
               <p>Crash reports include device type, OS version, app version, error message, and anonymous UUID. No food names or health values are included.</p>
             </div>
           </div>
-        </Section>
+        </LegalSection>
 
-        <Section title="What we do not do">
+        <LegalSection title="What we do not do">
           <ul className="list-disc pl-5 space-y-1 text-[15px]">
             <li>We do not sell, rent, or share your personal data.</li>
             <li>We do not use your data to train AI or machine-learning models.</li>
@@ -102,9 +93,9 @@ export default function PrivacyPage() {
             <li>We do not build a profile of you linked to your real identity.</li>
             <li>We do not share HealthKit data with data brokers or third parties.</li>
           </ul>
-        </Section>
+        </LegalSection>
 
-        <Section title="Data deletion">
+        <LegalSection title="Data deletion">
           <p className="text-[15px]">Every user gets an anonymous account automatically. You can:</p>
           <ul className="list-disc pl-5 space-y-1 text-[15px] mt-2">
             <li><strong>Export your data</strong> from Settings, Manage Data, Export.</li>
@@ -112,47 +103,47 @@ export default function PrivacyPage() {
             <li><strong>Delete your account</strong> from Profile, Account, Delete account. This is permanent.</li>
             <li><strong>Uninstall the app</strong> to erase all on-device storage.</li>
           </ul>
-        </Section>
+        </LegalSection>
 
-        <Section title="Apple HealthKit">
+        <LegalSection title="Apple HealthKit">
           <p className="text-[15px]">
             Apple HealthKit integration is planned for a future release. When available, the app will read
             steps, sleep hours, and active calories locally to display recovery insights. HealthKit data will
             never be transmitted to us or any third party.
           </p>
-        </Section>
+        </LegalSection>
 
-        <Section title="Cycle and menstrual data">
+        <LegalSection title="Cycle and menstrual data">
           <p className="text-[15px]">
             All period dates, cycle lengths, and symptom entries are stored only on your device. This data never leaves your device.
           </p>
-        </Section>
+        </LegalSection>
 
-        <Section title="Children">
+        <LegalSection title="Children">
           <p className="text-[15px]">
             This app is not directed to children under 13. We do not knowingly collect data from children.
           </p>
-        </Section>
+        </LegalSection>
 
-        <Section title="Changes to this policy">
+        <LegalSection title="Changes to this policy">
           <p className="text-[15px]">
             If we change how the app handles data, we will update this policy and the effective date.
           </p>
-        </Section>
+        </LegalSection>
 
-        <Section title="Contact">
+        <LegalSection title="Contact">
           <p className="text-[15px]">
             Questions about privacy:{" "}
             <a href="mailto:privacy@bamboonutrition.app" className="text-[var(--green-dark)] underline">
               privacy@bamboonutrition.app
             </a>
           </p>
-        </Section>
+        </LegalSection>
 
         <div className="mt-12 pt-6 border-t border-[var(--border)]">
-          <a href="/" className="text-sm text-[var(--green-dark)] hover:underline">
+          <Link href="/" className="text-sm text-[var(--green-dark)] hover:underline">
             &larr; Back to Bamboo
-          </a>
+          </Link>
         </div>
       </div>
     </main>

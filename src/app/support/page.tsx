@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Support - Bamboo",
@@ -7,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function SupportPage() {
   return (
-    <main className="min-h-screen bg-[var(--cream)] text-[var(--ink)]">
+    <main className="min-h-screen bg-[var(--bg)] text-[var(--ink)]">
       <div className="max-w-2xl mx-auto px-6 py-16">
         <h1 className="font-[family-name:var(--font-heading)] text-3xl mb-6">
           Support
@@ -71,12 +72,12 @@ export default function SupportPage() {
         </div>
 
         <div className="mt-8 text-center space-y-2">
-          <a href="/privacy" className="text-sm text-[var(--green-dark)] hover:underline block">
+          <Link href="/privacy" className="text-sm text-[var(--green-dark)] hover:underline block">
             Privacy Policy
-          </a>
-          <a href="/" className="text-sm text-[var(--green-dark)] hover:underline block">
+          </Link>
+          <Link href="/" className="text-sm text-[var(--green-dark)] hover:underline block">
             &larr; Back to Bamboo
-          </a>
+          </Link>
         </div>
       </div>
     </main>
