@@ -177,7 +177,7 @@ export default function Home() {
         </div>
 
         <div className="reveal max-w-5xl mx-auto px-6">
-          <ScreenShowcase screens={SCREENS.map(s => ({ ...s }))} />
+          <ScreenShowcase screens={SCREENS} />
         </div>
       </section>
 

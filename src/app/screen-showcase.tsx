@@ -9,7 +9,7 @@ interface Screen {
   alt: string;
 }
 
-export function ScreenShowcase({ screens }: { screens: Screen[] }) {
+export function ScreenShowcase({ screens }: { screens: readonly Screen[] }) {
   const [active, setActive] = useState(0);
 
   return (
@@ -20,6 +20,7 @@ export function ScreenShowcase({ screens }: { screens: Screen[] }) {
           <button
             key={screen.label}
             onClick={() => setActive(i)}
+            aria-pressed={active === i}
             className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all cursor-pointer ${
               active === i
                 ? "bg-[var(--green)] text-white shadow-md shadow-[var(--green)]/20"
@@ -41,7 +42,6 @@ export function ScreenShowcase({ screens }: { screens: Screen[] }) {
           height={736}
           sizes="340px"
           className="w-full h-auto block"
-          priority
         />
       </div>
 
@@ -51,6 +51,7 @@ export function ScreenShowcase({ screens }: { screens: Screen[] }) {
           <button
             key={screen.src}
             onClick={() => setActive(i)}
+            aria-pressed={active === i}
             className={`rounded-xl overflow-hidden border-2 transition-all cursor-pointer ${
               active === i
                 ? "border-[var(--green)] shadow-md shadow-[var(--green)]/15 scale-105"
