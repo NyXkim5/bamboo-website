@@ -2,11 +2,64 @@
 
 import { useState } from "react";
 
+const SHARE_TEXT =
+  "I just joined the waitlist for Bamboo, a nutrition app that feels like a game. Come join me!";
+const SHARE_URL = "https://bamboonutrition.app";
+
+function ShareButton() {
+  const [copied, setCopied] = useState(false);
+
+  async function handleShare() {
+    if (typeof navigator.share === "function") {
+      try {
+        await navigator.share({ title: "Bamboo", text: SHARE_TEXT, url: SHARE_URL });
+      } catch {
+        // User closed the share sheet. Nothing to do.
+      }
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(`${SHARE_TEXT} ${SHARE_URL}`);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error("[share] clipboard write failed", err);
+    }
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={handleShare}
+      className="mt-3 px-5 py-2 rounded-full bg-[var(--green)] text-white text-sm font-medium hover:bg-[var(--green-dark)] transition-colors cursor-pointer"
+    >
+      {copied ? "Link copied!" : "Tell a friend"}
+    </button>
+  );
+}
+
+function SuccessCard({ already }: { already: boolean }) {
+  return (
+    <div className="max-w-md px-6 py-5 rounded-2xl bg-[var(--green-light)] border border-[var(--green)]">
+      <p className="text-lg font-semibold text-[var(--green-dark)]">
+        {already ? "You're already on the list!" : "You're in!"}
+      </p>
+      <p className="text-sm text-[var(--ink-soft)] mt-1">
+        {already
+          ? "Bao remembers you. Your spot is safe."
+          : "Check your inbox (or Promotions tab). Bao is doing a happy dance."}
+      </p>
+      <ShareButton />
+    </div>
+  );
+}
+
 export function WaitlistForm({ id }: { id: string }) {
   const [email, setEmail] = useState("");
   const [state, setState] = useState<"idle" | "loading" | "success" | "error">(
     "idle"
   );
+  const [already, setAlready] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
   async function handleSubmit(e: React.FormEvent) {
@@ -21,11 +74,12 @@ export function WaitlistForm({ id }: { id: string }) {
         body: JSON.stringify({ email }),
       });
 
+      const data = (await res.json()) as { error?: string; already?: boolean };
       if (!res.ok) {
-        const data = (await res.json()) as { error?: string };
         throw new Error(data.error || "Something went wrong");
       }
 
+      setAlready(data.already === true);
       setState("success");
     } catch (err) {
       setState("error");
@@ -36,16 +90,7 @@ export function WaitlistForm({ id }: { id: string }) {
   }
 
   if (state === "success") {
-    return (
-      <div className="max-w-md px-6 py-5 rounded-2xl bg-[var(--green-light)] border border-[var(--green)]">
-        <p className="text-lg font-semibold text-[var(--green-dark)]">
-          You&apos;re in!
-        </p>
-        <p className="text-sm text-[var(--ink-soft)] mt-1">
-          Check your inbox (or Promotions tab). Bao is doing a happy dance.
-        </p>
-      </div>
-    );
+    return <SuccessCard already={already} />;
   }
 
   return (
