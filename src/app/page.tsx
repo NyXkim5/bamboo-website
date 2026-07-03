@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { WaitlistForm } from "./waitlist-form";
 import { WaitlistCounter } from "./waitlist-counter";
 import { ScrollReveal } from "./scroll-reveal";
@@ -319,12 +320,15 @@ export default function Home() {
           </span>
         </div>
         <div className="flex gap-6">
-          <a href="/privacy" className="text-sm text-[var(--ink-muted)] hover:text-[var(--ink)] transition-colors px-2 py-2">
+          <Link href="/privacy" className="text-sm text-[var(--ink-muted)] hover:text-[var(--ink)] transition-colors px-2 py-2">
             Privacy
-          </a>
-          <a href="/terms" className="text-sm text-[var(--ink-muted)] hover:text-[var(--ink)] transition-colors px-2 py-2">
+          </Link>
+          <Link href="/support" className="text-sm text-[var(--ink-muted)] hover:text-[var(--ink)] transition-colors px-2 py-2">
+            Support
+          </Link>
+          <Link href="/terms" className="text-sm text-[var(--ink-muted)] hover:text-[var(--ink)] transition-colors px-2 py-2">
             Terms
-          </a>
+          </Link>
         </div>
       </footer>
     </ScrollReveal>
