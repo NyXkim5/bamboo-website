@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { SEED_COUNT } from "./waitlist-constants";
 
 export function WaitlistCounter() {
   const [count, setCount] = useState<number | null>(null);
@@ -9,7 +10,7 @@ export function WaitlistCounter() {
     fetch("/api/waitlist/count")
       .then((r) => r.json() as Promise<{ count: number }>)
       .then((d) => setCount(d.count))
-      .catch(() => setCount(238));
+      .catch(() => setCount(SEED_COUNT));
   }, []);
 
   if (count === null) return null;
