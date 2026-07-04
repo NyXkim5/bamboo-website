@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
+import { ConfettiBurst } from "./confetti-burst";
 
 const SHARE_TEXT =
   "I just joined the waitlist for Bamboo, a nutrition app that feels like a game. Come join me!";
@@ -40,16 +42,29 @@ function ShareButton() {
 
 function SuccessCard({ already }: { already: boolean }) {
   return (
-    <div className="max-w-md px-6 py-5 rounded-2xl bg-[var(--green-light)] border border-[var(--green)]">
-      <p className="text-lg font-semibold text-[var(--green-dark)]">
-        {already ? "You're already on the list!" : "You're in!"}
-      </p>
-      <p className="text-sm text-[var(--ink-soft)] mt-1">
-        {already
-          ? "Bao remembers you. Your spot is safe."
-          : "Check your inbox (or Promotions tab). Bao is doing a happy dance."}
-      </p>
-      <ShareButton />
+    <div className="relative max-w-md px-6 py-5 rounded-2xl bg-[var(--green-light)] border border-[var(--green)]">
+      {!already && <ConfettiBurst />}
+      <div className="flex items-start gap-4">
+        <Image
+          src="/panda/proud.png"
+          alt="Bao celebrating"
+          width={64}
+          height={64}
+          sizes="64px"
+          className="mascot-bounce object-contain flex-shrink-0"
+        />
+        <div>
+          <p className="text-lg font-semibold text-[var(--green-dark)]">
+            {already ? "You're already on the list!" : "You're in!"}
+          </p>
+          <p className="text-sm text-[var(--ink-soft)] mt-1">
+            {already
+              ? "Bao remembers you. Your spot is safe."
+              : "Check your inbox (or Promotions tab). Bao is doing a happy dance."}
+          </p>
+          <ShareButton />
+        </div>
+      </div>
     </div>
   );
 }

@@ -64,6 +64,10 @@ h1, h2, h3 {
   .mascot-float, .mascot-bounce {
     animation: none;
   }
+  .confetti-piece {
+    animation: none;
+    opacity: 0;
+  }
   .stagger-1, .stagger-2, .stagger-3, .stagger-4, .stagger-5 {
     transition-delay: 0s;
   }
@@ -160,4 +164,33 @@ html { scroll-behavior: smooth; }
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* Confetti burst on signup success */
+.confetti-field {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.confetti-piece {
+  position: absolute;
+  top: -10px;
+  border-radius: 2px;
+  animation-name: confetti-fall;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(140px) rotate(320deg);
+    opacity: 0;
+  }
 }
