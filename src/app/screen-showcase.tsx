@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
 interface Screen {
@@ -11,6 +11,22 @@ interface Screen {
 
 export function ScreenShowcase({ screens }: { screens: readonly Screen[] }) {
   const [active, setActive] = useState(0);
+  const [userInteracted, setUserInteracted] = useState(false);
+
+  // Auto-advance every 4s until the user takes over. Skipped under reduced motion.
+  useEffect(() => {
+    if (userInteracted) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const id = setInterval(() => {
+      setActive((prev) => (prev + 1) % screens.length);
+    }, 4000);
+    return () => clearInterval(id);
+  }, [userInteracted, screens.length]);
+
+  function handleSelect(i: number) {
+    setUserInteracted(true);
+    setActive(i);
+  }
 
   return (
     <div className="flex flex-col items-center gap-8">
@@ -19,7 +35,7 @@ export function ScreenShowcase({ screens }: { screens: readonly Screen[] }) {
         {screens.map((screen, i) => (
           <button
             key={screen.label}
-            onClick={() => setActive(i)}
+            onClick={() => handleSelect(i)}
             aria-pressed={active === i}
             className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all cursor-pointer ${
               active === i
@@ -50,7 +66,7 @@ export function ScreenShowcase({ screens }: { screens: readonly Screen[] }) {
         {screens.map((screen, i) => (
           <button
             key={screen.src}
-            onClick={() => setActive(i)}
+            onClick={() => handleSelect(i)}
             aria-pressed={active === i}
             className={`rounded-xl overflow-hidden border-2 transition-all cursor-pointer ${
               active === i
