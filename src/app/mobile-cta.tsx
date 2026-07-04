@@ -27,6 +27,8 @@ export function MobileCta() {
 
   return (
     <div
+      aria-hidden={!visible}
+      inert={!visible}
       className={`md:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur-sm border-t border-[var(--border)] px-6 py-3 transition-transform duration-300 motion-reduce:transition-none ${
         visible ? "translate-y-0" : "translate-y-full"
       }`}
