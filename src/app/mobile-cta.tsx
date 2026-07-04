@@ -10,7 +10,8 @@ export function MobileCta() {
       document.getElementById("get-early-access"),
       document.getElementById("final-cta"),
     ].filter((el): el is HTMLElement => el !== null);
-    if (targets.length === 0) return;
+    // Fail closed: if either anchor is missing, never show the bar.
+    if (targets.length < 2) return;
 
     const inView = new Set<Element>();
     const observer = new IntersectionObserver((entries) => {
