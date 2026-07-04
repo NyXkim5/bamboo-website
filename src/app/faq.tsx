@@ -13,7 +13,7 @@ export const FAQ_ITEMS = [
   },
   {
     q: "How does photo logging work?",
-    a: "Point your camera at a meal. Bamboo sends a compressed photo to Anthropic Claude for food identification and logs the items and macros. The photo is not stored, and you can opt out in Settings.",
+    a: "Point your camera at a meal. Bamboo sends a compressed photo to our AI provider (DeepInfra, with Anthropic Claude as backup) for food identification and logs the items and macros. The photo is not stored, and you can opt out in Settings.",
   },
   {
     q: "Is my data private?",

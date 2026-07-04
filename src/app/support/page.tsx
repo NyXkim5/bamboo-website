@@ -57,7 +57,7 @@ export default function SupportPage() {
               </div>
               <div>
                 <p className="font-bold">How does photo meal logging work?</p>
-                <p>Point your camera at a meal and Bamboo sends the photo to AI (Anthropic Claude) for food identification. The photo is not stored. You can opt in or out from Settings.</p>
+                <p>Point your camera at a meal and Bamboo sends the photo to our AI provider (DeepInfra, with Anthropic Claude as backup) for food identification. The photo is not stored. You can opt in or out from Settings.</p>
               </div>
               <div>
                 <p className="font-bold">Is my cycle data private?</p>

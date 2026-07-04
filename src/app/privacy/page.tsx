@@ -14,7 +14,7 @@ export default function PrivacyPage() {
         <h1 className="font-[family-name:var(--font-heading)] text-3xl mb-1">
           Privacy Policy
         </h1>
-        <p className="text-sm text-[var(--ink-soft)] mb-8">Effective date: June 21, 2026</p>
+        <p className="text-sm text-[var(--ink-soft)] mb-8">Effective date: July 4, 2026</p>
 
         <p className="mb-4">
           Bamboo is a local-first nutrition app. Your food logs, profile, goals, and wellness data
@@ -28,7 +28,7 @@ export default function PrivacyPage() {
             <li>You get an anonymous account automatically. No name or email required.</li>
             <li>We run lightweight anonymous analytics (event names and counts, no food content) to understand how the app is used.</li>
             <li>We do not sell your data, and we do not use it to train AI models.</li>
-            <li>Photo meal analysis sends a compressed image to Anthropic (Claude) via our secure server. The photo is not stored.</li>
+            <li>Photo meal analysis sends a compressed image to DeepInfra via our secure server. Anthropic (Claude) may be used as a backup provider. The photo is not stored.</li>
             <li>Food search goes to USDA FoodData Central. Barcode scans go to Open Food Facts.</li>
             <li>You can delete your account and all associated data at any time from Settings.</li>
           </ul>
@@ -71,8 +71,8 @@ export default function PrivacyPage() {
               <p>When you scan a barcode, the barcode number is sent to retrieve nutrition facts.</p>
             </div>
             <div>
-              <h3 className="font-bold">3. Anthropic Claude (via our server)</h3>
-              <p>When you use camera meal analysis, the photo is compressed and sent to our server, which forwards it to Anthropic Claude for food identification. The photo is not stored. A consent prompt is shown before your first photo analysis.</p>
+              <h3 className="font-bold">3. DeepInfra and Anthropic (via our server)</h3>
+              <p>When you use camera meal analysis, the photo is compressed and sent to our server, which forwards it to DeepInfra, a US-based AI host running the open-weights Qwen3-VL vision model, for food identification. If DeepInfra is unavailable, our server may use Anthropic Claude as a backup. The photo is not stored. A consent prompt is shown before your first photo analysis.</p>
             </div>
             <div>
               <h3 className="font-bold">4. Supabase (analytics and auth)</h3>
