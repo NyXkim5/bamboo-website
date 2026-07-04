@@ -34,6 +34,8 @@ export function ConfettiBurst() {
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // Client-only init: particles cannot be built during SSR and reduced motion
+    // must be checked first, so this effect is the earliest safe place to set state.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setParticles(buildParticles());
     const id = setTimeout(() => setParticles([]), 2500);
