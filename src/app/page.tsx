@@ -5,6 +5,7 @@ import { WaitlistCounter } from "./waitlist-counter";
 import { ScrollReveal } from "./scroll-reveal";
 import { ScreenShowcase } from "./screen-showcase";
 import { Benefits } from "./benefits";
+import { MobileCta } from "./mobile-cta";
 import { Faq } from "./faq";
 import { StructuredData } from "./structured-data";
 
@@ -93,7 +94,7 @@ export default function Home() {
       </nav>
 
       {/* Hero */}
-      <section className="w-full max-w-6xl mx-auto px-6 pt-16 md:pt-24 pb-16">
+      <section className="w-full max-w-6xl mx-auto px-6 pt-10 md:pt-24 pb-16">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
           <div className="flex-1 text-center lg:text-left">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[var(--green-light)] text-[var(--green-dark)] text-sm font-medium mb-6">
@@ -126,7 +127,7 @@ export default function Home() {
 
           {/* Hero phone */}
           <div className="relative flex-shrink-0">
-            <div className="phone-frame w-[240px] md:w-[260px]">
+            <div className="phone-frame w-[200px] md:w-[260px]">
               <Image
                 src="/screens/dashboard.png"
                 alt="Bamboo dashboard showing 493 kcal remaining, macro bars, and food suggestions"
@@ -266,7 +267,7 @@ export default function Home() {
       <Faq />
 
       {/* Final CTA */}
-      <section className="w-full py-20 bg-gradient-to-b from-[var(--bg-warm)] to-[var(--bg-accent)]">
+      <section id="final-cta" className="w-full py-20 bg-gradient-to-b from-[var(--bg-warm)] to-[var(--bg-accent)]">
         <div className="reveal max-w-2xl mx-auto px-6 text-center">
           <Image
             src="/panda/heart.png"
@@ -309,6 +310,7 @@ export default function Home() {
           </Link>
         </div>
       </footer>
+      <MobileCta />
     </ScrollReveal>
   );
 }
