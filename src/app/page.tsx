@@ -4,6 +4,7 @@ import { WaitlistForm } from "./waitlist-form";
 import { WaitlistCounter } from "./waitlist-counter";
 import { ScrollReveal } from "./scroll-reveal";
 import { ScreenShowcase } from "./screen-showcase";
+import { Benefits } from "./benefits";
 import { Faq } from "./faq";
 import { StructuredData } from "./structured-data";
 
@@ -221,36 +222,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Marketing cards */}
-      <section className="w-full py-20 bg-[var(--bg-warm)]">
-        <div className="reveal max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-semibold text-center text-[var(--ink)] mb-12">
-            Your daily dashboard with Bao
-          </h2>
-        </div>
-
-        <div className="flex flex-col gap-8 max-w-6xl mx-auto px-6">
-          {[
-            { src: "/panda/card-1.png", alt: "App screens with Bao showing daily tracking, stats, and gut health" },
-            { src: "/panda/card-2.png", alt: "App screens with Bao showing food logging, macro insights, and streaks" },
-            { src: "/panda/card-3.png", alt: "App screens with Bao showing quests, meal suggestions, and progress" },
-          ].map((card, i) => (
-            <div
-              key={card.src}
-              className={`reveal stagger-${i + 1} rounded-3xl overflow-hidden shadow-lg shadow-black/8 border border-[var(--border-hover)] feature-card`}
-            >
-              <Image
-                src={card.src}
-                alt={card.alt}
-                width={1200}
-                height={800}
-                sizes="(max-width: 768px) 100vw, 900px"
-                className="w-full h-auto"
-              />
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* Benefits */}
+      <Benefits />
 
       {/* How it works */}
       <section className="w-full py-24">
