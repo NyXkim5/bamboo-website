@@ -28,7 +28,7 @@ export default function PrivacyPage() {
             <li>You get an anonymous account automatically. No name or email required.</li>
             <li>We run lightweight anonymous analytics (event names and counts, no food content) to understand how the app is used.</li>
             <li>We do not sell your data, and we do not use it to train AI models.</li>
-            <li>Photo meal analysis sends a compressed image to DeepInfra via our secure server. Anthropic (Claude) may be used as a backup provider. The photo is not stored.</li>
+            <li>Photo meal analysis sends a compressed image to DeepInfra via our secure server. Anthropic (Claude) may be used as a backup provider. The photo is not stored on our end.</li>
             <li>Food search goes to USDA FoodData Central. Barcode scans go to Open Food Facts.</li>
             <li>You can delete your account and all associated data at any time from Settings.</li>
           </ul>
@@ -72,7 +72,7 @@ export default function PrivacyPage() {
             </div>
             <div>
               <h3 className="font-bold">3. DeepInfra and Anthropic (via our server)</h3>
-              <p>When you use camera meal analysis, the photo is compressed and sent to our server, which forwards it to DeepInfra, a US-based AI host running the open-weights Qwen3-VL vision model, for food identification. If DeepInfra is unavailable, our server may use Anthropic Claude as a backup. The photo is not stored. A consent prompt is shown before your first photo analysis.</p>
+              <p>When you use camera meal analysis, the photo is compressed and sent to our server, which forwards it to DeepInfra, a US-based AI host running the open-weights Qwen3-VL vision model, for food identification. If DeepInfra is unavailable, our server may use Anthropic Claude as a backup. Only the photo is sent. It is processed transiently and we do not retain it. DeepInfra states it does not use data submitted to its API to train models. Each provider processes the image under its own privacy policy. A consent prompt is shown before your first photo analysis.</p>
             </div>
             <div>
               <h3 className="font-bold">4. Supabase (analytics and auth)</h3>
