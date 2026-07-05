@@ -33,10 +33,6 @@ export const metadata: Metadata = {
       "Track macros, gut health, and your wellness journey with Bao the panda.",
     images: ["/og-image.png"],
   },
-  icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-  },
 };
 
 export default function RootLayout({
