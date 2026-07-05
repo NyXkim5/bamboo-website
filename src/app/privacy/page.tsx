@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { LegalHeader } from "../legal-header";
 import { LegalSection } from "../legal-section";
 
 export const metadata: Metadata = {
@@ -11,6 +12,7 @@ export default function PrivacyPage() {
   return (
     <main className="min-h-screen bg-[var(--bg)] text-[var(--ink)]">
       <div className="max-w-2xl mx-auto px-6 py-16">
+        <LegalHeader />
         <h1 className="font-[family-name:var(--font-heading)] text-3xl mb-1">
           Privacy Policy
         </h1>

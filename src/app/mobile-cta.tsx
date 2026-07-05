@@ -35,7 +35,7 @@ export function MobileCta() {
     >
       <a
         href="#get-early-access"
-        className="block w-full text-center px-6 py-3 rounded-full bg-[var(--green)] text-white font-medium shadow-sm"
+        className="block w-full text-center px-6 py-3 rounded-full bg-[var(--green-dark)] text-white font-medium shadow-sm"
       >
         Get early access
       </a>

@@ -60,7 +60,7 @@ export function ScreenShowcase({ screens }: { screens: readonly Screen[] }) {
             aria-pressed={active === i}
             className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all cursor-pointer ${
               active === i
-                ? "bg-[var(--green)] text-white shadow-md shadow-[var(--green)]/20"
+                ? "bg-[var(--green-dark)] text-white shadow-md shadow-[var(--green)]/20"
                 : "bg-white text-[var(--ink-soft)] border border-[var(--border)] hover:border-[var(--green)] hover:text-[var(--green)]"
             }`}
           >

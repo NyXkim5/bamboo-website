@@ -17,7 +17,7 @@ export function WaitlistCounter() {
 
   return (
     <p className="text-sm text-[var(--ink-soft)] mt-3">
-      <span className="font-bold text-[var(--green)]">
+      <span className="font-bold text-[var(--green-dark)]">
         {count.toLocaleString()}+
       </span>{" "}
       people on the waitlist

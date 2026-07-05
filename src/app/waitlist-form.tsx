@@ -33,7 +33,7 @@ function ShareButton() {
     <button
       type="button"
       onClick={handleShare}
-      className="mt-3 px-5 py-2 rounded-full bg-[var(--green)] text-white text-sm font-medium hover:bg-[var(--green-dark)] transition-colors cursor-pointer"
+      className="mt-3 px-5 py-2 rounded-full bg-[var(--green-dark)] text-white text-sm font-medium hover:bg-[var(--green-deep)] transition-colors cursor-pointer"
     >
       {copied ? "Link copied!" : "Tell a friend"}
     </button>
@@ -132,7 +132,7 @@ export function WaitlistForm({ id }: { id: string }) {
         <button
           type="submit"
           disabled={state === "loading"}
-          className="px-7 py-3.5 rounded-full bg-[var(--green)] text-white font-medium text-base hover:bg-[var(--green-dark)] active:scale-[0.98] transition-all cursor-pointer disabled:opacity-60 shadow-sm shadow-[var(--green)]/20"
+          className="px-7 py-3.5 rounded-full bg-[var(--green-dark)] text-white font-medium text-base hover:bg-[var(--green-deep)] active:scale-[0.98] transition-all cursor-pointer disabled:opacity-60 shadow-sm shadow-[var(--green)]/20"
         >
           {state === "loading" ? "Saving your spot..." : "Get early access"}
         </button>

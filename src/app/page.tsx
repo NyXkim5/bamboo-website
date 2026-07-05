@@ -60,7 +60,7 @@ const STEPS = [
 const SCREENS = [
   { src: "/screens/dashboard.png", label: "Dashboard", alt: "Today view with 493 kcal ring, macro bars, streak, and food suggestions", bubble: "493 kcal to go. Bao believes in you." },
   { src: "/screens/macros.png", label: "Stats", alt: "Weekly macro rings, breakdown bars, and clean food percentage", bubble: "Weekly rings, zero spreadsheets." },
-  { src: "/screens/gut-forecast.png", label: "Gut health", alt: "Gut forecast score 58 with fiber, fermented foods, and microbiome diversity", bubble: "58 today. Feed it fiber, watch it climb." },
+  { src: "/screens/gut-forecast.png", label: "Gut health", alt: "Gut forecast score 58 with fiber, fermented foods, and plant diversity", bubble: "58 today. Feed it fiber, watch it climb." },
   { src: "/screens/quests-streaks.png", label: "Quests", alt: "Daily quests, water tracking, 14-day streak calendar, and cycle nudges", bubble: "Three quests a day keeps the streak alive." },
   { src: "/screens/cycle-tracking.png", label: "Cycle", alt: "Luteal phase ring, period logging, and symptom tracker", bubble: "Your cycle stays on your phone. Always." },
 ] as const;
@@ -86,7 +86,7 @@ export default function Home() {
           </div>
           <a
             href="#get-early-access"
-            className="px-5 py-2 rounded-full bg-[var(--green)] text-white text-sm font-medium hover:bg-[var(--green-dark)] transition-colors shadow-sm"
+            className="px-5 py-2 rounded-full bg-[var(--green-dark)] text-white text-sm font-medium hover:bg-[var(--green-deep)] transition-colors shadow-sm"
           >
             Get early access
           </a>
@@ -159,27 +159,11 @@ export default function Home() {
             <div className="absolute -right-12 top-1/2 bg-white rounded-2xl shadow-lg shadow-black/8 px-4 py-2.5 border border-[var(--border)] hidden lg:flex items-center gap-2">
               <span className="text-2xl">🌿</span>
               <div>
-                <p className="text-sm font-bold text-[var(--green)]">Gut: 58</p>
+                <p className="text-sm font-bold text-[var(--green-dark)]">Gut: 58</p>
                 <p className="text-xs text-[var(--ink-muted)]">Trending up</p>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Interactive screen showcase */}
-      <section className="w-full py-20 bg-[var(--bg-warm)]">
-        <div className="reveal max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-semibold text-center text-[var(--ink)] mb-3">
-            See every screen
-          </h2>
-          <p className="text-center text-[var(--ink-soft)] mb-10 max-w-lg mx-auto">
-            Tap to explore. Every screen designed to show you what matters.
-          </p>
-        </div>
-
-        <div className="reveal max-w-5xl mx-auto px-6">
-          <ScreenShowcase screens={SCREENS} />
         </div>
       </section>
 
@@ -220,6 +204,31 @@ export default function Home() {
               </p>
             </div>
           ))}
+        </div>
+
+        <div className="reveal flex justify-center mt-12">
+          <a
+            href="#get-early-access"
+            className="px-8 py-3.5 rounded-full bg-[var(--green-dark)] text-white font-medium text-base hover:bg-[var(--green-deep)] transition-colors shadow-sm"
+          >
+            Get early access
+          </a>
+        </div>
+      </section>
+
+      {/* Interactive screen showcase */}
+      <section className="w-full py-20 bg-[var(--bg-warm)]">
+        <div className="reveal max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl md:text-4xl font-semibold text-center text-[var(--ink)] mb-3">
+            See every screen
+          </h2>
+          <p className="text-center text-[var(--ink-soft)] mb-10 max-w-lg mx-auto">
+            Tap to explore. Every screen designed to show you what matters.
+          </p>
+        </div>
+
+        <div className="reveal max-w-5xl mx-auto px-6">
+          <ScreenShowcase screens={SCREENS} />
         </div>
       </section>
 
