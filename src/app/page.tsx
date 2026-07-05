@@ -4,7 +4,7 @@ import { WaitlistForm } from "./waitlist-form";
 import { WaitlistCounter } from "./waitlist-counter";
 import { ScrollReveal } from "./scroll-reveal";
 import { ScreenShowcase } from "./screen-showcase";
-import { Benefits } from "./benefits";
+import { ComicStrip } from "./comic-strip";
 import { MobileCta } from "./mobile-cta";
 import { Faq } from "./faq";
 import { StructuredData } from "./structured-data";
@@ -58,11 +58,11 @@ const STEPS = [
 ] as const;
 
 const SCREENS = [
-  { src: "/screens/dashboard.png", label: "Dashboard", alt: "Today view with 493 kcal ring, macro bars, streak, and food suggestions" },
-  { src: "/screens/macros.png", label: "Stats", alt: "Weekly macro rings, breakdown bars, and clean food percentage" },
-  { src: "/screens/gut-forecast.png", label: "Gut health", alt: "Gut forecast score 58 with fiber, fermented foods, and microbiome diversity" },
-  { src: "/screens/quests-streaks.png", label: "Quests", alt: "Daily quests, water tracking, 14-day streak calendar, and cycle nudges" },
-  { src: "/screens/cycle-tracking.png", label: "Cycle", alt: "Luteal phase ring, period logging, and symptom tracker" },
+  { src: "/screens/dashboard.png", label: "Dashboard", alt: "Today view with 493 kcal ring, macro bars, streak, and food suggestions", bubble: "493 kcal to go. Bao believes in you." },
+  { src: "/screens/macros.png", label: "Stats", alt: "Weekly macro rings, breakdown bars, and clean food percentage", bubble: "Weekly rings, zero spreadsheets." },
+  { src: "/screens/gut-forecast.png", label: "Gut health", alt: "Gut forecast score 58 with fiber, fermented foods, and microbiome diversity", bubble: "58 today. Feed it fiber, watch it climb." },
+  { src: "/screens/quests-streaks.png", label: "Quests", alt: "Daily quests, water tracking, 14-day streak calendar, and cycle nudges", bubble: "Three quests a day keeps the streak alive." },
+  { src: "/screens/cycle-tracking.png", label: "Cycle", alt: "Luteal phase ring, period logging, and symptom tracker", bubble: "Your cycle stays on your phone. Always." },
 ] as const;
 
 export default function Home() {
@@ -223,8 +223,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Benefits */}
-      <Benefits />
+      {/* Comic strip */}
+      <ComicStrip />
 
       {/* How it works */}
       <section className="w-full py-24">

@@ -7,6 +7,27 @@ interface Screen {
   src: string;
   label: string;
   alt: string;
+  bubble: string;
+}
+
+// Decorative garnish for sighted users. Hidden from assistive tech so the
+// auto-cycle does not spam screen readers with changing text.
+function ScreenBubble({ text, side }: { text: string; side: "left" | "right" }) {
+  return (
+    <div
+      key={text}
+      aria-hidden="true"
+      className={`speech-bubble hidden lg:block absolute top-16 w-44 ${
+        side === "left"
+          ? "right-full mr-7 bubble-tail-right"
+          : "left-full ml-7 bubble-tail-left"
+      }`}
+    >
+      <p className="text-sm font-semibold text-[var(--ink)]" style={{ fontFamily: "var(--font-heading)" }}>
+        {text}
+      </p>
+    </div>
+  );
 }
 
 export function ScreenShowcase({ screens }: { screens: readonly Screen[] }) {
@@ -48,17 +69,34 @@ export function ScreenShowcase({ screens }: { screens: readonly Screen[] }) {
         ))}
       </div>
 
+      {/* Mobile bubble sits between the tabs and the phone */}
+      <div
+        key={screens[active].bubble}
+        aria-hidden="true"
+        className="speech-bubble bubble-tail-bottom relative lg:hidden max-w-xs text-center -mb-2"
+      >
+        <p className="text-sm font-semibold text-[var(--ink)]" style={{ fontFamily: "var(--font-heading)" }}>
+          {screens[active].bubble}
+        </p>
+      </div>
+
       {/* Large phone display */}
-      <div className="phone-frame w-[300px] md:w-[340px] mx-auto">
-        <Image
-          key={screens[active].src}
-          src={screens[active].src}
-          alt={screens[active].alt}
-          width={340}
-          height={736}
-          sizes="340px"
-          className="w-full h-auto block"
+      <div className="relative">
+        <ScreenBubble
+          text={screens[active].bubble}
+          side={active % 2 === 0 ? "right" : "left"}
         />
+        <div className="phone-frame w-[300px] md:w-[340px] mx-auto">
+          <Image
+            key={screens[active].src}
+            src={screens[active].src}
+            alt={screens[active].alt}
+            width={340}
+            height={736}
+            sizes="340px"
+            className="w-full h-auto block"
+          />
+        </div>
       </div>
 
       {/* Thumbnail row */}

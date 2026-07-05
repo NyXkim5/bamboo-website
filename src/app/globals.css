@@ -68,6 +68,9 @@ h1, h2, h3 {
     animation: none;
     opacity: 0;
   }
+  .speech-bubble {
+    animation: none;
+  }
   .stagger-1, .stagger-2, .stagger-3, .stagger-4, .stagger-5 {
     transition-delay: 0s;
   }
@@ -192,5 +195,57 @@ html { scroll-behavior: smooth; }
   100% {
     transform: translateY(140px) rotate(320deg);
     opacity: 0;
+  }
+}
+
+/* Showcase speech bubbles */
+.speech-bubble {
+  background: #fff;
+  border: 2px solid var(--border-hover);
+  border-radius: 1rem;
+  padding: 0.65rem 1rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  animation: bubble-pop 0.3s ease;
+}
+
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  background: #fff;
+  transform: rotate(45deg);
+}
+
+.bubble-tail-left::after {
+  top: 22px;
+  left: -8px;
+  border-left: 2px solid var(--border-hover);
+  border-bottom: 2px solid var(--border-hover);
+}
+
+.bubble-tail-right::after {
+  top: 22px;
+  right: -8px;
+  border-right: 2px solid var(--border-hover);
+  border-top: 2px solid var(--border-hover);
+}
+
+.bubble-tail-bottom::after {
+  bottom: -8px;
+  left: 50%;
+  margin-left: -7px;
+  border-right: 2px solid var(--border-hover);
+  border-bottom: 2px solid var(--border-hover);
+}
+
+@keyframes bubble-pop {
+  0% {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
 }
