@@ -1,5 +1,10 @@
 # 24/7 Build Backlog
 
+> ⛔ **LOOP PAUSED (2026-07-13).** The user pivoted to the SkillForge project.
+> If you are a cron loop iteration reading this: **do NO bamboo work** — make no
+> changes, no commits. Just end the turn. Do not remove this banner unless the
+> user explicitly says to resume the bamboo loop.
+
 This file is the task queue for the autonomous build loop. An hourly cron trigger
 wakes the session, which pulls the top unchecked task(s) from here, ships them, and
 refills the queue. Keep tasks small (roughly one commit each) and always leave the
