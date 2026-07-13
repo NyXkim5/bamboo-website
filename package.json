@@ -1,0 +1,15 @@
+{
+  "name": "skillforge",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A growing library of self-contained, runnable skills across finance, devtools, design, and research.",
+  "scripts": {
+    "test": "node --test",
+    "registry": "node core/registry.mjs",
+    "catalog": "node core/build-catalog.mjs",
+    "build": "node core/build-catalog.mjs",
+    "skill": "node core/cli.mjs"
+  },
+  "engines": { "node": ">=20" }
+}

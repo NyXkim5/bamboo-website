@@ -1,0 +1,65 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SkillForge — 4 skills</title>
+<style>
+:root{--bg:#fafafa;--fg:#18181b;--muted:#71717a;--card:#fff;--border:#e4e4e7;--accent:#3b7a57}
+@media(prefers-color-scheme:dark){:root{--bg:#0d0d0f;--fg:#f4f4f5;--muted:#a1a1aa;--card:#18181b;--border:#27272a;--accent:#5db088}}
+*{box-sizing:border-box}body{margin:0;font:15px/1.55 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--fg)}
+header{padding:40px 24px 8px;max-width:1100px;margin:0 auto}
+h1{margin:0;font-size:28px;letter-spacing:-.02em}h1 span{color:var(--accent)}
+.sub{color:var(--muted);margin:6px 0 20px}
+.controls{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+input{flex:1;min-width:200px;padding:10px 14px;border:1px solid var(--border);border-radius:10px;background:var(--card);color:var(--fg);font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{padding:7px 13px;border:1px solid var(--border);border-radius:999px;background:var(--card);color:var(--muted);cursor:pointer;font-size:13px}
+.chip.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.grid{max-width:1100px;margin:20px auto;padding:0 24px;display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px}
+.card-head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px}
+.domain{font-size:11px;text-transform:uppercase;letter-spacing:.06em;font-weight:700;color:var(--accent)}
+.id{font-size:12px;color:var(--muted)}
+h3{margin:2px 0 6px;font-size:17px}p{margin:0 0 12px;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
+.tag{font-size:11px;padding:3px 8px;background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--muted)}
+.run code{display:block;font-size:12px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:8px 10px;overflow-x:auto;white-space:nowrap}
+.empty{max-width:1100px;margin:40px auto;padding:0 24px;color:var(--muted);display:none}
+footer{max-width:1100px;margin:40px auto;padding:16px 24px;color:var(--muted);font-size:13px;border-top:1px solid var(--border)}
+</style></head><body>
+<header><h1>Skill<span>Forge</span></h1><p class="sub">4 runnable skills across 4 domains. A growing capability library.</p></header>
+<div class="controls"><input id="q" type="search" placeholder="Search skills, tags, descriptions…" aria-label="Search skills"><div class="chips"><button class="chip active" data-filter="all">all</button><button class="chip" data-filter="design">design</button><button class="chip" data-filter="devtools">devtools</button><button class="chip" data-filter="finance">finance</button><button class="chip" data-filter="research">research</button></div></div>
+<main class="grid" id="grid"><article class="card" data-search="design/palette-gen accessible palette generator turn one base hex color into a harmonious 5-swatch palette with wcag contrast ratings against black and white text. color palette wcag accessibility design-tokens" data-domain="design">
+    <div class="card-head"><span class="domain domain-design">design</span><code class="id">design/palette-gen</code></div>
+    <h3>Accessible Palette Generator</h3>
+    <p>Turn one base hex color into a harmonious 5-swatch palette with WCAG contrast ratings against black and white text.</p>
+    <div class="tags"><span class="tag">color</span><span class="tag">palette</span><span class="tag">wcag</span><span class="tag">accessibility</span><span class="tag">design-tokens</span></div>
+    <div class="run"><code>node core/cli.mjs run design/palette-gen '&lt;json&gt;'</code></div>
+  </article><article class="card" data-search="devtools/code-review heuristic code review scan a js/ts snippet for common issues (debug logging, loose equality, todos, hardcoded secrets, empty catches) and return ranked findings with line numbers. code-review lint static-analysis ci" data-domain="devtools">
+    <div class="card-head"><span class="domain domain-devtools">devtools</span><code class="id">devtools/code-review</code></div>
+    <h3>Heuristic Code Review</h3>
+    <p>Scan a JS/TS snippet for common issues (debug logging, loose equality, TODOs, hardcoded secrets, empty catches) and return ranked findings with line numbers.</p>
+    <div class="tags"><span class="tag">code-review</span><span class="tag">lint</span><span class="tag">static-analysis</span><span class="tag">ci</span></div>
+    <div class="run"><code>node core/cli.mjs run devtools/code-review '&lt;json&gt;'</code></div>
+  </article><article class="card" data-search="finance/sma-backtest sma crossover backtest backtest a fast/slow sma crossover long-only strategy over a close-price series. returns trades, total return, win rate, and max drawdown vs. buy-and-hold. finance backtest trading sma quant stocks" data-domain="finance">
+    <div class="card-head"><span class="domain domain-finance">finance</span><code class="id">finance/sma-backtest</code></div>
+    <h3>SMA Crossover Backtest</h3>
+    <p>Backtest a fast/slow SMA crossover long-only strategy over a close-price series. Returns trades, total return, win rate, and max drawdown vs. buy-and-hold.</p>
+    <div class="tags"><span class="tag">finance</span><span class="tag">backtest</span><span class="tag">trading</span><span class="tag">sma</span><span class="tag">quant</span><span class="tag">stocks</span></div>
+    <div class="run"><code>node core/cli.mjs run finance/sma-backtest '&lt;json&gt;'</code></div>
+  </article><article class="card" data-search="research/extractive-summary extractive summary &amp; keywords rank a document's sentences by term-frequency salience and return the top-n as a summary, plus the most significant keywords. deterministic baseline for news/research pipelines. research summarization nlp news keywords" data-domain="research">
+    <div class="card-head"><span class="domain domain-research">research</span><code class="id">research/extractive-summary</code></div>
+    <h3>Extractive Summary &amp; Keywords</h3>
+    <p>Rank a document's sentences by term-frequency salience and return the top-N as a summary, plus the most significant keywords. Deterministic baseline for news/research pipelines.</p>
+    <div class="tags"><span class="tag">research</span><span class="tag">summarization</span><span class="tag">nlp</span><span class="tag">news</span><span class="tag">keywords</span></div>
+    <div class="run"><code>node core/cli.mjs run research/extractive-summary '&lt;json&gt;'</code></div>
+  </article></main>
+<p class="empty" id="empty">No skills match your search.</p>
+<footer>Generated by <code>core/build-catalog.mjs</code>. Run a skill: <code>node core/cli.mjs run &lt;id&gt; '&lt;json&gt;'</code></footer>
+<script>
+const q=document.getElementById('q'),grid=document.getElementById('grid'),empty=document.getElementById('empty');
+let domain='all';
+function apply(){const term=q.value.trim().toLowerCase();let shown=0;
+  for(const c of grid.children){const okD=domain==='all'||c.dataset.domain===domain;const okT=!term||c.dataset.search.includes(term);const vis=okD&&okT;c.style.display=vis?'':'none';if(vis)shown++;}
+  empty.style.display=shown?'none':'block';}
+q.addEventListener('input',apply);
+for(const chip of document.querySelectorAll('.chip')){chip.addEventListener('click',()=>{document.querySelector('.chip.active').classList.remove('active');chip.classList.add('active');domain=chip.dataset.filter;apply();});}
+</script></body></html>

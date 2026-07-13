@@ -1,0 +1,98 @@
+{
+  "generatedFrom": "core/registry.mjs",
+  "count": 4,
+  "domains": [
+    "design",
+    "devtools",
+    "finance",
+    "research"
+  ],
+  "skills": [
+    {
+      "id": "design/palette-gen",
+      "name": "Accessible Palette Generator",
+      "domain": "design",
+      "version": "0.1.0",
+      "description": "Turn one base hex color into a harmonious 5-swatch palette with WCAG contrast ratings against black and white text.",
+      "tags": [
+        "color",
+        "palette",
+        "wcag",
+        "accessibility",
+        "design-tokens"
+      ],
+      "inputs": {
+        "base": "hex string, e.g. '#3B7A57'",
+        "scheme": "'analogous' | 'complementary' (default analogous)"
+      },
+      "outputs": "{ swatches: [{ hex, hsl, contrastOnWhite, contrastOnBlack, readableOn }] }",
+      "license": "MIT",
+      "source": "Original implementation; contrast math per WCAG 2.1 relative-luminance spec."
+    },
+    {
+      "id": "devtools/code-review",
+      "name": "Heuristic Code Review",
+      "domain": "devtools",
+      "version": "0.1.0",
+      "description": "Scan a JS/TS snippet for common issues (debug logging, loose equality, TODOs, hardcoded secrets, empty catches) and return ranked findings with line numbers.",
+      "tags": [
+        "code-review",
+        "lint",
+        "static-analysis",
+        "ci"
+      ],
+      "inputs": {
+        "code": "source string",
+        "lang": "'js' | 'ts' (informational)"
+      },
+      "outputs": "{ findings: [{ line, rule, severity, message }], score }",
+      "license": "MIT",
+      "source": "Original rule set inspired by common ESLint/SonarQube heuristics."
+    },
+    {
+      "id": "finance/sma-backtest",
+      "name": "SMA Crossover Backtest",
+      "domain": "finance",
+      "version": "0.1.0",
+      "description": "Backtest a fast/slow SMA crossover long-only strategy over a close-price series. Returns trades, total return, win rate, and max drawdown vs. buy-and-hold.",
+      "tags": [
+        "finance",
+        "backtest",
+        "trading",
+        "sma",
+        "quant",
+        "stocks"
+      ],
+      "inputs": {
+        "prices": "number[] of closes (oldest→newest)",
+        "fast": "int (default 10)",
+        "slow": "int (default 30)"
+      },
+      "outputs": "{ trades, strategyReturn, buyHoldReturn, winRate, maxDrawdown }",
+      "license": "MIT",
+      "source": "Original implementation; standard SMA-crossover methodology."
+    },
+    {
+      "id": "research/extractive-summary",
+      "name": "Extractive Summary & Keywords",
+      "domain": "research",
+      "version": "0.1.0",
+      "description": "Rank a document's sentences by term-frequency salience and return the top-N as a summary, plus the most significant keywords. Deterministic baseline for news/research pipelines.",
+      "tags": [
+        "research",
+        "summarization",
+        "nlp",
+        "news",
+        "keywords"
+      ],
+      "inputs": {
+        "text": "document string",
+        "sentences": "int, summary length (default 3)",
+        "keywords": "int (default 6)"
+      },
+      "outputs": "{ summary: string[], keywords: [{ term, weight }] }",
+      "license": "MIT",
+      "source": "Original implementation of classic TF-based extractive summarization."
+    }
+  ]
+}
