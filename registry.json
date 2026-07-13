@@ -1,6 +1,6 @@
 {
   "generatedFrom": "core/registry.mjs",
-  "count": 4,
+  "count": 6,
   "domains": [
     "design",
     "devtools",
@@ -8,6 +8,27 @@
     "research"
   ],
   "skills": [
+    {
+      "id": "design/contrast-check",
+      "name": "WCAG Contrast Checker",
+      "domain": "design",
+      "version": "0.1.0",
+      "description": "Compute the WCAG 2.1 contrast ratio for a foreground/background hex pair and report AA/AAA pass/fail for normal and large text.",
+      "tags": [
+        "design",
+        "color",
+        "wcag",
+        "accessibility",
+        "contrast"
+      ],
+      "inputs": {
+        "fg": "hex string",
+        "bg": "hex string"
+      },
+      "outputs": "{ ratio, pass: { aaNormal, aaLarge, aaaNormal, aaaLarge } }",
+      "license": "MIT",
+      "source": "Original implementation per WCAG 2.1 relative-luminance & contrast spec."
+    },
     {
       "id": "design/palette-gen",
       "name": "Accessible Palette Generator",
@@ -48,6 +69,28 @@
       "outputs": "{ findings: [{ line, rule, severity, message }], score }",
       "license": "MIT",
       "source": "Original rule set inspired by common ESLint/SonarQube heuristics."
+    },
+    {
+      "id": "finance/rsi",
+      "name": "Relative Strength Index (RSI)",
+      "domain": "finance",
+      "version": "0.1.0",
+      "description": "Compute Wilder's RSI over a close-price series and flag overbought (>70) / oversold (<30) conditions on the latest bar.",
+      "tags": [
+        "finance",
+        "rsi",
+        "indicator",
+        "momentum",
+        "quant",
+        "stocks"
+      ],
+      "inputs": {
+        "prices": "number[] of closes (oldest→newest)",
+        "period": "int (default 14)"
+      },
+      "outputs": "{ rsi: number[], latest, signal: 'overbought'|'oversold'|'neutral' }",
+      "license": "MIT",
+      "source": "Original implementation of Wilder's RSI (New Concepts in Technical Trading Systems, 1978)."
     },
     {
       "id": "finance/sma-backtest",

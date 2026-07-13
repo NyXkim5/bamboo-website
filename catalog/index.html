@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SkillForge — 4 skills</title>
+<title>SkillForge — 6 skills</title>
 <style>
 :root{--bg:#fafafa;--fg:#18181b;--muted:#71717a;--card:#fff;--border:#e4e4e7;--accent:#3b7a57}
 @media(prefers-color-scheme:dark){:root{--bg:#0d0d0f;--fg:#f4f4f5;--muted:#a1a1aa;--card:#18181b;--border:#27272a;--accent:#5db088}}
@@ -25,9 +25,15 @@ h3{margin:2px 0 6px;font-size:17px}p{margin:0 0 12px;color:var(--muted)}
 .empty{max-width:1100px;margin:40px auto;padding:0 24px;color:var(--muted);display:none}
 footer{max-width:1100px;margin:40px auto;padding:16px 24px;color:var(--muted);font-size:13px;border-top:1px solid var(--border)}
 </style></head><body>
-<header><h1>Skill<span>Forge</span></h1><p class="sub">4 runnable skills across 4 domains. A growing capability library.</p></header>
+<header><h1>Skill<span>Forge</span></h1><p class="sub">6 runnable skills across 4 domains. A growing capability library.</p></header>
 <div class="controls"><input id="q" type="search" placeholder="Search skills, tags, descriptions…" aria-label="Search skills"><div class="chips"><button class="chip active" data-filter="all">all</button><button class="chip" data-filter="design">design</button><button class="chip" data-filter="devtools">devtools</button><button class="chip" data-filter="finance">finance</button><button class="chip" data-filter="research">research</button></div></div>
-<main class="grid" id="grid"><article class="card" data-search="design/palette-gen accessible palette generator turn one base hex color into a harmonious 5-swatch palette with wcag contrast ratings against black and white text. color palette wcag accessibility design-tokens" data-domain="design">
+<main class="grid" id="grid"><article class="card" data-search="design/contrast-check wcag contrast checker compute the wcag 2.1 contrast ratio for a foreground/background hex pair and report aa/aaa pass/fail for normal and large text. design color wcag accessibility contrast" data-domain="design">
+    <div class="card-head"><span class="domain domain-design">design</span><code class="id">design/contrast-check</code></div>
+    <h3>WCAG Contrast Checker</h3>
+    <p>Compute the WCAG 2.1 contrast ratio for a foreground/background hex pair and report AA/AAA pass/fail for normal and large text.</p>
+    <div class="tags"><span class="tag">design</span><span class="tag">color</span><span class="tag">wcag</span><span class="tag">accessibility</span><span class="tag">contrast</span></div>
+    <div class="run"><code>node core/cli.mjs run design/contrast-check '&lt;json&gt;'</code></div>
+  </article><article class="card" data-search="design/palette-gen accessible palette generator turn one base hex color into a harmonious 5-swatch palette with wcag contrast ratings against black and white text. color palette wcag accessibility design-tokens" data-domain="design">
     <div class="card-head"><span class="domain domain-design">design</span><code class="id">design/palette-gen</code></div>
     <h3>Accessible Palette Generator</h3>
     <p>Turn one base hex color into a harmonious 5-swatch palette with WCAG contrast ratings against black and white text.</p>
@@ -39,6 +45,12 @@ footer{max-width:1100px;margin:40px auto;padding:16px 24px;color:var(--muted);fo
     <p>Scan a JS/TS snippet for common issues (debug logging, loose equality, TODOs, hardcoded secrets, empty catches) and return ranked findings with line numbers.</p>
     <div class="tags"><span class="tag">code-review</span><span class="tag">lint</span><span class="tag">static-analysis</span><span class="tag">ci</span></div>
     <div class="run"><code>node core/cli.mjs run devtools/code-review '&lt;json&gt;'</code></div>
+  </article><article class="card" data-search="finance/rsi relative strength index (rsi) compute wilder's rsi over a close-price series and flag overbought (&gt;70) / oversold (&lt;30) conditions on the latest bar. finance rsi indicator momentum quant stocks" data-domain="finance">
+    <div class="card-head"><span class="domain domain-finance">finance</span><code class="id">finance/rsi</code></div>
+    <h3>Relative Strength Index (RSI)</h3>
+    <p>Compute Wilder's RSI over a close-price series and flag overbought (&gt;70) / oversold (&lt;30) conditions on the latest bar.</p>
+    <div class="tags"><span class="tag">finance</span><span class="tag">rsi</span><span class="tag">indicator</span><span class="tag">momentum</span><span class="tag">quant</span><span class="tag">stocks</span></div>
+    <div class="run"><code>node core/cli.mjs run finance/rsi '&lt;json&gt;'</code></div>
   </article><article class="card" data-search="finance/sma-backtest sma crossover backtest backtest a fast/slow sma crossover long-only strategy over a close-price series. returns trades, total return, win rate, and max drawdown vs. buy-and-hold. finance backtest trading sma quant stocks" data-domain="finance">
     <div class="card-head"><span class="domain domain-finance">finance</span><code class="id">finance/sma-backtest</code></div>
     <h3>SMA Crossover Backtest</h3>
