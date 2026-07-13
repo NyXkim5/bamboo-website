@@ -1,6 +1,6 @@
 {
   "generatedFrom": "core/registry.mjs",
-  "count": 6,
+  "count": 10,
   "domains": [
     "design",
     "devtools",
@@ -51,6 +51,29 @@
       "source": "Original implementation; contrast math per WCAG 2.1 relative-luminance spec."
     },
     {
+      "id": "design/type-scale",
+      "name": "Modular Type Scale",
+      "domain": "design",
+      "version": "0.1.0",
+      "description": "Build a modular typographic scale from a base size and ratio (e.g. 1.25 major third), returning px + rem for each step and a CSS variables block.",
+      "tags": [
+        "design",
+        "typography",
+        "scale",
+        "design-tokens",
+        "css"
+      ],
+      "inputs": {
+        "base": "px number (default 16)",
+        "ratio": "number (default 1.25)",
+        "steps": "int up (default 5)",
+        "down": "int down (default 2)"
+      },
+      "outputs": "{ scale: [{ step, px, rem, name }], css: string }",
+      "license": "MIT",
+      "source": "Original implementation of the classic modular-scale technique."
+    },
+    {
       "id": "devtools/code-review",
       "name": "Heuristic Code Review",
       "domain": "devtools",
@@ -69,6 +92,51 @@
       "outputs": "{ findings: [{ line, rule, severity, message }], score }",
       "license": "MIT",
       "source": "Original rule set inspired by common ESLint/SonarQube heuristics."
+    },
+    {
+      "id": "devtools/conventional-commit",
+      "name": "Conventional Commit Validator",
+      "domain": "devtools",
+      "version": "0.1.0",
+      "description": "Validate and parse a Conventional Commits message (type(scope): subject) — checks allowed types, breaking-change markers, and subject rules.",
+      "tags": [
+        "devtools",
+        "git",
+        "commit",
+        "conventional-commits",
+        "ci",
+        "lint"
+      ],
+      "inputs": {
+        "message": "commit message string",
+        "maxSubjectLength": "int (default 72)"
+      },
+      "outputs": "{ valid, type, scope, breaking, subject, errors: string[] }",
+      "license": "MIT",
+      "source": "Original implementation of the Conventional Commits 1.0.0 grammar."
+    },
+    {
+      "id": "finance/portfolio-metrics",
+      "name": "Portfolio Risk/Return Metrics",
+      "domain": "finance",
+      "version": "0.1.0",
+      "description": "From a series of periodic returns, compute annualized return, volatility, Sharpe ratio, and max drawdown.",
+      "tags": [
+        "finance",
+        "portfolio",
+        "sharpe",
+        "volatility",
+        "drawdown",
+        "quant"
+      ],
+      "inputs": {
+        "returns": "number[] periodic returns (e.g. 0.01 = +1%)",
+        "periodsPerYear": "int (default 252)",
+        "riskFree": "annual rate (default 0)"
+      },
+      "outputs": "{ annualizedReturn, annualizedVol, sharpe, maxDrawdown }",
+      "license": "MIT",
+      "source": "Original implementation; standard portfolio-statistics formulas."
     },
     {
       "id": "finance/rsi",
@@ -136,6 +204,26 @@
       "outputs": "{ summary: string[], keywords: [{ term, weight }] }",
       "license": "MIT",
       "source": "Original implementation of classic TF-based extractive summarization."
+    },
+    {
+      "id": "research/readability",
+      "name": "Readability (Flesch / Flesch–Kincaid)",
+      "domain": "research",
+      "version": "0.1.0",
+      "description": "Score text readability with Flesch Reading Ease and Flesch–Kincaid grade level, plus word/sentence/syllable counts.",
+      "tags": [
+        "research",
+        "readability",
+        "nlp",
+        "flesch",
+        "writing"
+      ],
+      "inputs": {
+        "text": "document string"
+      },
+      "outputs": "{ readingEase, gradeLevel, words, sentences, syllables, interpretation }",
+      "license": "MIT",
+      "source": "Original implementation of Flesch (1948) and Kincaid et al. (1975) formulas."
     }
   ]
 }
