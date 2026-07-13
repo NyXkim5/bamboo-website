@@ -29,11 +29,16 @@ if a task is ambiguous or architectural, note it under "Needs human input" and s
 ## Track A — Website (bamboonutrition.app)
 
 ### Now
-- [ ] Add an OpenGraph/Twitter card image + metadata so shared links preview well
-- [ ] Add a lightweight "How it works" section (3 steps) above the FAQ
-- [ ] Add `prefers-reduced-motion` guards to scroll-reveal + confetti animations
-- [ ] Waitlist form: inline success/error states with polite `aria-live` region
-- [ ] Add a footer with nav (Privacy, Terms, Support) + copyright + social links
+- [x] Add canonical URLs to every route (found by `audit:meta`) — layout + 3 sub-pages
+- [ ] Add per-page OpenGraph + Twitter card to /privacy, /terms, /support (audit: nice-to-have)
+- [ ] Waitlist form: add `aria-invalid` on error + polite `aria-live` status for loading/success
+
+Verified already shipped (audited 2026-07-13, no work needed):
+- [x] ~~OpenGraph/Twitter card image + metadata~~ — present in `layout.tsx` + `/og-image.png`
+- [x] ~~"How it works" 3-step section~~ — present in `page.tsx` (STEPS)
+- [x] ~~`prefers-reduced-motion` guards~~ — covered in `globals.css` + confetti-burst
+- [x] ~~Footer with Privacy/Terms/Support nav~~ — present in `page.tsx`
+- [x] ~~Waitlist inline success/error states~~ — SuccessCard + `role="alert"` error
 
 ### Next
 - [ ] Nutrition-focused hero copy A/B variants behind a simple config flag
@@ -53,11 +58,12 @@ if a task is ambiguous or architectural, note it under "Needs human input" and s
 The toolkit audits the website and files findings back into Track A.
 
 ### Bootstrap
-- [ ] Create `tools/` workspace package (`@bamboo/tools`) with a tiny CLI runner
-- [ ] `check:links` — crawl built site / routes for dead internal links + missing assets
-- [ ] `check:meta` — assert every route has title, description, canonical, OG tags
-- [ ] `check:a11y` — puppeteer + axe-core scan of key pages, report violations
-- [ ] `check:perf` — flag oversized images, render-blocking hints, missing dimensions
+- [x] Create `tools/` package (`@bamboo/tools`) with a zero-dep runner + README
+- [x] `audit:meta` — assert every route has title, description, canonical, OG tags
+      (writes findings to `docs/audits/meta.md`; wired to `pnpm audit:meta`)
+- [ ] `audit:links` — crawl routes for dead internal links + missing public assets
+- [ ] `audit:a11y` — puppeteer + axe-core scan of key pages, report violations
+- [ ] `audit:perf` — flag oversized images, render-blocking hints, missing dimensions
 
 ### Next
 - [ ] `check:content` — lint copy for TODO/placeholder/lorem, broken product claims
@@ -72,3 +78,6 @@ The toolkit audits the website and files findings back into Track A.
 
 ## Changelog
 - 2026-07-13: Backlog created; loop engine (hourly cron) wired up.
+- 2026-07-13: Bootstrapped `@bamboo/tools` + `audit:meta`. Audited Track A: most
+  "Now" items were already shipped (checked off). Fixed the one real gap the audit
+  found — canonical URLs on all 4 routes. Next audit target: per-page OG on legal pages.
