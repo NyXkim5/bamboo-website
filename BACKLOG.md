@@ -28,8 +28,8 @@ keep a pure, testable core and tag `"network"`.
 
 ## finance
 - [x] `finance/sma-backtest` — SMA crossover backtest
+- [x] `finance/rsi` — Relative Strength Index indicator (Wilder's smoothing)
 - [ ] `finance/price-history` — fetch OHLC from a public API (network; pure parser core)
-- [ ] `finance/rsi` — Relative Strength Index indicator
 - [ ] `finance/portfolio-metrics` — Sharpe, volatility, max drawdown from returns
 - [ ] `finance/sector-screener` — filter a ticker list by sector (e.g. defense) + metrics
 
@@ -42,7 +42,7 @@ keep a pure, testable core and tag `"network"`.
 
 ## design
 - [x] `design/palette-gen` — accessible palette generator
-- [ ] `design/contrast-check` — WCAG AA/AAA pass/fail for a fg/bg pair
+- [x] `design/contrast-check` — WCAG AA/AAA pass/fail for a fg/bg pair
 - [ ] `design/type-scale` — modular typographic scale from a base + ratio
 - [ ] `design/spacing-tokens` — generate a spacing scale + CSS variables
 
@@ -57,3 +57,4 @@ keep a pure, testable core and tag `"network"`.
 
 ## Changelog
 - 2026-07-13: Bootstrapped platform + 4 seed skills (one per domain), all tested.
+- 2026-07-13: Added finance/rsi and design/contrast-check. 6 skills, 37 tests green.
