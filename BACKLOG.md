@@ -29,28 +29,33 @@ keep a pure, testable core and tag `"network"`.
 ## finance
 - [x] `finance/sma-backtest` — SMA crossover backtest
 - [x] `finance/rsi` — Relative Strength Index indicator (Wilder's smoothing)
+- [x] `finance/portfolio-metrics` — Sharpe, volatility, annualized return, max drawdown
 - [ ] `finance/price-history` — fetch OHLC from a public API (network; pure parser core)
-- [ ] `finance/portfolio-metrics` — Sharpe, volatility, max drawdown from returns
 - [ ] `finance/sector-screener` — filter a ticker list by sector (e.g. defense) + metrics
+- [ ] `finance/macd` — MACD indicator (12/26/9)
+- [ ] `finance/position-size` — risk-based position sizing from stop distance + account risk
 
 ## devtools
 - [x] `devtools/code-review` — heuristic static review
+- [x] `devtools/conventional-commit` — validate/parse Conventional Commit messages
 - [ ] `devtools/diff-summary` — summarize a unified git diff into a changelog line
-- [ ] `devtools/conventional-commit` — validate/generate Conventional Commit messages
 - [ ] `devtools/ci-pipeline-gen` — emit a CI YAML from a project description
 - [ ] `devtools/test-scaffold` — generate a test stub from a function signature
+- [ ] `devtools/semver-bump` — compute the next version from commit types
 
 ## design
 - [x] `design/palette-gen` — accessible palette generator
 - [x] `design/contrast-check` — WCAG AA/AAA pass/fail for a fg/bg pair
-- [ ] `design/type-scale` — modular typographic scale from a base + ratio
+- [x] `design/type-scale` — modular typographic scale from a base + ratio
 - [ ] `design/spacing-tokens` — generate a spacing scale + CSS variables
+- [ ] `design/gradient-gen` — perceptually-even multi-stop gradient from 2 colors
 
 ## research
 - [x] `research/extractive-summary` — TF summary + keywords
+- [x] `research/readability` — Flesch reading-ease + grade level
 - [ ] `research/dedupe` — near-duplicate detection across a list of texts
-- [ ] `research/readability` — Flesch reading-ease + grade level
 - [ ] `research/feed-parse` — RSS/Atom parser (network; pure parser core)
+- [ ] `research/keyword-density` — term frequency / density report for SEO
 
 ## Needs human input
 - Live in-browser execution vs. a small run server — decide before building the API.
@@ -58,3 +63,5 @@ keep a pure, testable core and tag `"network"`.
 ## Changelog
 - 2026-07-13: Bootstrapped platform + 4 seed skills (one per domain), all tested.
 - 2026-07-13: Added finance/rsi and design/contrast-check. 6 skills, 37 tests green.
+- 2026-07-13: Added finance/portfolio-metrics, devtools/conventional-commit,
+  design/type-scale, research/readability. 10 skills, 61 tests green.
