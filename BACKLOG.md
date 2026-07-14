@@ -78,6 +78,10 @@ keep a pure, testable core and tag `"network"`.
 - [ ] Align skill manifest naming/description with Anthropic Agent Skills conventions
 - [ ] Publish path: JSR (ESM, no build) + serve registry.json over HTTP via esm.sh/unpkg
 
+## Post-limit follow-ups (do after usage resets)
+- [ ] Harden pass for the 3 un-reviewed batch-3 skills: research/cosine-similarity,
+      research/jaccard, research/title-case (build passed my gate, but skipped the council 2nd pass).
+
 ## Needs human input
 - Live in-browser execution vs. a small run server — decide before building the API.
 - Allow ONE design dependency (culori, MIT) for OKLCH, or keep strict zero-dep and port the math? (DISCOVERY.md recommends porting Ottosson's math.)
@@ -105,3 +109,7 @@ keep a pure, testable core and tag `"network"`.
   textrank-summary. 48 skills, 446 tests green.
 - 2026-07-13: Interactive catalog — per-skill drawer + live in-browser "Try it"
   (blob-module import, verified in Chromium, zero page errors).
+- 2026-07-13: Council batch 3: returns, max-drawdown, beta, kelly, uuid-inspect,
+  json-diff, duration, palette-oklch, wcag-suggest, cosine-similarity, jaccard,
+  title-case. 60 skills, 582 tests green. (Session usage limit hit mid-batch —
+  4 harden agents didn't run; wcag-suggest needed a manual syntax fix.)
