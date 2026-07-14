@@ -1,6 +1,6 @@
 {
   "generatedFrom": "core/registry.mjs",
-  "count": 10,
+  "count": 13,
   "domains": [
     "design",
     "devtools",
@@ -49,6 +49,29 @@
       "outputs": "{ swatches: [{ hex, hsl, contrastOnWhite, contrastOnBlack, readableOn }] }",
       "license": "MIT",
       "source": "Original implementation; contrast math per WCAG 2.1 relative-luminance spec."
+    },
+    {
+      "id": "design/spacing-tokens",
+      "name": "Spacing Token Scale",
+      "domain": "design",
+      "version": "0.1.0",
+      "description": "Generate a consistent spacing scale from a base unit and step ratio, returning px + rem tokens and a CSS variables block (--space-*).",
+      "tags": [
+        "design",
+        "spacing",
+        "design-tokens",
+        "css",
+        "layout"
+      ],
+      "inputs": {
+        "base": "px base unit (default 4)",
+        "steps": "int count (default 8)",
+        "mode": "'linear' | 'geometric' (default linear)",
+        "ratio": "geometric ratio (default 2)"
+      },
+      "outputs": "{ tokens: [{ name, px, rem }], css: string }",
+      "license": "MIT",
+      "source": "Original implementation; common 4px/8px spacing-scale conventions."
     },
     {
       "id": "design/type-scale",
@@ -114,6 +137,30 @@
       "outputs": "{ valid, type, scope, breaking, subject, errors: string[] }",
       "license": "MIT",
       "source": "Original implementation of the Conventional Commits 1.0.0 grammar."
+    },
+    {
+      "id": "finance/macd",
+      "name": "MACD Indicator",
+      "domain": "finance",
+      "version": "0.1.0",
+      "description": "Compute MACD line, signal line, and histogram (default 12/26/9 EMAs) over a close-price series, and flag the latest bullish/bearish crossover.",
+      "tags": [
+        "finance",
+        "macd",
+        "indicator",
+        "momentum",
+        "quant",
+        "stocks"
+      ],
+      "inputs": {
+        "prices": "number[] closes (oldest→newest)",
+        "fast": "int (12)",
+        "slow": "int (26)",
+        "signal": "int (9)"
+      },
+      "outputs": "{ macd: number[], signal: number[], histogram: number[], latest, cross }",
+      "license": "MIT",
+      "source": "Original implementation of Appel's MACD."
     },
     {
       "id": "finance/portfolio-metrics",
@@ -182,6 +229,28 @@
       "outputs": "{ trades, strategyReturn, buyHoldReturn, winRate, maxDrawdown }",
       "license": "MIT",
       "source": "Original implementation; standard SMA-crossover methodology."
+    },
+    {
+      "id": "research/dedupe",
+      "name": "Near-Duplicate Detector",
+      "domain": "research",
+      "version": "0.1.0",
+      "description": "Cluster a list of texts by Jaccard similarity over word shingles, returning duplicate groups and a de-duplicated set of representatives.",
+      "tags": [
+        "research",
+        "dedupe",
+        "nlp",
+        "similarity",
+        "news"
+      ],
+      "inputs": {
+        "texts": "string[]",
+        "threshold": "0..1 similarity (default 0.5)",
+        "shingle": "int word n-gram size (default 2)"
+      },
+      "outputs": "{ groups: number[][], unique: number[], duplicates }",
+      "license": "MIT",
+      "source": "Original implementation of shingled Jaccard near-duplicate clustering."
     },
     {
       "id": "research/extractive-summary",
