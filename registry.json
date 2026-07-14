@@ -1,6 +1,6 @@
 {
   "generatedFrom": "core/registry.mjs",
-  "count": 61,
+  "count": 62,
   "domains": [
     "design",
     "devtools",
@@ -1119,6 +1119,27 @@
       "outputs": "{ summary: string[], keywords: [{ term, weight }] }",
       "license": "MIT",
       "source": "Original implementation of classic TF-based extractive summarization."
+    },
+    {
+      "id": "research/feed-parse",
+      "name": "RSS / Atom Feed Parser",
+      "domain": "research",
+      "version": "0.1.0",
+      "description": "Parse an RSS 2.0 or Atom feed XML string into a normalized { type, title, items:[{title,link,date,summary,id}] } shape. Pure parser core; fetching is a separate concern.",
+      "tags": [
+        "research",
+        "rss",
+        "atom",
+        "feed",
+        "news",
+        "parser"
+      ],
+      "inputs": {
+        "xml": "feed XML as a string"
+      },
+      "outputs": "{ type: 'rss'|'atom', title, items: [{ title, link, date, summary, id }] }",
+      "license": "MIT",
+      "source": "rss-parser / node-feedparser (MIT) behavior as reference; original zero-dep implementation."
     },
     {
       "id": "research/jaccard",

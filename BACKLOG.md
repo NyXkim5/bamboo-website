@@ -36,8 +36,8 @@ keep a pure, testable core and tag `"network"`.
 - [x] `finance/bollinger` — Bollinger Bands (SMA ± k·stddev)
 - [x] `finance/atr` — Average True Range volatility measure
 - [x] `finance/position-size` — risk-based position sizing from stop distance + account risk
-- [ ] `finance/sharpe-rolling` — rolling Sharpe ratio over a window
-- [ ] `finance/compound` — compound-interest / CAGR calculator
+- [x] `finance/sharpe-rolling` — rolling Sharpe ratio over a window (batch 2)
+- [x] `finance/compound` — satisfied by `finance/cagr` (batch 1)
 
 ## devtools
 - [x] `devtools/code-review` — heuristic static review
@@ -62,7 +62,7 @@ keep a pure, testable core and tag `"network"`.
 - [x] `research/readability` — Flesch reading-ease + grade level
 - [x] `research/dedupe` — near-duplicate detection across a list of texts
 - [x] `research/keyword-density` — term frequency / density report for SEO
-- [ ] `research/feed-parse` — RSS/Atom parser (network; pure parser core)
+- [x] `research/feed-parse` — RSS/Atom parser (pure string-parser core; fetch is separate)
 - [x] `research/sentiment` — lexicon-based sentiment score
 
 ## Discovery-driven upgrades (see docs/DISCOVERY.md)
