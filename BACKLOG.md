@@ -1,21 +1,9 @@
 # 24/7 Build Backlog
 
-> 🔀 **LOOP REDIRECTED TO SKILLFORGE (2026-07-13).** The user wants *only*
-> SkillForge worked on. Do **NO** bamboo work in this repo tree.
->
-> If you are a cron loop iteration reading this, do the following instead:
-> 1. `git fetch origin && git checkout skillforge-staging` (SkillForge lives on
->    this branch; its files are at the repo root there).
-> 2. Follow the loop protocol in **that branch's** `BACKLOG.md` (the SkillForge
->    backlog): pick the top 1–3 unchecked skills, build each per `SKILL_SPEC.md`.
-> 3. Green gate is `node --test` (NOT pnpm — SkillForge is zero-dependency Node).
-> 4. Regenerate: `node core/registry.mjs && node core/build-catalog.mjs`.
-> 5. Commit one skill per commit and `git push origin skillforge-staging`.
-> 6. Only build offline, testable skills autonomously. Skills needing network or
->    API keys go under "Needs human input" — do not attempt them unattended.
-> 7. Return to this bamboo branch is unnecessary; end the turn after pushing.
->
-> Do not remove this banner or resume bamboo work unless the user explicitly says so.
+> ⛔ **LOOP PAUSED BY USER (2026-07-13).** The user said "pause all actions for now".
+> If you are a cron loop iteration reading this: do **NOTHING** — no bamboo work, no
+> SkillForge work, no commits. Just end the turn immediately. Do not resume until the
+> user explicitly says to resume.
 
 This file is the task queue for the autonomous build loop. An hourly cron trigger
 wakes the session, which pulls the top unchecked task(s) from here, ships them, and
