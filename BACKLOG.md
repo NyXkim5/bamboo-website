@@ -31,7 +31,7 @@ keep a pure, testable core and tag `"network"`.
 - [x] `finance/rsi` — Relative Strength Index indicator (Wilder's smoothing)
 - [x] `finance/portfolio-metrics` — Sharpe, volatility, annualized return, max drawdown
 - [x] `finance/price-history` — parse OHLC from Stooq/Yahoo CSV (pure core; keyless Stooq fetch is external)
-- [ ] `finance/sector-screener` — filter a ticker list by sector (e.g. defense) + metrics
+- [x] `finance/sector-screener` — filter/rank a ticker universe by sector + metric thresholds
 - [x] `finance/macd` — MACD indicator (12/26/9)
 - [x] `finance/bollinger` — Bollinger Bands (SMA ± k·stddev)
 - [x] `finance/atr` — Average True Range volatility measure

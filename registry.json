@@ -1,6 +1,6 @@
 {
   "generatedFrom": "core/registry.mjs",
-  "count": 87,
+  "count": 88,
   "domains": [
     "design",
     "devtools",
@@ -1394,6 +1394,33 @@
       "outputs": "{ rsi: number[], latest, signal: 'overbought'|'oversold'|'neutral' }",
       "license": "MIT",
       "source": "Original implementation of Wilder's RSI (New Concepts in Technical Trading Systems, 1978)."
+    },
+    {
+      "id": "finance/sector-screener",
+      "name": "Sector Stock Screener",
+      "domain": "finance",
+      "version": "0.1.0",
+      "description": "Filter a ticker universe by sector and min/max numeric thresholds (e.g. marketCap, peRatio), then sort and limit. Data-source-agnostic: seed the universe from ETF holdings (e.g. defense via ITA/XAR).",
+      "tags": [
+        "finance",
+        "screener",
+        "stocks",
+        "sector",
+        "defense",
+        "filter"
+      ],
+      "inputs": {
+        "tickers": "[{ symbol, sector, ...numericMetrics }]",
+        "sector": "optional sector name to match (case-insensitive)",
+        "min": "optional { field: number } lower bounds",
+        "max": "optional { field: number } upper bounds",
+        "sortBy": "optional metric field to sort by",
+        "order": "'asc' | 'desc' (default 'desc')",
+        "limit": "optional max results"
+      },
+      "outputs": "{ count, matched: [...], universe: number }",
+      "license": "MIT",
+      "source": "Original implementation; universe seeded from ETF holdings (ITA/XAR) or any provider."
     },
     {
       "id": "finance/sharpe-rolling",
