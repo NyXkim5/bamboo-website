@@ -96,3 +96,7 @@ keep a pure, testable core and tag `"network"`.
   research/keyword-density. 20 skills, 122 tests green.
 - 2026-07-13: Added finance/position-size, devtools/env-validate,
   design/aspect-ratios, research/sentiment. 24 skills, 147 tests green.
+- 2026-07-13: Added DISCOVERY.md (OSS/resource map for every domain).
+- 2026-07-13: Council batch 1 (12 Fable agents build + 12 harden): stochastic-oscillator,
+  obv, cagr, vwap, slugify, gitignore-gen, json-schema-infer, nearest-css-color,
+  tailwind-shades, tokenize, tf-idf, ngrams. 36 skills, 299 tests green.
