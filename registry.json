@@ -1,6 +1,6 @@
 {
   "generatedFrom": "core/registry.mjs",
-  "count": 62,
+  "count": 74,
   "domains": [
     "design",
     "devtools",
@@ -56,6 +56,28 @@
       "source": "Standard linear interpolation of color channels; sRGB transfer function per IEC 61966-2-1 (as used by CSS Color 4 color-mix()). Original implementation."
     },
     {
+      "id": "design/color-scheme",
+      "name": "Color Scheme Generator",
+      "domain": "design",
+      "version": "0.1.0",
+      "description": "Generate a harmonic color scheme (complementary, triadic, tetradic, analogous, split-complementary) from a base hex color by rotating its hue in HSL space.",
+      "tags": [
+        "color",
+        "design",
+        "palette",
+        "hsl",
+        "harmony",
+        "hex"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "base": "string — base color as hex, e.g. \"#3366cc\" or \"36c\" (leading # optional, 3 or 6 digits)",
+        "scheme": "string (optional, default \"complementary\") — one of: complementary, triadic, tetradic, analogous, splitComplementary"
+      },
+      "outputs": "{ base: string, scheme: string, colors: string[] } — colors as lowercase 6-digit hex, base first followed by rotated hues",
+      "source": "Standard color harmony wheel rotations and the CSS Color Module Level 3 HSL<->RGB conversion algorithm (W3C); implemented from the published formulas, no code copied."
+    },
+    {
       "id": "design/contrast-check",
       "name": "WCAG Contrast Checker",
       "domain": "design",
@@ -98,6 +120,50 @@
       "outputs": "{ stops: hex[], css: string }",
       "license": "MIT",
       "source": "Original implementation; HSL linear interpolation."
+    },
+    {
+      "id": "design/hsl-convert",
+      "name": "HSL Color Converter",
+      "domain": "design",
+      "version": "0.1.0",
+      "description": "Convert colors between hex, RGB, and HSL representations. Accepts { hex } or { rgb: {r,g,b} } or { hsl: {h,s,l} } and returns all three forms.",
+      "tags": [
+        "color",
+        "hex",
+        "rgb",
+        "hsl",
+        "conversion",
+        "design"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "hex": "string — hex color like '#ff8000' or '#f80' (leading '#' optional)",
+        "rgb": "object — { r, g, b } each 0..255",
+        "hsl": "object — { h: 0..360, s: 0..100, l: 0..100 }"
+      },
+      "outputs": "{ hex: string ('#rrggbb'), rgb: { r, g, b } integers 0..255, hsl: { h, s, l } rounded to 1 decimal place }",
+      "source": "Standard HSL/RGB conversion formulas per CSS Color Module Level 3 (W3C) — original implementation, no copied code."
+    },
+    {
+      "id": "design/luminance",
+      "name": "Relative Luminance & Perceived Brightness",
+      "domain": "design",
+      "version": "0.1.0",
+      "description": "Computes WCAG relative luminance (gamma-decoded 0.2126R + 0.7152G + 0.0722B) and perceived brightness (sqrt(0.299r^2 + 0.587g^2 + 0.114b^2)/255 on gamma-encoded channels) for a hex color, plus an isDark flag (luminance < 0.5).",
+      "tags": [
+        "color",
+        "luminance",
+        "wcag",
+        "accessibility",
+        "brightness",
+        "hex"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "hex": "string — hex color, 3 or 6 digits, with or without leading '#' (e.g. '#1a2b3c', 'fff')"
+      },
+      "outputs": "{ luminance: number (0..1, WCAG relative luminance), perceivedBrightness: number (0..1), isDark: boolean }",
+      "source": "WCAG 2.1 relative luminance definition (W3C, sRGB linearization); perceived brightness per the HSP color model weights (0.299/0.587/0.114). Implemented from the published formulas."
     },
     {
       "id": "design/nearest-css-color",
@@ -300,6 +366,27 @@
       },
       "outputs": "{ original: string, suggested: string, ratio: number, passes: boolean } - original normalized fg hex, suggested fg hex, contrast ratio of suggested vs bg (rounded to 4 decimals), and whether it meets the target",
       "source": "WCAG 2.1 relative luminance and contrast ratio definitions (W3C, https://www.w3.org/TR/WCAG21/#dfn-relative-luminance and #dfn-contrast-ratio); original independent implementation, no code copied."
+    },
+    {
+      "id": "devtools/base64",
+      "name": "Base64 Encode/Decode",
+      "domain": "devtools",
+      "version": "0.1.0",
+      "description": "Encode or decode Base64 (standard alphabet with '=' padding) without Buffer or atob/btoa, safe for both browsers and Node. Treats strings as Latin-1 bytes (char codes 0-255).",
+      "tags": [
+        "base64",
+        "encoding",
+        "decoding",
+        "devtools",
+        "text"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "encode": "string (optional) — Latin-1 text to encode to Base64; char codes above 255 throw",
+        "decode": "string (optional) — Base64 text to decode; must be valid standard Base64"
+      },
+      "outputs": "{ result: string } — the encoded or decoded text",
+      "source": "Original implementation of the standard Base64 algorithm as specified in RFC 4648 section 4 (The Base 64 Alphabet)."
     },
     {
       "id": "devtools/case-convert",
@@ -514,6 +601,27 @@
       "source": "Original implementation of the standard recursive tree-walk structural diff technique (as popularized by tools like deep-diff and JSON Patch generators); no code copied. Path notation follows JavaScript property-access syntax."
     },
     {
+      "id": "devtools/json-path",
+      "name": "JSON Path Getter",
+      "domain": "devtools",
+      "version": "0.1.0",
+      "description": "Get the value at a dot/bracket path (e.g. \"a.b[0].c\") in a nested object/array. Returns { value, found } and never throws on missing paths; throws only on malformed or non-string paths. Prototype-polluting keys (__proto__, constructor, prototype) are treated as not found.",
+      "tags": [
+        "json",
+        "path",
+        "object",
+        "lookup",
+        "devtools"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "object": "The root value (object/array/any) to look into.",
+        "path": "String path using dot and bracket notation, e.g. \"a.b[0].c\", \"[1].x\", \"a['weird key']\". Empty string refers to the root."
+      },
+      "outputs": "{ value: any|null, found: boolean } — value is null when found is false.",
+      "source": "Original implementation of the standard dot/bracket property-path lookup convention popularized by lodash.get / JSONPath child-access syntax; no code copied."
+    },
+    {
       "id": "devtools/json-schema-infer",
       "name": "JSON Schema Inferrer",
       "domain": "devtools",
@@ -533,6 +641,28 @@
       },
       "outputs": "{ schema: object } — a minimal draft-07-style JSON Schema describing the input value.",
       "source": "Original implementation of the standard type-inference approach described by the JSON Schema draft-07 specification (json-schema.org, IETF draft handrews-json-schema-01). No code copied."
+    },
+    {
+      "id": "devtools/query-string",
+      "name": "Query String Parser/Stringifier",
+      "domain": "devtools",
+      "version": "0.1.0",
+      "description": "Parse URL query strings into objects (repeated keys become arrays) and stringify objects back into query strings, with URL encoding/decoding and leading '?' handling.",
+      "tags": [
+        "url",
+        "query-string",
+        "parse",
+        "stringify",
+        "encoding",
+        "web"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "parse": "string (optional) — a query string to parse, e.g. '?a=1&b=2&b=3'",
+        "stringify": "object (optional) — a flat object to serialize; array values become repeated keys"
+      },
+      "outputs": "{ query: object } when parsing, or { string: string } when stringifying",
+      "source": "Implements the standard application/x-www-form-urlencoded query-string convention (WHATWG URL spec); original implementation, no copied code."
     },
     {
       "id": "devtools/semver-bump",
@@ -715,6 +845,28 @@
       "source": "Standard CAGR formula: (end/begin)^(1/years) - 1. Textbook finance definition (public domain mathematics); no code copied."
     },
     {
+      "id": "finance/cci",
+      "name": "Commodity Channel Index (CCI)",
+      "domain": "finance",
+      "version": "0.1.0",
+      "description": "Computes the Commodity Channel Index over OHLC bars: typical price = (high+low+close)/3; CCI = (typical - SMA(typical, period)) / (0.015 * mean absolute deviation of typical over period). Flat windows (zero mean deviation) yield 0.",
+      "tags": [
+        "finance",
+        "technical-analysis",
+        "indicator",
+        "cci",
+        "momentum",
+        "oscillator"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "bars": "Array of bars: { high: number, low: number, close: number } (chronological order)",
+        "period": "Lookback period (positive integer, default 20)"
+      },
+      "outputs": "{ cci: number[], latest: number|null } — one CCI value per completed window (length bars.length - period + 1, empty if fewer bars than period); latest is the last value or null",
+      "source": "Standard Commodity Channel Index formula as introduced by Donald Lambert (Commodities magazine, 1980); implemented from the published definition, no code copied."
+    },
+    {
       "id": "finance/ema",
       "name": "Exponential Moving Average",
       "domain": "finance",
@@ -802,6 +954,28 @@
       "source": "Standard running-peak maximum drawdown algorithm as commonly defined in quantitative finance literature (e.g. Magdon-Ismail & Atiya, 'Maximum Drawdown', Risk Magazine 2004). Original implementation; no code copied."
     },
     {
+      "id": "finance/mfi",
+      "name": "Money Flow Index (MFI)",
+      "domain": "finance",
+      "version": "0.1.1",
+      "description": "Computes the Money Flow Index, a volume-weighted momentum oscillator. Typical price = (high+low+close)/3; raw money flow = typical*volume; over the period, positive and negative flows are summed and MFI = 100 - 100/(1 + positiveFlow/negativeFlow). Edge rules: zero negative flow with some positive flow -> 100; zero flow in both directions (flat prices or zero volume) -> 50 (neutral). Returns the MFI series, latest value, and an overbought/oversold/neutral signal.",
+      "tags": [
+        "finance",
+        "technical-analysis",
+        "indicator",
+        "momentum",
+        "volume",
+        "oscillator"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "bars": "Array of OHLCV bars: [{ high:number, low:number, close:number, volume:number }, ...]. Must contain at least period+1 bars.",
+        "period": "Lookback period (positive integer, default 14)."
+      },
+      "outputs": "{ mfi: number[] (one value per bar starting at index `period`), latest: number, signal: 'overbought' | 'oversold' | 'neutral' }",
+      "source": "Standard Money Flow Index algorithm as introduced by Gene Quong and Avrum Soudack; implemented from the published formula (typical price money flow ratio), not from any copied code."
+    },
+    {
       "id": "finance/obv",
       "name": "On-Balance Volume",
       "domain": "finance",
@@ -820,6 +994,28 @@
       },
       "outputs": "{ obv: number[], latest: number, trend: 'rising'|'falling'|'flat' }",
       "source": "Original implementation of the standard On-Balance Volume algorithm introduced by Joseph Granville, 'Granville's New Key to Stock Market Profits' (1963). No code copied."
+    },
+    {
+      "id": "finance/pivot-points",
+      "name": "Pivot Points (Classic)",
+      "domain": "finance",
+      "version": "0.1.0",
+      "description": "Computes classic floor-trader pivot points (pivot plus three resistance and three support levels) from the prior period's high, low, and close.",
+      "tags": [
+        "finance",
+        "trading",
+        "technical-analysis",
+        "pivot-points",
+        "support-resistance"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "high": "number — prior period high (finite, >= low)",
+        "low": "number — prior period low (finite)",
+        "close": "number — prior period close (finite)"
+      },
+      "outputs": "{ pivot, r1, r2, r3, s1, s2, s3 } — classic pivot levels, each rounded to 4 decimal places",
+      "source": "Standard floor-trader (classic) pivot point formulas: P=(H+L+C)/3; R1=2P-L; S1=2P-H; R2=P+(H-L); S2=P-(H-L); R3=H+2(P-L); S3=L-2(H-P). Original implementation."
     },
     {
       "id": "finance/portfolio-metrics",
@@ -983,6 +1179,28 @@
       "source": "Original implementation; standard SMA-crossover methodology."
     },
     {
+      "id": "finance/sortino",
+      "name": "Sortino Ratio",
+      "domain": "finance",
+      "version": "0.1.0",
+      "description": "Computes the annualized Sortino ratio and downside deviation of a periodic returns series against a target (minimum acceptable) return.",
+      "tags": [
+        "finance",
+        "risk",
+        "sortino",
+        "downside-deviation",
+        "performance"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "returns": "number[] - periodic returns as decimals (e.g. 0.01 = 1%), length >= 2",
+        "target": "number (optional, default 0) - per-period target / minimum acceptable return",
+        "periodsPerYear": "number (optional, default 252) - periods per year used for annualization"
+      },
+      "outputs": "{ sortino: number|null, downsideDeviation: number } - sortino is null when the series has no downside deviation",
+      "source": "Standard Sortino ratio formulation (Sortino & Price, 1994): excess mean return over target divided by downside deviation, annualized by sqrt(periodsPerYear). Implemented from the published formula; no code copied."
+    },
+    {
       "id": "finance/stochastic-oscillator",
       "name": "Stochastic Oscillator",
       "domain": "finance",
@@ -1140,6 +1358,43 @@
       "outputs": "{ type: 'rss'|'atom', title, items: [{ title, link, date, summary, id }] }",
       "license": "MIT",
       "source": "rss-parser / node-feedparser (MIT) behavior as reference; original zero-dep implementation."
+    },
+    {
+      "id": "research/frequency",
+      "name": "Word Frequency Distribution",
+      "domain": "research",
+      "version": "0.1.0",
+      "description": "Computes a word frequency distribution over text: tokenizes into lowercase alphanumeric words, then returns total token count, unique word count, and the top-N most frequent words with counts and percentages.",
+      "tags": [
+        "text",
+        "frequency",
+        "word-count",
+        "nlp",
+        "statistics",
+        "tokenize"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "text": {
+          "type": "string",
+          "required": true,
+          "description": "Input text to analyze."
+        },
+        "top": {
+          "type": "number",
+          "required": false,
+          "default": 10,
+          "description": "Number of top entries to return (non-negative integer)."
+        },
+        "minLength": {
+          "type": "number",
+          "required": false,
+          "default": 1,
+          "description": "Minimum token length to count (positive integer)."
+        }
+      },
+      "outputs": "{ total: number, unique: number, top: Array<{ word: string, count: number, pct: number }> } — top sorted by count descending (ties broken alphabetically), pct = count/total*100 rounded to 2 decimals.",
+      "source": "Standard bag-of-words frequency counting (term frequency), as described in classic information retrieval literature (e.g. Manning, Raghavan & Schutze, 'Introduction to Information Retrieval'). Original implementation; no code copied."
     },
     {
       "id": "research/jaccard",
@@ -1372,6 +1627,30 @@
       },
       "outputs": "{ words: string[], sentences: string[], wordCount: number, sentenceCount: number, uniqueWords: number }",
       "source": "Standard regex-based word/sentence tokenization (word pattern /[a-z0-9']+/gi, sentence boundary [.!?]+), a common-knowledge NLP preprocessing technique. Original implementation; no copied code."
+    },
+    {
+      "id": "research/word-count",
+      "name": "Word Count & Text Statistics",
+      "domain": "research",
+      "version": "0.1.0",
+      "description": "Computes text statistics: character counts (with and without spaces), words, sentences, paragraphs, average word length, average words per sentence, and estimated reading time in minutes (ceil(words/200)).",
+      "tags": [
+        "text",
+        "statistics",
+        "word-count",
+        "reading-time",
+        "research"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "text": {
+          "type": "string",
+          "required": true,
+          "description": "The text to analyze. Empty text yields all-zero statistics."
+        }
+      },
+      "outputs": "Object { characters, charactersNoSpaces, words, sentences, paragraphs, avgWordLength, avgWordsPerSentence, estimatedReadingTimeMin }",
+      "source": "Standard text-statistics conventions: whitespace-delimited word tokenization, terminal-punctuation sentence segmentation ([.!?] followed by whitespace or end-of-text, so decimals/URLs do not split sentences), blank-line paragraph segmentation, and the common 200-words-per-minute reading-speed heuristic. Original implementation."
     }
   ]
 }

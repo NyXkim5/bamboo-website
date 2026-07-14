@@ -42,7 +42,7 @@ keep a pure, testable core and tag `"network"`.
 ## devtools
 - [x] `devtools/code-review` — heuristic static review
 - [x] `devtools/conventional-commit` — validate/parse Conventional Commit messages
-- [ ] `devtools/diff-summary` — summarize a unified git diff into a changelog line
+- [x] `devtools/diff-summary` — summarize a unified git diff (batch 2)
 - [x] `devtools/semver-bump` — compute the next version from commit types
 - [x] `devtools/test-scaffold` — generate a test stub from a function signature
 - [x] `devtools/ci-pipeline-gen` — emit a CI YAML from a project description (GitHub + GitLab)
@@ -113,3 +113,6 @@ keep a pure, testable core and tag `"network"`.
   json-diff, duration, palette-oklch, wcag-suggest, cosine-similarity, jaccard,
   title-case. 60 skills, 582 tests green. (Session usage limit hit mid-batch —
   4 harden agents didn't run; wcag-suggest needed a manual syntax fix.)
+- 2026-07-13: Council batch 4: cci, sortino, pivot-points, mfi, json-path,
+  query-string, base64, hsl-convert, luminance, color-scheme, word-count,
+  frequency. 74 skills, 756 tests green.
