@@ -20,7 +20,7 @@ keep a pure, testable core and tag `"network"`.
 
 ## Core platform
 - [x] Skill contract + registry + SDK + CLI + browsable catalog
-- [ ] JSON-schema validation of `meta` in the registry loader
+- [x] Zero-dep manifest validation in the registry loader (types, id/path/domain match, dup-id, semver) + tests
 - [x] `core/new-skill.mjs` scaffolder (generates an already-green folder + stub + test)
 - [x] Catalog: live-run a *pure* skill in-browser (blob-module import; verified in Chromium)
 - [x] GitHub Action: run `node --test` on every push (CI green gate) + registry drift check
@@ -74,7 +74,7 @@ keep a pure, testable core and tag `"network"`.
 - [ ] `finance/*`: add a fixtures-based cross-check test vs. TA-Lib/technicalindicators reference values
 - [ ] `devtools/semver-bump`: align type→bump table with semantic-release; hardcode types from @commitlint/config-conventional
 - [x] Add `.github/workflows/ci.yml` (node --test matrix + registry drift check)
-- [ ] Add Ajv-based manifest JSON-Schema validation as a dev/CI gate (keep runtime SDK zero-dep)
+- [x] Manifest validation as a CI gate (zero-dep validator in registry loader; runs under node --test / CI)
 - [ ] Align skill manifest naming/description with Anthropic Agent Skills conventions
 - [ ] Publish path: JSR (ESM, no build) + serve registry.json over HTTP via esm.sh/unpkg
 
