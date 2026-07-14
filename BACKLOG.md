@@ -45,7 +45,7 @@ keep a pure, testable core and tag `"network"`.
 - [ ] `devtools/diff-summary` — summarize a unified git diff into a changelog line
 - [x] `devtools/semver-bump` — compute the next version from commit types
 - [x] `devtools/test-scaffold` — generate a test stub from a function signature
-- [ ] `devtools/ci-pipeline-gen` — emit a CI YAML from a project description
+- [x] `devtools/ci-pipeline-gen` — emit a CI YAML from a project description (GitHub + GitLab)
 - [x] `devtools/env-validate` — check a .env against a required-keys schema
 
 ## design

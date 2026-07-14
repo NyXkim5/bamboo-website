@@ -1,6 +1,6 @@
 {
   "generatedFrom": "core/registry.mjs",
-  "count": 60,
+  "count": 61,
   "domains": [
     "design",
     "devtools",
@@ -322,6 +322,31 @@
       },
       "outputs": "{ result: string, words: string[], to: string } — converted identifier, detected lowercase words, and the target case",
       "source": "Standard identifier case-conversion conventions (camelCase/PascalCase/snake_case/kebab-case/CONSTANT_CASE) with regex word-boundary splitting; original implementation."
+    },
+    {
+      "id": "devtools/ci-pipeline-gen",
+      "name": "CI Pipeline Generator",
+      "domain": "devtools",
+      "version": "0.1.0",
+      "description": "Generate a CI workflow (GitHub Actions or GitLab CI) YAML from a project description: platform, language versions, install/test/lint commands.",
+      "tags": [
+        "devtools",
+        "ci",
+        "github-actions",
+        "gitlab",
+        "yaml",
+        "codegen"
+      ],
+      "inputs": {
+        "platform": "'github' | 'gitlab' (default github)",
+        "node": "string[] of versions, e.g. ['20','22'] (matrix); omit for the default",
+        "install": "install command (default 'npm ci')",
+        "test": "test command (default 'npm test')",
+        "lint": "optional lint command (adds a step)"
+      },
+      "outputs": "{ filename, yaml }",
+      "license": "MIT",
+      "source": "GitHub Actions docs + actions/starter-workflows (MIT) as the canonical job shape; original implementation."
     },
     {
       "id": "devtools/code-review",
