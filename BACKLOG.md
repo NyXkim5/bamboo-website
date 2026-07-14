@@ -65,8 +65,23 @@ keep a pure, testable core and tag `"network"`.
 - [ ] `research/feed-parse` — RSS/Atom parser (network; pure parser core)
 - [x] `research/sentiment` — lexicon-based sentiment score
 
+## Discovery-driven upgrades (see docs/DISCOVERY.md)
+- [ ] Port Ottosson OKLab↔sRGB math (zero-dep) → upgrade `palette-gen` + `gradient-gen` to OKLCH
+- [ ] `design/palette-gen`: emit a Radix-style 12-step semantic scale option
+- [ ] `research/sentiment`: swap in afinn-165 coverage + VADER-style intensifier/caps rules (mind ODbL attribution)
+- [ ] `research/extractive-summary`: add a TextRank (graph-centrality) mode alongside TF
+- [ ] `research/dedupe`: add MinHash+LSH mode to scale beyond O(n²)
+- [ ] `finance/*`: add a fixtures-based cross-check test vs. TA-Lib/technicalindicators reference values
+- [ ] `devtools/semver-bump`: align type→bump table with semantic-release; hardcode types from @commitlint/config-conventional
+- [ ] Add `.github/workflows/ci.yml` (node --test matrix + registry drift check) — YAML ready in DISCOVERY.md
+- [ ] Add Ajv-based manifest JSON-Schema validation as a dev/CI gate (keep runtime SDK zero-dep)
+- [ ] Align skill manifest naming/description with Anthropic Agent Skills conventions
+- [ ] Publish path: JSR (ESM, no build) + serve registry.json over HTTP via esm.sh/unpkg
+
 ## Needs human input
 - Live in-browser execution vs. a small run server — decide before building the API.
+- Allow ONE design dependency (culori, MIT) for OKLCH, or keep strict zero-dep and port the math? (DISCOVERY.md recommends porting Ottosson's math.)
+- `finance/price-history` + `sector-screener` need network access + (for some providers) an API key. Which providers do you have keys for? Stooq needs none.
 
 ## Changelog
 - 2026-07-13: Bootstrapped platform + 4 seed skills (one per domain), all tested.
