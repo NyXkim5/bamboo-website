@@ -21,7 +21,7 @@ keep a pure, testable core and tag `"network"`.
 ## Core platform
 - [x] Skill contract + registry + SDK + CLI + browsable catalog
 - [ ] JSON-schema validation of `meta` in the registry loader
-- [ ] `core/new-skill.mjs` scaffolder (generates folder + stub + test)
+- [x] `core/new-skill.mjs` scaffolder (generates an already-green folder + stub + test)
 - [x] Catalog: live-run a *pure* skill in-browser (blob-module import; verified in Chromium)
 - [x] GitHub Action: run `node --test` on every push (CI green gate) + registry drift check
 - [ ] Publish `registry.json` so other repos can fetch the index over HTTP
