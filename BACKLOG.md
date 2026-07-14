@@ -35,8 +35,9 @@ keep a pure, testable core and tag `"network"`.
 - [x] `finance/macd` — MACD indicator (12/26/9)
 - [x] `finance/bollinger` — Bollinger Bands (SMA ± k·stddev)
 - [x] `finance/atr` — Average True Range volatility measure
-- [ ] `finance/position-size` — risk-based position sizing from stop distance + account risk
+- [x] `finance/position-size` — risk-based position sizing from stop distance + account risk
 - [ ] `finance/sharpe-rolling` — rolling Sharpe ratio over a window
+- [ ] `finance/compound` — compound-interest / CAGR calculator
 
 ## devtools
 - [x] `devtools/code-review` — heuristic static review
@@ -45,7 +46,7 @@ keep a pure, testable core and tag `"network"`.
 - [x] `devtools/semver-bump` — compute the next version from commit types
 - [x] `devtools/test-scaffold` — generate a test stub from a function signature
 - [ ] `devtools/ci-pipeline-gen` — emit a CI YAML from a project description
-- [ ] `devtools/env-validate` — check a .env against a required-keys schema
+- [x] `devtools/env-validate` — check a .env against a required-keys schema
 
 ## design
 - [x] `design/palette-gen` — accessible palette generator
@@ -54,7 +55,7 @@ keep a pure, testable core and tag `"network"`.
 - [x] `design/spacing-tokens` — generate a spacing scale + CSS variables
 - [x] `design/gradient-gen` — perceptually-even multi-stop gradient from 2 colors
 - [x] `design/shadow-scale` — layered elevation shadow tokens
-- [ ] `design/aspect-ratios` — common aspect-ratio helpers + CSS
+- [x] `design/aspect-ratios` — common aspect-ratio helpers + CSS
 
 ## research
 - [x] `research/extractive-summary` — TF summary + keywords
@@ -62,7 +63,7 @@ keep a pure, testable core and tag `"network"`.
 - [x] `research/dedupe` — near-duplicate detection across a list of texts
 - [x] `research/keyword-density` — term frequency / density report for SEO
 - [ ] `research/feed-parse` — RSS/Atom parser (network; pure parser core)
-- [ ] `research/sentiment` — lexicon-based sentiment score
+- [x] `research/sentiment` — lexicon-based sentiment score
 
 ## Needs human input
 - Live in-browser execution vs. a small run server — decide before building the API.
@@ -78,3 +79,5 @@ keep a pure, testable core and tag `"network"`.
   16 skills, 99 tests green.
 - 2026-07-13: Added finance/atr, devtools/test-scaffold, design/shadow-scale,
   research/keyword-density. 20 skills, 122 tests green.
+- 2026-07-13: Added finance/position-size, devtools/env-validate,
+  design/aspect-ratios, research/sentiment. 24 skills, 147 tests green.
