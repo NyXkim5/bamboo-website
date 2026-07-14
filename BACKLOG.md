@@ -32,8 +32,9 @@ keep a pure, testable core and tag `"network"`.
 - [x] `finance/portfolio-metrics` — Sharpe, volatility, annualized return, max drawdown
 - [ ] `finance/price-history` — fetch OHLC from a public API (network; pure parser core)
 - [ ] `finance/sector-screener` — filter a ticker list by sector (e.g. defense) + metrics
-- [ ] `finance/macd` — MACD indicator (12/26/9)
+- [x] `finance/macd` — MACD indicator (12/26/9)
 - [ ] `finance/position-size` — risk-based position sizing from stop distance + account risk
+- [ ] `finance/bollinger` — Bollinger Bands (SMA ± k·stddev)
 
 ## devtools
 - [x] `devtools/code-review` — heuristic static review
@@ -47,13 +48,13 @@ keep a pure, testable core and tag `"network"`.
 - [x] `design/palette-gen` — accessible palette generator
 - [x] `design/contrast-check` — WCAG AA/AAA pass/fail for a fg/bg pair
 - [x] `design/type-scale` — modular typographic scale from a base + ratio
-- [ ] `design/spacing-tokens` — generate a spacing scale + CSS variables
+- [x] `design/spacing-tokens` — generate a spacing scale + CSS variables
 - [ ] `design/gradient-gen` — perceptually-even multi-stop gradient from 2 colors
 
 ## research
 - [x] `research/extractive-summary` — TF summary + keywords
 - [x] `research/readability` — Flesch reading-ease + grade level
-- [ ] `research/dedupe` — near-duplicate detection across a list of texts
+- [x] `research/dedupe` — near-duplicate detection across a list of texts
 - [ ] `research/feed-parse` — RSS/Atom parser (network; pure parser core)
 - [ ] `research/keyword-density` — term frequency / density report for SEO
 
@@ -65,3 +66,5 @@ keep a pure, testable core and tag `"network"`.
 - 2026-07-13: Added finance/rsi and design/contrast-check. 6 skills, 37 tests green.
 - 2026-07-13: Added finance/portfolio-metrics, devtools/conventional-commit,
   design/type-scale, research/readability. 10 skills, 61 tests green.
+- 2026-07-13: Added finance/macd, design/spacing-tokens, research/dedupe.
+  13 skills, 79 tests green.
