@@ -1,6 +1,6 @@
 {
   "generatedFrom": "core/registry.mjs",
-  "count": 13,
+  "count": 16,
   "domains": [
     "design",
     "devtools",
@@ -28,6 +28,29 @@
       "outputs": "{ ratio, pass: { aaNormal, aaLarge, aaaNormal, aaaLarge } }",
       "license": "MIT",
       "source": "Original implementation per WCAG 2.1 relative-luminance & contrast spec."
+    },
+    {
+      "id": "design/gradient-gen",
+      "name": "Gradient Generator",
+      "domain": "design",
+      "version": "0.1.0",
+      "description": "Interpolate N evenly-spaced stops between two hex colors (in HSL) and return the swatches plus a CSS linear-gradient string.",
+      "tags": [
+        "design",
+        "color",
+        "gradient",
+        "css",
+        "design-tokens"
+      ],
+      "inputs": {
+        "from": "hex",
+        "to": "hex",
+        "stops": "int total stops incl. ends (default 5)",
+        "angle": "deg for CSS (default 90)"
+      },
+      "outputs": "{ stops: hex[], css: string }",
+      "license": "MIT",
+      "source": "Original implementation; HSL linear interpolation."
     },
     {
       "id": "design/palette-gen",
@@ -137,6 +160,51 @@
       "outputs": "{ valid, type, scope, breaking, subject, errors: string[] }",
       "license": "MIT",
       "source": "Original implementation of the Conventional Commits 1.0.0 grammar."
+    },
+    {
+      "id": "devtools/semver-bump",
+      "name": "SemVer Next-Version",
+      "domain": "devtools",
+      "version": "0.1.0",
+      "description": "Determine the next semantic version from the current version plus commit types (feat/fix/breaking) or an explicit level. Handles pre-release resets.",
+      "tags": [
+        "devtools",
+        "semver",
+        "release",
+        "versioning",
+        "ci"
+      ],
+      "inputs": {
+        "current": "semver string e.g. '1.4.2'",
+        "commits": "string[] of types e.g. ['feat','fix']",
+        "level": "'major'|'minor'|'patch' (overrides commits)"
+      },
+      "outputs": "{ current, next, bump }",
+      "license": "MIT",
+      "source": "Original implementation per semver.org 2.0.0 + Conventional Commits mapping."
+    },
+    {
+      "id": "finance/bollinger",
+      "name": "Bollinger Bands",
+      "domain": "finance",
+      "version": "0.1.0",
+      "description": "Compute Bollinger Bands (SMA ± k·stddev) over a close-price series and report the latest bar's %B and band width.",
+      "tags": [
+        "finance",
+        "bollinger",
+        "indicator",
+        "volatility",
+        "quant",
+        "stocks"
+      ],
+      "inputs": {
+        "prices": "number[] closes (oldest→newest)",
+        "period": "int (20)",
+        "k": "stddev multiple (2)"
+      },
+      "outputs": "{ middle, upper, lower, latest: { percentB, bandwidth, signal } }",
+      "license": "MIT",
+      "source": "Original implementation of Bollinger Bands (John Bollinger, 1980s)."
     },
     {
       "id": "finance/macd",

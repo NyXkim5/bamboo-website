@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SkillForge — 13 skills</title>
+<title>SkillForge — 16 skills</title>
 <style>
 :root{--bg:#fafafa;--fg:#18181b;--muted:#71717a;--card:#fff;--border:#e4e4e7;--accent:#3b7a57}
 @media(prefers-color-scheme:dark){:root{--bg:#0d0d0f;--fg:#f4f4f5;--muted:#a1a1aa;--card:#18181b;--border:#27272a;--accent:#5db088}}
@@ -25,7 +25,7 @@ h3{margin:2px 0 6px;font-size:17px}p{margin:0 0 12px;color:var(--muted)}
 .empty{max-width:1100px;margin:40px auto;padding:0 24px;color:var(--muted);display:none}
 footer{max-width:1100px;margin:40px auto;padding:16px 24px;color:var(--muted);font-size:13px;border-top:1px solid var(--border)}
 </style></head><body>
-<header><h1>Skill<span>Forge</span></h1><p class="sub">13 runnable skills across 4 domains. A growing capability library.</p></header>
+<header><h1>Skill<span>Forge</span></h1><p class="sub">16 runnable skills across 4 domains. A growing capability library.</p></header>
 <div class="controls"><input id="q" type="search" placeholder="Search skills, tags, descriptions…" aria-label="Search skills"><div class="chips"><button class="chip active" data-filter="all">all</button><button class="chip" data-filter="design">design</button><button class="chip" data-filter="devtools">devtools</button><button class="chip" data-filter="finance">finance</button><button class="chip" data-filter="research">research</button></div></div>
 <main class="grid" id="grid"><article class="card" data-search="design/contrast-check wcag contrast checker compute the wcag 2.1 contrast ratio for a foreground/background hex pair and report aa/aaa pass/fail for normal and large text. design color wcag accessibility contrast" data-domain="design">
     <div class="card-head"><span class="domain domain-design">design</span><code class="id">design/contrast-check</code></div>
@@ -33,6 +33,12 @@ footer{max-width:1100px;margin:40px auto;padding:16px 24px;color:var(--muted);fo
     <p>Compute the WCAG 2.1 contrast ratio for a foreground/background hex pair and report AA/AAA pass/fail for normal and large text.</p>
     <div class="tags"><span class="tag">design</span><span class="tag">color</span><span class="tag">wcag</span><span class="tag">accessibility</span><span class="tag">contrast</span></div>
     <div class="run"><code>node core/cli.mjs run design/contrast-check '&lt;json&gt;'</code></div>
+  </article><article class="card" data-search="design/gradient-gen gradient generator interpolate n evenly-spaced stops between two hex colors (in hsl) and return the swatches plus a css linear-gradient string. design color gradient css design-tokens" data-domain="design">
+    <div class="card-head"><span class="domain domain-design">design</span><code class="id">design/gradient-gen</code></div>
+    <h3>Gradient Generator</h3>
+    <p>Interpolate N evenly-spaced stops between two hex colors (in HSL) and return the swatches plus a CSS linear-gradient string.</p>
+    <div class="tags"><span class="tag">design</span><span class="tag">color</span><span class="tag">gradient</span><span class="tag">css</span><span class="tag">design-tokens</span></div>
+    <div class="run"><code>node core/cli.mjs run design/gradient-gen '&lt;json&gt;'</code></div>
   </article><article class="card" data-search="design/palette-gen accessible palette generator turn one base hex color into a harmonious 5-swatch palette with wcag contrast ratings against black and white text. color palette wcag accessibility design-tokens" data-domain="design">
     <div class="card-head"><span class="domain domain-design">design</span><code class="id">design/palette-gen</code></div>
     <h3>Accessible Palette Generator</h3>
@@ -63,6 +69,18 @@ footer{max-width:1100px;margin:40px auto;padding:16px 24px;color:var(--muted);fo
     <p>Validate and parse a Conventional Commits message (type(scope): subject) — checks allowed types, breaking-change markers, and subject rules.</p>
     <div class="tags"><span class="tag">devtools</span><span class="tag">git</span><span class="tag">commit</span><span class="tag">conventional-commits</span><span class="tag">ci</span><span class="tag">lint</span></div>
     <div class="run"><code>node core/cli.mjs run devtools/conventional-commit '&lt;json&gt;'</code></div>
+  </article><article class="card" data-search="devtools/semver-bump semver next-version determine the next semantic version from the current version plus commit types (feat/fix/breaking) or an explicit level. handles pre-release resets. devtools semver release versioning ci" data-domain="devtools">
+    <div class="card-head"><span class="domain domain-devtools">devtools</span><code class="id">devtools/semver-bump</code></div>
+    <h3>SemVer Next-Version</h3>
+    <p>Determine the next semantic version from the current version plus commit types (feat/fix/breaking) or an explicit level. Handles pre-release resets.</p>
+    <div class="tags"><span class="tag">devtools</span><span class="tag">semver</span><span class="tag">release</span><span class="tag">versioning</span><span class="tag">ci</span></div>
+    <div class="run"><code>node core/cli.mjs run devtools/semver-bump '&lt;json&gt;'</code></div>
+  </article><article class="card" data-search="finance/bollinger bollinger bands compute bollinger bands (sma ± k·stddev) over a close-price series and report the latest bar's %b and band width. finance bollinger indicator volatility quant stocks" data-domain="finance">
+    <div class="card-head"><span class="domain domain-finance">finance</span><code class="id">finance/bollinger</code></div>
+    <h3>Bollinger Bands</h3>
+    <p>Compute Bollinger Bands (SMA ± k·stddev) over a close-price series and report the latest bar's %B and band width.</p>
+    <div class="tags"><span class="tag">finance</span><span class="tag">bollinger</span><span class="tag">indicator</span><span class="tag">volatility</span><span class="tag">quant</span><span class="tag">stocks</span></div>
+    <div class="run"><code>node core/cli.mjs run finance/bollinger '&lt;json&gt;'</code></div>
   </article><article class="card" data-search="finance/macd macd indicator compute macd line, signal line, and histogram (default 12/26/9 emas) over a close-price series, and flag the latest bullish/bearish crossover. finance macd indicator momentum quant stocks" data-domain="finance">
     <div class="card-head"><span class="domain domain-finance">finance</span><code class="id">finance/macd</code></div>
     <h3>MACD Indicator</h3>
