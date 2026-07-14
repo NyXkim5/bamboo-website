@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SkillForge — 24 skills</title>
+<title>SkillForge — 36 skills</title>
 <style>
 :root{--bg:#fafafa;--fg:#18181b;--muted:#71717a;--card:#fff;--border:#e4e4e7;--accent:#3b7a57}
 @media(prefers-color-scheme:dark){:root{--bg:#0d0d0f;--fg:#f4f4f5;--muted:#a1a1aa;--card:#18181b;--border:#27272a;--accent:#5db088}}
@@ -25,7 +25,7 @@ h3{margin:2px 0 6px;font-size:17px}p{margin:0 0 12px;color:var(--muted)}
 .empty{max-width:1100px;margin:40px auto;padding:0 24px;color:var(--muted);display:none}
 footer{max-width:1100px;margin:40px auto;padding:16px 24px;color:var(--muted);font-size:13px;border-top:1px solid var(--border)}
 </style></head><body>
-<header><h1>Skill<span>Forge</span></h1><p class="sub">24 runnable skills across 4 domains. A growing capability library.</p></header>
+<header><h1>Skill<span>Forge</span></h1><p class="sub">36 runnable skills across 4 domains. A growing capability library.</p></header>
 <div class="controls"><input id="q" type="search" placeholder="Search skills, tags, descriptions…" aria-label="Search skills"><div class="chips"><button class="chip active" data-filter="all">all</button><button class="chip" data-filter="design">design</button><button class="chip" data-filter="devtools">devtools</button><button class="chip" data-filter="finance">finance</button><button class="chip" data-filter="research">research</button></div></div>
 <main class="grid" id="grid"><article class="card" data-search="design/aspect-ratios aspect ratio helper reduce a width×height to its simplest aspect ratio, name common ratios (16:9, 4:3, 1:1…), compute a missing dimension, and emit css aspect-ratio. design aspect-ratio layout css responsive" data-domain="design">
     <div class="card-head"><span class="domain domain-design">design</span><code class="id">design/aspect-ratios</code></div>
@@ -45,6 +45,12 @@ footer{max-width:1100px;margin:40px auto;padding:16px 24px;color:var(--muted);fo
     <p>Interpolate N evenly-spaced stops between two hex colors (in HSL) and return the swatches plus a CSS linear-gradient string.</p>
     <div class="tags"><span class="tag">design</span><span class="tag">color</span><span class="tag">gradient</span><span class="tag">css</span><span class="tag">design-tokens</span></div>
     <div class="run"><code>node core/cli.mjs run design/gradient-gen '&lt;json&gt;'</code></div>
+  </article><article class="card" data-search="design/nearest-css-color nearest css color finds the nearest css named color to a given hex color using squared rgb distance over a built-in map of ~30 common css colors. color css hex rgb design nearest-neighbor" data-domain="design">
+    <div class="card-head"><span class="domain domain-design">design</span><code class="id">design/nearest-css-color</code></div>
+    <h3>Nearest CSS Color</h3>
+    <p>Finds the nearest CSS named color to a given hex color using squared RGB distance over a built-in map of ~30 common CSS colors.</p>
+    <div class="tags"><span class="tag">color</span><span class="tag">css</span><span class="tag">hex</span><span class="tag">rgb</span><span class="tag">design</span><span class="tag">nearest-neighbor</span></div>
+    <div class="run"><code>node core/cli.mjs run design/nearest-css-color '&lt;json&gt;'</code></div>
   </article><article class="card" data-search="design/palette-gen accessible palette generator turn one base hex color into a harmonious 5-swatch palette with wcag contrast ratings against black and white text. color palette wcag accessibility design-tokens" data-domain="design">
     <div class="card-head"><span class="domain domain-design">design</span><code class="id">design/palette-gen</code></div>
     <h3>Accessible Palette Generator</h3>
@@ -63,6 +69,12 @@ footer{max-width:1100px;margin:40px auto;padding:16px 24px;color:var(--muted);fo
     <p>Generate a consistent spacing scale from a base unit and step ratio, returning px + rem tokens and a CSS variables block (--space-*).</p>
     <div class="tags"><span class="tag">design</span><span class="tag">spacing</span><span class="tag">design-tokens</span><span class="tag">css</span><span class="tag">layout</span></div>
     <div class="run"><code>node core/cli.mjs run design/spacing-tokens '&lt;json&gt;'</code></div>
+  </article><article class="card" data-search="design/tailwind-shades tailwind shade ramp generator generate a tailwind-style shade ramp (50,100,...,900,950) from a base hex color by holding hue/saturation and scaling hsl lightness (50 ≈ 97% l, 500 = base, 950 ≈ 13% l). color tailwind palette hsl design-tokens" data-domain="design">
+    <div class="card-head"><span class="domain domain-design">design</span><code class="id">design/tailwind-shades</code></div>
+    <h3>Tailwind Shade Ramp Generator</h3>
+    <p>Generate a Tailwind-style shade ramp (50,100,...,900,950) from a base hex color by holding hue/saturation and scaling HSL lightness (50 ≈ 97% L, 500 = base, 950 ≈ 13% L).</p>
+    <div class="tags"><span class="tag">color</span><span class="tag">tailwind</span><span class="tag">palette</span><span class="tag">hsl</span><span class="tag">design-tokens</span></div>
+    <div class="run"><code>node core/cli.mjs run design/tailwind-shades '&lt;json&gt;'</code></div>
   </article><article class="card" data-search="design/type-scale modular type scale build a modular typographic scale from a base size and ratio (e.g. 1.25 major third), returning px + rem for each step and a css variables block. design typography scale design-tokens css" data-domain="design">
     <div class="card-head"><span class="domain domain-design">design</span><code class="id">design/type-scale</code></div>
     <h3>Modular Type Scale</h3>
@@ -87,12 +99,30 @@ footer{max-width:1100px;margin:40px auto;padding:16px 24px;color:var(--muted);fo
     <p>Check a parsed env object against a schema of required/optional keys with type and pattern rules. Reports missing/invalid keys by name only — never echoes secret values.</p>
     <div class="tags"><span class="tag">devtools</span><span class="tag">env</span><span class="tag">config</span><span class="tag">validation</span><span class="tag">ci</span></div>
     <div class="run"><code>node core/cli.mjs run devtools/env-validate '&lt;json&gt;'</code></div>
+  </article><article class="card" data-search="devtools/gitignore-gen gitignore generator generate a combined .gitignore from an array of stack names using a small built-in template map (node, python, macos, jetbrains, vscode, rust). gitignore git devtools scaffolding generator" data-domain="devtools">
+    <div class="card-head"><span class="domain domain-devtools">devtools</span><code class="id">devtools/gitignore-gen</code></div>
+    <h3>Gitignore Generator</h3>
+    <p>Generate a combined .gitignore from an array of stack names using a small built-in template map (node, python, macos, jetbrains, vscode, rust).</p>
+    <div class="tags"><span class="tag">gitignore</span><span class="tag">git</span><span class="tag">devtools</span><span class="tag">scaffolding</span><span class="tag">generator</span></div>
+    <div class="run"><code>node core/cli.mjs run devtools/gitignore-gen '&lt;json&gt;'</code></div>
+  </article><article class="card" data-search="devtools/json-schema-infer json schema inferrer infer a minimal draft-07-style json schema from an example json value: type detection (string/number/integer/boolean/null/array/object), object properties + required keys, and array items from the first element. json json-schema schema inference draft-07 devtools" data-domain="devtools">
+    <div class="card-head"><span class="domain domain-devtools">devtools</span><code class="id">devtools/json-schema-infer</code></div>
+    <h3>JSON Schema Inferrer</h3>
+    <p>Infer a minimal draft-07-style JSON Schema from an example JSON value: type detection (string/number/integer/boolean/null/array/object), object properties + required keys, and array items from the first element.</p>
+    <div class="tags"><span class="tag">json</span><span class="tag">json-schema</span><span class="tag">schema</span><span class="tag">inference</span><span class="tag">draft-07</span><span class="tag">devtools</span></div>
+    <div class="run"><code>node core/cli.mjs run devtools/json-schema-infer '&lt;json&gt;'</code></div>
   </article><article class="card" data-search="devtools/semver-bump semver next-version determine the next semantic version from the current version plus commit types (feat/fix/breaking) or an explicit level. handles pre-release resets. devtools semver release versioning ci" data-domain="devtools">
     <div class="card-head"><span class="domain domain-devtools">devtools</span><code class="id">devtools/semver-bump</code></div>
     <h3>SemVer Next-Version</h3>
     <p>Determine the next semantic version from the current version plus commit types (feat/fix/breaking) or an explicit level. Handles pre-release resets.</p>
     <div class="tags"><span class="tag">devtools</span><span class="tag">semver</span><span class="tag">release</span><span class="tag">versioning</span><span class="tag">ci</span></div>
     <div class="run"><code>node core/cli.mjs run devtools/semver-bump '&lt;json&gt;'</code></div>
+  </article><article class="card" data-search="devtools/slugify slugify convert a string into a url slug: lowercase, ascii-fold common accented latin characters, collapse non-alphanumeric runs into a separator, and trim. slug url string transliterate devtools" data-domain="devtools">
+    <div class="card-head"><span class="domain domain-devtools">devtools</span><code class="id">devtools/slugify</code></div>
+    <h3>Slugify</h3>
+    <p>Convert a string into a URL slug: lowercase, ASCII-fold common accented Latin characters, collapse non-alphanumeric runs into a separator, and trim.</p>
+    <div class="tags"><span class="tag">slug</span><span class="tag">url</span><span class="tag">string</span><span class="tag">transliterate</span><span class="tag">devtools</span></div>
+    <div class="run"><code>node core/cli.mjs run devtools/slugify '&lt;json&gt;'</code></div>
   </article><article class="card" data-search="devtools/test-scaffold test scaffold generator parse a function signature (function/const arrow/method) and generate a node:test skeleton with a case per parameter plus edge-case stubs. devtools testing codegen scaffold ci" data-domain="devtools">
     <div class="card-head"><span class="domain domain-devtools">devtools</span><code class="id">devtools/test-scaffold</code></div>
     <h3>Test Scaffold Generator</h3>
@@ -111,12 +141,24 @@ footer{max-width:1100px;margin:40px auto;padding:16px 24px;color:var(--muted);fo
     <p>Compute Bollinger Bands (SMA ± k·stddev) over a close-price series and report the latest bar's %B and band width.</p>
     <div class="tags"><span class="tag">finance</span><span class="tag">bollinger</span><span class="tag">indicator</span><span class="tag">volatility</span><span class="tag">quant</span><span class="tag">stocks</span></div>
     <div class="run"><code>node core/cli.mjs run finance/bollinger '&lt;json&gt;'</code></div>
+  </article><article class="card" data-search="finance/cagr compound annual growth rate computes the compound annual growth rate (cagr) and total return of an investment given its beginning value, ending value, and holding period in years. results are rounded to 4 decimal places. finance cagr growth-rate return investment" data-domain="finance">
+    <div class="card-head"><span class="domain domain-finance">finance</span><code class="id">finance/cagr</code></div>
+    <h3>Compound Annual Growth Rate</h3>
+    <p>Computes the Compound Annual Growth Rate (CAGR) and total return of an investment given its beginning value, ending value, and holding period in years. Results are rounded to 4 decimal places.</p>
+    <div class="tags"><span class="tag">finance</span><span class="tag">cagr</span><span class="tag">growth-rate</span><span class="tag">return</span><span class="tag">investment</span></div>
+    <div class="run"><code>node core/cli.mjs run finance/cagr '&lt;json&gt;'</code></div>
   </article><article class="card" data-search="finance/macd macd indicator compute macd line, signal line, and histogram (default 12/26/9 emas) over a close-price series, and flag the latest bullish/bearish crossover. finance macd indicator momentum quant stocks" data-domain="finance">
     <div class="card-head"><span class="domain domain-finance">finance</span><code class="id">finance/macd</code></div>
     <h3>MACD Indicator</h3>
     <p>Compute MACD line, signal line, and histogram (default 12/26/9 EMAs) over a close-price series, and flag the latest bullish/bearish crossover.</p>
     <div class="tags"><span class="tag">finance</span><span class="tag">macd</span><span class="tag">indicator</span><span class="tag">momentum</span><span class="tag">quant</span><span class="tag">stocks</span></div>
     <div class="run"><code>node core/cli.mjs run finance/macd '&lt;json&gt;'</code></div>
+  </article><article class="card" data-search="finance/obv on-balance volume computes the on-balance volume (obv) series from price bars: cumulative volume added on up-closes, subtracted on down-closes, unchanged on equal closes. finance technical-analysis indicator volume obv" data-domain="finance">
+    <div class="card-head"><span class="domain domain-finance">finance</span><code class="id">finance/obv</code></div>
+    <h3>On-Balance Volume</h3>
+    <p>Computes the On-Balance Volume (OBV) series from price bars: cumulative volume added on up-closes, subtracted on down-closes, unchanged on equal closes.</p>
+    <div class="tags"><span class="tag">finance</span><span class="tag">technical-analysis</span><span class="tag">indicator</span><span class="tag">volume</span><span class="tag">obv</span></div>
+    <div class="run"><code>node core/cli.mjs run finance/obv '&lt;json&gt;'</code></div>
   </article><article class="card" data-search="finance/portfolio-metrics portfolio risk/return metrics from a series of periodic returns, compute annualized return, volatility, sharpe ratio, and max drawdown. finance portfolio sharpe volatility drawdown quant" data-domain="finance">
     <div class="card-head"><span class="domain domain-finance">finance</span><code class="id">finance/portfolio-metrics</code></div>
     <h3>Portfolio Risk/Return Metrics</h3>
@@ -141,6 +183,18 @@ footer{max-width:1100px;margin:40px auto;padding:16px 24px;color:var(--muted);fo
     <p>Backtest a fast/slow SMA crossover long-only strategy over a close-price series. Returns trades, total return, win rate, and max drawdown vs. buy-and-hold.</p>
     <div class="tags"><span class="tag">finance</span><span class="tag">backtest</span><span class="tag">trading</span><span class="tag">sma</span><span class="tag">quant</span><span class="tag">stocks</span></div>
     <div class="run"><code>node core/cli.mjs run finance/sma-backtest '&lt;json&gt;'</code></div>
+  </article><article class="card" data-search="finance/stochastic-oscillator stochastic oscillator computes the stochastic oscillator: %k over `period` bars (default 14) and %d as the sma of %k over `dperiod` (default 3). returns latest values, full series, and an overbought (&gt;80) / oversold (&lt;20) signal. finance technical-analysis stochastic momentum indicator" data-domain="finance">
+    <div class="card-head"><span class="domain domain-finance">finance</span><code class="id">finance/stochastic-oscillator</code></div>
+    <h3>Stochastic Oscillator</h3>
+    <p>Computes the Stochastic Oscillator: %K over `period` bars (default 14) and %D as the SMA of %K over `dPeriod` (default 3). Returns latest values, full series, and an overbought (&gt;80) / oversold (&lt;20) signal.</p>
+    <div class="tags"><span class="tag">finance</span><span class="tag">technical-analysis</span><span class="tag">stochastic</span><span class="tag">momentum</span><span class="tag">indicator</span></div>
+    <div class="run"><code>node core/cli.mjs run finance/stochastic-oscillator '&lt;json&gt;'</code></div>
+  </article><article class="card" data-search="finance/vwap volume-weighted average price (vwap) computes the cumulative vwap series from ohlcv bars using the typical price (high+low+close)/3, plus the latest value and the last close's position relative to it. finance trading indicator vwap technical-analysis" data-domain="finance">
+    <div class="card-head"><span class="domain domain-finance">finance</span><code class="id">finance/vwap</code></div>
+    <h3>Volume-Weighted Average Price (VWAP)</h3>
+    <p>Computes the cumulative VWAP series from OHLCV bars using the typical price (high+low+close)/3, plus the latest value and the last close's position relative to it.</p>
+    <div class="tags"><span class="tag">finance</span><span class="tag">trading</span><span class="tag">indicator</span><span class="tag">vwap</span><span class="tag">technical-analysis</span></div>
+    <div class="run"><code>node core/cli.mjs run finance/vwap '&lt;json&gt;'</code></div>
   </article><article class="card" data-search="research/dedupe near-duplicate detector cluster a list of texts by jaccard similarity over word shingles, returning duplicate groups and a de-duplicated set of representatives. research dedupe nlp similarity news" data-domain="research">
     <div class="card-head"><span class="domain domain-research">research</span><code class="id">research/dedupe</code></div>
     <h3>Near-Duplicate Detector</h3>
@@ -159,6 +213,12 @@ footer{max-width:1100px;margin:40px auto;padding:16px 24px;color:var(--muted);fo
     <p>Report unigram and bigram keyword density for a document and flag terms above an over-optimization threshold (SEO keyword stuffing).</p>
     <div class="tags"><span class="tag">research</span><span class="tag">seo</span><span class="tag">keywords</span><span class="tag">nlp</span><span class="tag">content</span></div>
     <div class="run"><code>node core/cli.mjs run research/keyword-density '&lt;json&gt;'</code></div>
+  </article><article class="card" data-search="research/ngrams word n-grams extract word n-grams from text and count their frequencies, returning the top n-grams sorted by count descending. ngrams text nlp frequency tokenize" data-domain="research">
+    <div class="card-head"><span class="domain domain-research">research</span><code class="id">research/ngrams</code></div>
+    <h3>Word N-grams</h3>
+    <p>Extract word n-grams from text and count their frequencies, returning the top n-grams sorted by count descending.</p>
+    <div class="tags"><span class="tag">ngrams</span><span class="tag">text</span><span class="tag">nlp</span><span class="tag">frequency</span><span class="tag">tokenize</span></div>
+    <div class="run"><code>node core/cli.mjs run research/ngrams '&lt;json&gt;'</code></div>
   </article><article class="card" data-search="research/readability readability (flesch / flesch–kincaid) score text readability with flesch reading ease and flesch–kincaid grade level, plus word/sentence/syllable counts. research readability nlp flesch writing" data-domain="research">
     <div class="card-head"><span class="domain domain-research">research</span><code class="id">research/readability</code></div>
     <h3>Readability (Flesch / Flesch–Kincaid)</h3>
@@ -171,6 +231,18 @@ footer{max-width:1100px;margin:40px auto;padding:16px 24px;color:var(--muted);fo
     <p>Score text sentiment from a compact polarity lexicon with negation flipping, returning a normalized score, label, and the matched terms.</p>
     <div class="tags"><span class="tag">research</span><span class="tag">sentiment</span><span class="tag">nlp</span><span class="tag">news</span><span class="tag">social</span></div>
     <div class="run"><code>node core/cli.mjs run research/sentiment '&lt;json&gt;'</code></div>
+  </article><article class="card" data-search="research/tf-idf tf-idf compute tf-idf scores across a corpus of documents: per-doc scores for a given term, or the top-scoring terms of each document. tf-idf text information-retrieval nlp ranking" data-domain="research">
+    <div class="card-head"><span class="domain domain-research">research</span><code class="id">research/tf-idf</code></div>
+    <h3>TF-IDF</h3>
+    <p>Compute TF-IDF scores across a corpus of documents: per-doc scores for a given term, or the top-scoring terms of each document.</p>
+    <div class="tags"><span class="tag">tf-idf</span><span class="tag">text</span><span class="tag">information-retrieval</span><span class="tag">nlp</span><span class="tag">ranking</span></div>
+    <div class="run"><code>node core/cli.mjs run research/tf-idf '&lt;json&gt;'</code></div>
+  </article><article class="card" data-search="research/tokenize tokenize tokenize text into words and sentences: returns words (lowercased, matched by /[a-z0-9']+/gi and required to contain at least one letter or digit), sentences (split on [.!?]+, trimmed, non-empty), wordcount, sentencecount, and uniquewords. nlp tokenizer text words sentences" data-domain="research">
+    <div class="card-head"><span class="domain domain-research">research</span><code class="id">research/tokenize</code></div>
+    <h3>Tokenize</h3>
+    <p>Tokenize text into words and sentences: returns words (lowercased, matched by /[a-z0-9']+/gi and required to contain at least one letter or digit), sentences (split on [.!?]+, trimmed, non-empty), wordCount, sentenceCount, and uniqueWords.</p>
+    <div class="tags"><span class="tag">nlp</span><span class="tag">tokenizer</span><span class="tag">text</span><span class="tag">words</span><span class="tag">sentences</span></div>
+    <div class="run"><code>node core/cli.mjs run research/tokenize '&lt;json&gt;'</code></div>
   </article></main>
 <p class="empty" id="empty">No skills match your search.</p>
 <footer>Generated by <code>core/build-catalog.mjs</code>. Run a skill: <code>node core/cli.mjs run &lt;id&gt; '&lt;json&gt;'</code></footer>

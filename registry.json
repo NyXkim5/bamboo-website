@@ -1,6 +1,6 @@
 {
   "generatedFrom": "core/registry.mjs",
-  "count": 24,
+  "count": 36,
   "domains": [
     "design",
     "devtools",
@@ -75,6 +75,27 @@
       "source": "Original implementation; HSL linear interpolation."
     },
     {
+      "id": "design/nearest-css-color",
+      "name": "Nearest CSS Color",
+      "domain": "design",
+      "version": "0.1.0",
+      "description": "Finds the nearest CSS named color to a given hex color using squared RGB distance over a built-in map of ~30 common CSS colors.",
+      "tags": [
+        "color",
+        "css",
+        "hex",
+        "rgb",
+        "design",
+        "nearest-neighbor"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "hex": "string — a hex color like '#1a2b3c', '1a2b3c', '#abc', or 'abc' (case-insensitive)"
+      },
+      "outputs": "{ name: string, hex: string, distance: number } — the nearest CSS named color, its canonical hex value, and the squared RGB distance",
+      "source": "Standard nearest-neighbor search using squared Euclidean distance in RGB space; color values from the CSS Color Module Level 4 named-colors table (W3C). Original implementation, no copied code."
+    },
+    {
       "id": "design/palette-gen",
       "name": "Accessible Palette Generator",
       "domain": "design",
@@ -139,6 +160,26 @@
       "outputs": "{ tokens: [{ name, px, rem }], css: string }",
       "license": "MIT",
       "source": "Original implementation; common 4px/8px spacing-scale conventions."
+    },
+    {
+      "id": "design/tailwind-shades",
+      "name": "Tailwind Shade Ramp Generator",
+      "domain": "design",
+      "version": "0.1.0",
+      "description": "Generate a Tailwind-style shade ramp (50,100,...,900,950) from a base hex color by holding hue/saturation and scaling HSL lightness (50 ≈ 97% L, 500 = base, 950 ≈ 13% L).",
+      "tags": [
+        "color",
+        "tailwind",
+        "palette",
+        "hsl",
+        "design-tokens"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "hex": "string — base color as hex, e.g. '#3b82f6', '3b82f6', or shorthand '#f00'"
+      },
+      "outputs": "{ shades: { '50': hex, '100': hex, ..., '900': hex, '950': hex } } — 11 lowercase #rrggbb strings",
+      "source": "Standard RGB<->HSL conversion formulas (CSS Color Module Level 3, W3C; also Foley & van Dam, 'Computer Graphics: Principles and Practice'). Shade-scale convention modeled on Tailwind CSS's numeric palette naming. Original implementation, no copied code."
     },
     {
       "id": "design/type-scale",
@@ -227,6 +268,47 @@
       "source": "Original implementation; dotenv-schema style validation."
     },
     {
+      "id": "devtools/gitignore-gen",
+      "name": "Gitignore Generator",
+      "domain": "devtools",
+      "version": "0.1.0",
+      "description": "Generate a combined .gitignore from an array of stack names using a small built-in template map (node, python, macos, jetbrains, vscode, rust).",
+      "tags": [
+        "gitignore",
+        "git",
+        "devtools",
+        "scaffolding",
+        "generator"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "stacks": "string[] — stack names to include (case-insensitive), e.g. ['node', 'macos']"
+      },
+      "outputs": "{ content: string (sectioned .gitignore text), unknown: string[] (unrecognized stack names) }",
+      "source": "Ignore patterns modeled on the community conventions popularized by github/gitignore (CC0) and gitignore.io; templates written from scratch, no copied code."
+    },
+    {
+      "id": "devtools/json-schema-infer",
+      "name": "JSON Schema Inferrer",
+      "domain": "devtools",
+      "version": "0.1.0",
+      "description": "Infer a minimal draft-07-style JSON Schema from an example JSON value: type detection (string/number/integer/boolean/null/array/object), object properties + required keys, and array items from the first element.",
+      "tags": [
+        "json",
+        "json-schema",
+        "schema",
+        "inference",
+        "draft-07",
+        "devtools"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "value": "Example JSON value to infer a schema from (any JSON-serializable value: string, number, boolean, null, array, or plain object). Required."
+      },
+      "outputs": "{ schema: object } — a minimal draft-07-style JSON Schema describing the input value.",
+      "source": "Original implementation of the standard type-inference approach described by the JSON Schema draft-07 specification (json-schema.org, IETF draft handrews-json-schema-01). No code copied."
+    },
+    {
       "id": "devtools/semver-bump",
       "name": "SemVer Next-Version",
       "domain": "devtools",
@@ -247,6 +329,30 @@
       "outputs": "{ current, next, bump }",
       "license": "MIT",
       "source": "Original implementation per semver.org 2.0.0 + Conventional Commits mapping."
+    },
+    {
+      "id": "devtools/slugify",
+      "name": "Slugify",
+      "domain": "devtools",
+      "version": "0.1.0",
+      "description": "Convert a string into a URL slug: lowercase, ASCII-fold common accented Latin characters, collapse non-alphanumeric runs into a separator, and trim.",
+      "tags": [
+        "slug",
+        "url",
+        "string",
+        "transliterate",
+        "devtools"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "text": "string (required) — the text to slugify",
+        "options": {
+          "separator": "string (optional, default '-') — joiner between words",
+          "maxLength": "integer (optional) — maximum slug length; truncation never ends on a separator"
+        }
+      },
+      "outputs": "{ slug: string }",
+      "source": "Original implementation of the standard slugification algorithm (lowercase + ASCII folding + non-alphanumeric collapsing), as popularized by Django's slugify and the npm 'slugify' package. No code copied."
     },
     {
       "id": "devtools/test-scaffold",
@@ -315,6 +421,28 @@
       "source": "Original implementation of Bollinger Bands (John Bollinger, 1980s)."
     },
     {
+      "id": "finance/cagr",
+      "name": "Compound Annual Growth Rate",
+      "domain": "finance",
+      "version": "0.1.0",
+      "description": "Computes the Compound Annual Growth Rate (CAGR) and total return of an investment given its beginning value, ending value, and holding period in years. Results are rounded to 4 decimal places.",
+      "tags": [
+        "finance",
+        "cagr",
+        "growth-rate",
+        "return",
+        "investment"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "begin": "number — beginning value of the investment (must be > 0)",
+        "end": "number — ending value of the investment (must be >= 0)",
+        "years": "number — holding period in years (must be > 0)"
+      },
+      "outputs": "{ cagr: number, totalReturn: number } — both as decimal fractions rounded to 4dp (e.g. 0.0718 = 7.18%)",
+      "source": "Standard CAGR formula: (end/begin)^(1/years) - 1. Textbook finance definition (public domain mathematics); no code copied."
+    },
+    {
       "id": "finance/macd",
       "name": "MACD Indicator",
       "domain": "finance",
@@ -337,6 +465,26 @@
       "outputs": "{ macd: number[], signal: number[], histogram: number[], latest, cross }",
       "license": "MIT",
       "source": "Original implementation of Appel's MACD."
+    },
+    {
+      "id": "finance/obv",
+      "name": "On-Balance Volume",
+      "domain": "finance",
+      "version": "0.1.0",
+      "description": "Computes the On-Balance Volume (OBV) series from price bars: cumulative volume added on up-closes, subtracted on down-closes, unchanged on equal closes.",
+      "tags": [
+        "finance",
+        "technical-analysis",
+        "indicator",
+        "volume",
+        "obv"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "bars": "Array<{close:number, volume:number}> — chronological price bars (oldest first); at least one bar"
+      },
+      "outputs": "{ obv: number[], latest: number, trend: 'rising'|'falling'|'flat' }",
+      "source": "Original implementation of the standard On-Balance Volume algorithm introduced by Joseph Granville, 'Granville's New Key to Stock Market Profits' (1963). No code copied."
     },
     {
       "id": "finance/portfolio-metrics",
@@ -432,6 +580,48 @@
       "source": "Original implementation; standard SMA-crossover methodology."
     },
     {
+      "id": "finance/stochastic-oscillator",
+      "name": "Stochastic Oscillator",
+      "domain": "finance",
+      "version": "0.1.0",
+      "description": "Computes the Stochastic Oscillator: %K over `period` bars (default 14) and %D as the SMA of %K over `dPeriod` (default 3). Returns latest values, full series, and an overbought (>80) / oversold (<20) signal.",
+      "tags": [
+        "finance",
+        "technical-analysis",
+        "stochastic",
+        "momentum",
+        "indicator"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "bars": "array of {high, low, close} numbers with low <= close <= high, ordered oldest -> newest; length >= period",
+        "period": "lookback window for %K (positive integer, default 14)",
+        "dPeriod": "SMA window for %D (positive integer, default 3)"
+      },
+      "outputs": "{ period, dPeriod, k, d, kSeries, dSeries, signal } where k/d are the latest %K/%D (d is null if fewer than dPeriod %K values exist) and signal is 'overbought' | 'oversold' | 'neutral' based on the latest %K",
+      "source": "Standard Stochastic Oscillator formula by George C. Lane (1950s), as documented in public references (e.g. Wikipedia: Stochastic oscillator). Original implementation; no code copied."
+    },
+    {
+      "id": "finance/vwap",
+      "name": "Volume-Weighted Average Price (VWAP)",
+      "domain": "finance",
+      "version": "0.1.0",
+      "description": "Computes the cumulative VWAP series from OHLCV bars using the typical price (high+low+close)/3, plus the latest value and the last close's position relative to it.",
+      "tags": [
+        "finance",
+        "trading",
+        "indicator",
+        "vwap",
+        "technical-analysis"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "bars": "Array of bars, each {high:number, low:number, close:number, volume:number}. At least one bar; volume >= 0; high >= low."
+      },
+      "outputs": "{ vwap: number[], latest: number, lastClose: number, position: 'above'|'below'|'equal' }",
+      "source": "Standard VWAP definition (cumulative sum of typical price times volume over cumulative volume), as described in public technical-analysis references (e.g. Wikipedia: Volume-weighted average price). Original implementation, no copied code."
+    },
+    {
       "id": "research/dedupe",
       "name": "Near-Duplicate Detector",
       "domain": "research",
@@ -498,6 +688,28 @@
       "source": "Original implementation of TF density with SEO stuffing heuristic."
     },
     {
+      "id": "research/ngrams",
+      "name": "Word N-grams",
+      "domain": "research",
+      "version": "0.1.0",
+      "description": "Extract word n-grams from text and count their frequencies, returning the top n-grams sorted by count descending.",
+      "tags": [
+        "ngrams",
+        "text",
+        "nlp",
+        "frequency",
+        "tokenize"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "text": "string — the input text to analyze (required)",
+        "n": "integer >= 1 — n-gram size (default 2)",
+        "top": "integer >= 0 — max number of grams to return (default 10)"
+      },
+      "outputs": "{ n, total, grams: [{ gram, count }] } — total is the number of n-gram occurrences; grams sorted by count desc, then gram asc",
+      "source": "Standard sliding-window word n-gram counting algorithm (classic NLP technique; see Jurafsky & Martin, 'Speech and Language Processing', ch. on n-gram language models). Original implementation, no copied code."
+    },
+    {
       "id": "research/readability",
       "name": "Readability (Flesch / Flesch–Kincaid)",
       "domain": "research",
@@ -536,6 +748,48 @@
       "outputs": "{ score, label, positives: string[], negatives: string[], tokens }",
       "license": "MIT",
       "source": "Original implementation; compact hand-built polarity lexicon."
+    },
+    {
+      "id": "research/tf-idf",
+      "name": "TF-IDF",
+      "domain": "research",
+      "version": "0.1.0",
+      "description": "Compute TF-IDF scores across a corpus of documents: per-doc scores for a given term, or the top-scoring terms of each document.",
+      "tags": [
+        "tf-idf",
+        "text",
+        "information-retrieval",
+        "nlp",
+        "ranking"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "docs": "string[] — the corpus; one string per document (required, non-empty)",
+        "term": "string — optional term; if given, score this term in every doc",
+        "topK": "number — optional, top terms per doc when no term is given (default 5)"
+      },
+      "outputs": "{ N, scores } — N is the corpus size; with a term, scores is [{ doc, tf, tfidf }]; without, scores is per-doc arrays of [{ term, tfidf }]",
+      "source": "Standard TF-IDF weighting (Sparck Jones, 1972; Salton & Buckley, 1988) with smoothed idf = ln(N/(1+df))+1; original implementation, no copied code."
+    },
+    {
+      "id": "research/tokenize",
+      "name": "Tokenize",
+      "domain": "research",
+      "version": "0.1.0",
+      "description": "Tokenize text into words and sentences: returns words (lowercased, matched by /[a-z0-9']+/gi and required to contain at least one letter or digit), sentences (split on [.!?]+, trimmed, non-empty), wordCount, sentenceCount, and uniqueWords.",
+      "tags": [
+        "nlp",
+        "tokenizer",
+        "text",
+        "words",
+        "sentences"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "text": "string — the text to tokenize"
+      },
+      "outputs": "{ words: string[], sentences: string[], wordCount: number, sentenceCount: number, uniqueWords: number }",
+      "source": "Standard regex-based word/sentence tokenization (word pattern /[a-z0-9']+/gi, sentence boundary [.!?]+), a common-knowledge NLP preprocessing technique. Original implementation; no copied code."
     }
   ]
 }
