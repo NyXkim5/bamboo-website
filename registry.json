@@ -1,6 +1,6 @@
 {
   "generatedFrom": "core/registry.mjs",
-  "count": 48,
+  "count": 60,
   "domains": [
     "design",
     "devtools",
@@ -167,6 +167,30 @@
       "source": "Original implementation; contrast math per WCAG 2.1 relative-luminance spec."
     },
     {
+      "id": "design/palette-oklch",
+      "name": "OKLCH Palette Generator",
+      "domain": "design",
+      "version": "0.1.0",
+      "description": "Generate a perceptually-even lightness ramp palette from a base hex color using the OKLCH color space. Converts sRGB -> OKLab -> OKLCH, varies lightness evenly at constant chroma and hue, then converts back to hex.",
+      "tags": [
+        "color",
+        "palette",
+        "oklch",
+        "oklab",
+        "design",
+        "accessibility"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "base": "string (required) - base color as hex, e.g. '#3b82f6' or '3b82f6' or '#abc'",
+        "steps": "integer (optional, default 5, 1..64) - number of swatches. With steps=1 the base color's own lightness is used.",
+        "lMin": "number (optional, default 0.2) - lowest OKLCH lightness in the ramp (0..1)",
+        "lMax": "number (optional, default 0.95) - highest OKLCH lightness in the ramp (0..1)"
+      },
+      "outputs": "{ base: { hex, oklch: { l, c, h } }, swatches: [{ hex, oklch: { l, c, h } }] } - swatches ordered from lMin to lMax",
+      "source": "OKLab/OKLCH color space and sRGB<->OKLab conversion matrices by Bjorn Ottosson, 'A perceptual color space for image processing' (bottosson.github.io/posts/oklab, public domain / MIT). Implementation written from the published math, no code copied."
+    },
+    {
       "id": "design/shadow-scale",
       "name": "Elevation Shadow Scale",
       "domain": "design",
@@ -253,6 +277,29 @@
       "outputs": "{ scale: [{ step, px, rem, name }], css: string }",
       "license": "MIT",
       "source": "Original implementation of the classic modular-scale technique."
+    },
+    {
+      "id": "design/wcag-suggest",
+      "name": "WCAG Contrast Suggestion",
+      "domain": "design",
+      "version": "0.1.0",
+      "description": "Given foreground and background hex colors, compute the WCAG contrast ratio and, if below the target (default 4.5:1 for AA normal text), suggest an adjusted foreground by stepping it toward black or white (whichever the background favors) until the target is met.",
+      "tags": [
+        "wcag",
+        "accessibility",
+        "contrast",
+        "color",
+        "a11y",
+        "design"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "fg": "string (required) - foreground color as hex, e.g. '#777777' or '#777'",
+        "bg": "string (required) - background color as hex, e.g. '#ffffff' or '#fff'",
+        "target": "number (optional, default 4.5) - contrast ratio to reach, must be in (1, 21]"
+      },
+      "outputs": "{ original: string, suggested: string, ratio: number, passes: boolean } - original normalized fg hex, suggested fg hex, contrast ratio of suggested vs bg (rounded to 4 decimals), and whether it meets the target",
+      "source": "WCAG 2.1 relative luminance and contrast ratio definitions (W3C, https://www.w3.org/TR/WCAG21/#dfn-relative-luminance and #dfn-contrast-ratio); original independent implementation, no code copied."
     },
     {
       "id": "devtools/case-convert",
@@ -359,6 +406,27 @@
       "source": "Original implementation of the standard unified diff format (POSIX diff -u / git diff) and git's diffstat --shortstat summary convention; no copied code."
     },
     {
+      "id": "devtools/duration",
+      "name": "Duration Parser & Formatter",
+      "domain": "devtools",
+      "version": "0.1.0",
+      "description": "Parse duration strings like '1h30m', '90m', '2d4h', '45s' into total seconds, and format a number of seconds into a compact human-readable string like '1h 30m'.",
+      "tags": [
+        "duration",
+        "time",
+        "parse",
+        "format",
+        "devtools"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "parse": "string (optional) — duration string composed of number+unit tokens using units d, h, m, s (e.g. '1h30m' or '1h 30m'; whitespace between tokens is allowed). Mutually exclusive with 'format'.",
+        "format": "number (optional) — non-negative number of seconds to format. Mutually exclusive with 'parse'."
+      },
+      "outputs": "{ seconds: number } when parsing, or { text: string } when formatting.",
+      "source": "Standard unit-token duration parsing/formatting as popularized by Go's time.ParseDuration and the npm 'ms' convention; implemented independently from the unit-conversion definitions (1d=86400s, 1h=3600s, 1m=60s)."
+    },
+    {
       "id": "devtools/env-validate",
       "name": "Env Schema Validator",
       "domain": "devtools",
@@ -398,6 +466,27 @@
       },
       "outputs": "{ content: string (sectioned .gitignore text), unknown: string[] (unrecognized stack names) }",
       "source": "Ignore patterns modeled on the community conventions popularized by github/gitignore (CC0) and gitignore.io; templates written from scratch, no copied code."
+    },
+    {
+      "id": "devtools/json-diff",
+      "name": "JSON Diff",
+      "domain": "devtools",
+      "version": "0.1.0",
+      "description": "Structural diff of two JSON values. Recursively walks both values and reports added, removed, and changed leaves/subtrees with dotted/bracketed paths like \"a.b[0]\".",
+      "tags": [
+        "json",
+        "diff",
+        "compare",
+        "structural",
+        "devtools"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "a": "any JSON value (object, array, string, number, boolean, or null) — the base value",
+        "b": "any JSON value (object, array, string, number, boolean, or null) — the value to compare against a"
+      },
+      "outputs": "{ added: [{path, value}], removed: [{path, value}], changed: [{path, from, to}], equal: boolean }",
+      "source": "Original implementation of the standard recursive tree-walk structural diff technique (as popularized by tools like deep-diff and JSON Patch generators); no code copied. Path notation follows JavaScript property-access syntax."
     },
     {
       "id": "devtools/json-schema-infer",
@@ -488,6 +577,30 @@
       "source": "Original implementation; simple signature parsing."
     },
     {
+      "id": "devtools/uuid-inspect",
+      "name": "UUID Inspect",
+      "domain": "devtools",
+      "version": "0.1.0",
+      "description": "Validate a UUID string (8-4-4-4-12 hex layout) and report its version digit, variant family, and whether it is the nil UUID.",
+      "tags": [
+        "uuid",
+        "guid",
+        "validation",
+        "rfc4122",
+        "devtools"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "uuid": {
+          "type": "string",
+          "required": true,
+          "description": "Candidate UUID string, e.g. 123e4567-e89b-42d3-a456-426614174000 (case-insensitive)."
+        }
+      },
+      "outputs": "{ valid: boolean, version: number|null, variant: 'NCS'|'RFC4122'|'Microsoft'|'Future'|null, isNil: boolean }",
+      "source": "UUID layout, version field, and variant bit rules per RFC 4122 / RFC 9562 (ISO/IEC 9834-8). Original implementation; no code copied."
+    },
+    {
       "id": "finance/atr",
       "name": "Average True Range (ATR)",
       "domain": "finance",
@@ -508,6 +621,28 @@
       "outputs": "{ atr: number[], latest, latestPct }",
       "license": "MIT",
       "source": "Original implementation of Wilder's ATR (New Concepts in Technical Trading Systems, 1978)."
+    },
+    {
+      "id": "finance/beta",
+      "name": "Asset Beta vs Market",
+      "domain": "finance",
+      "version": "0.1.1",
+      "description": "Computes the beta of an asset relative to the market as sample covariance(asset, market) divided by sample variance(market), plus the Pearson correlation, over aligned return arrays.",
+      "tags": [
+        "finance",
+        "beta",
+        "capm",
+        "covariance",
+        "correlation",
+        "risk"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "asset": "number[] - asset return series (length >= 2, aligned with market)",
+        "market": "number[] - market return series (same length as asset)"
+      },
+      "outputs": "{ beta: number, correlation: number } - beta = cov(asset,market)/var(market); correlation = cov/(std_asset*std_market), clamped to [-1, 1]; a constant asset series yields beta 0 and correlation 0 by convention",
+      "source": "Standard CAPM beta estimator (Sharpe, 1964) using sample covariance and variance (Bessel-corrected, n-1 denominator) and Pearson product-moment correlation. Implemented from the textbook formulas; no code copied."
     },
     {
       "id": "finance/bollinger",
@@ -576,6 +711,28 @@
       "source": "Standard EMA formula as described in classical technical analysis literature (e.g. J. Welles Wilder / common TA references); original implementation, no copied code."
     },
     {
+      "id": "finance/kelly",
+      "name": "Kelly Criterion",
+      "domain": "finance",
+      "version": "0.1.0",
+      "description": "Computes the Kelly criterion optimal bet fraction f* = p - (1-p)/b from win probability p and win/loss ratio b, clamped to 0 when negative, plus the half-Kelly fraction.",
+      "tags": [
+        "kelly",
+        "betting",
+        "bankroll",
+        "position-sizing",
+        "risk",
+        "finance"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "winProb": "number — probability of winning, in [0, 1]",
+        "winLossRatio": "number — average win divided by average loss (b), must be > 0"
+      },
+      "outputs": "{ kelly: number, halfKelly: number } — optimal bet fraction (clamped at 0) and half of it",
+      "source": "Kelly criterion, J. L. Kelly Jr., 'A New Interpretation of Information Rate' (1956); standard formula f* = p - (1-p)/b. Original implementation, no copied code."
+    },
+    {
       "id": "finance/macd",
       "name": "MACD Indicator",
       "domain": "finance",
@@ -598,6 +755,26 @@
       "outputs": "{ macd: number[], signal: number[], histogram: number[], latest, cross }",
       "license": "MIT",
       "source": "Original implementation of Appel's MACD."
+    },
+    {
+      "id": "finance/max-drawdown",
+      "name": "Max Drawdown",
+      "domain": "finance",
+      "version": "0.1.0",
+      "description": "Computes the maximum drawdown of an equity/price series using a running-peak scan. Returns the worst (most negative) drawdown, the peak and trough indices/values, and the recovery index (first index after the trough where the series regains the peak), or null if never recovered.",
+      "tags": [
+        "finance",
+        "risk",
+        "drawdown",
+        "equity-curve",
+        "time-series"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "series": "number[] — equity or price values in chronological order; must be non-empty, finite, and strictly positive"
+      },
+      "outputs": "{ maxDrawdown: number (<= 0, e.g. -0.25 for -25%), peakIndex: number, peakValue: number, troughIndex: number, troughValue: number, recoveryIndex: number|null, recovered: boolean }",
+      "source": "Standard running-peak maximum drawdown algorithm as commonly defined in quantitative finance literature (e.g. Magdon-Ismail & Atiya, 'Maximum Drawdown', Risk Magazine 2004). Original implementation; no code copied."
     },
     {
       "id": "finance/obv",
@@ -666,6 +843,28 @@
       "outputs": "{ shares, riskPerShare, dollarRisk, positionValue, capped }",
       "license": "MIT",
       "source": "Original implementation; standard fixed-fractional position sizing."
+    },
+    {
+      "id": "finance/returns",
+      "name": "Periodic Returns",
+      "domain": "finance",
+      "version": "0.1.0",
+      "description": "Convert a price series to periodic returns, either simple (arithmetic) returns price[i]/price[i-1] - 1 or log (continuously compounded) returns ln(price[i]/price[i-1]).",
+      "tags": [
+        "finance",
+        "returns",
+        "log-returns",
+        "simple-returns",
+        "time-series",
+        "prices"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "prices": "number[] - price series, length >= 2, all values > 0",
+        "mode": "\"simple\" | \"log\" (optional, default \"simple\") - return calculation mode"
+      },
+      "outputs": "{ returns: number[], mode: \"simple\" | \"log\" } - returns has length prices.length - 1",
+      "source": "Standard financial return definitions: simple (arithmetic) and logarithmic (continuously compounded) returns, as described in standard quantitative finance texts (e.g. Tsay, Analysis of Financial Time Series). Original implementation."
     },
     {
       "id": "finance/roc",
@@ -823,6 +1022,36 @@
       "source": "Standard Williams %R formula as introduced by Larry Williams; reference definition per common technical-analysis literature (e.g. StockCharts / Wilder-era TA texts). Original implementation, no copied code."
     },
     {
+      "id": "research/cosine-similarity",
+      "name": "Cosine Similarity",
+      "domain": "research",
+      "version": "0.1.0",
+      "description": "Computes cosine similarity between two texts using term-frequency bag-of-words vectors over the union vocabulary. Tokenization: lowercase alphanumeric runs of length >= 2.",
+      "tags": [
+        "nlp",
+        "similarity",
+        "cosine",
+        "bag-of-words",
+        "text",
+        "vector"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "a": {
+          "type": "string",
+          "required": true,
+          "description": "First text"
+        },
+        "b": {
+          "type": "string",
+          "required": true,
+          "description": "Second text"
+        }
+      },
+      "outputs": "{ similarity: number } — cosine similarity in [0, 1]; both empty = 1, exactly one empty = 0",
+      "source": "Standard cosine similarity measure (Salton & McGill, Introduction to Modern Information Retrieval, 1983) applied to term-frequency vectors; original implementation, no copied code."
+    },
+    {
       "id": "research/dedupe",
       "name": "Near-Duplicate Detector",
       "domain": "research",
@@ -865,6 +1094,28 @@
       "outputs": "{ summary: string[], keywords: [{ term, weight }] }",
       "license": "MIT",
       "source": "Original implementation of classic TF-based extractive summarization."
+    },
+    {
+      "id": "research/jaccard",
+      "name": "Jaccard Similarity",
+      "domain": "research",
+      "version": "0.1.0",
+      "description": "Computes the Jaccard similarity coefficient between two texts over token sets (lowercased alphanumeric tokens of length >= 2). Returns similarity = |intersection| / |union|, plus the intersection and union sizes. Two empty token sets yield similarity 1.",
+      "tags": [
+        "jaccard",
+        "similarity",
+        "text",
+        "set",
+        "nlp",
+        "tokens"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "a": "string — first text",
+        "b": "string — second text"
+      },
+      "outputs": "{ similarity: number, intersection: number, union: number }",
+      "source": "Jaccard index (Paul Jaccard, 1901): standard set-similarity measure |A ∩ B| / |A ∪ B|. Original implementation of the well-known formula; no code copied."
     },
     {
       "id": "research/keyword-density",
@@ -1034,6 +1285,27 @@
       },
       "outputs": "{ N, scores } — N is the corpus size; with a term, scores is [{ doc, tf, tfidf }]; without, scores is per-doc arrays of [{ term, tfidf }]",
       "source": "Standard TF-IDF weighting (Sparck Jones, 1972; Salton & Buckley, 1988) with smoothed idf = ln(N/(1+df))+1; original implementation, no copied code."
+    },
+    {
+      "id": "research/title-case",
+      "name": "Title Case",
+      "domain": "research",
+      "version": "0.1.0",
+      "description": "Converts text to smart AP-style-ish title case: capitalizes the first and last words and all major words, lowercases a configurable set of minor words when they appear mid-title, and preserves existing ALL-CAPS acronyms.",
+      "tags": [
+        "text",
+        "title-case",
+        "capitalization",
+        "formatting",
+        "ap-style"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "text": "string (required) — the text to convert to title case",
+        "minorWords": "string[] (optional) — override list of minor words kept lowercase when not first or last; defaults to a/an/and/as/at/but/by/for/in/nor/of/on/or/per/the/to/vs/via"
+      },
+      "outputs": "{ result: string } — the title-cased text",
+      "source": "Original implementation of the widely documented AP/Chicago-style headline-capitalization convention (capitalize first/last and major words, lowercase short conjunctions/articles/prepositions); no code copied."
     },
     {
       "id": "research/tokenize",
