@@ -33,23 +33,25 @@ keep a pure, testable core and tag `"network"`.
 - [ ] `finance/price-history` — fetch OHLC from a public API (network; pure parser core)
 - [ ] `finance/sector-screener` — filter a ticker list by sector (e.g. defense) + metrics
 - [x] `finance/macd` — MACD indicator (12/26/9)
+- [x] `finance/bollinger` — Bollinger Bands (SMA ± k·stddev)
 - [ ] `finance/position-size` — risk-based position sizing from stop distance + account risk
-- [ ] `finance/bollinger` — Bollinger Bands (SMA ± k·stddev)
+- [ ] `finance/atr` — Average True Range volatility measure
 
 ## devtools
 - [x] `devtools/code-review` — heuristic static review
 - [x] `devtools/conventional-commit` — validate/parse Conventional Commit messages
 - [ ] `devtools/diff-summary` — summarize a unified git diff into a changelog line
+- [x] `devtools/semver-bump` — compute the next version from commit types
 - [ ] `devtools/ci-pipeline-gen` — emit a CI YAML from a project description
 - [ ] `devtools/test-scaffold` — generate a test stub from a function signature
-- [ ] `devtools/semver-bump` — compute the next version from commit types
 
 ## design
 - [x] `design/palette-gen` — accessible palette generator
 - [x] `design/contrast-check` — WCAG AA/AAA pass/fail for a fg/bg pair
 - [x] `design/type-scale` — modular typographic scale from a base + ratio
 - [x] `design/spacing-tokens` — generate a spacing scale + CSS variables
-- [ ] `design/gradient-gen` — perceptually-even multi-stop gradient from 2 colors
+- [x] `design/gradient-gen` — perceptually-even multi-stop gradient from 2 colors
+- [ ] `design/shadow-scale` — layered elevation shadow tokens
 
 ## research
 - [x] `research/extractive-summary` — TF summary + keywords
@@ -68,3 +70,5 @@ keep a pure, testable core and tag `"network"`.
   design/type-scale, research/readability. 10 skills, 61 tests green.
 - 2026-07-13: Added finance/macd, design/spacing-tokens, research/dedupe.
   13 skills, 79 tests green.
+- 2026-07-13: Added finance/bollinger, devtools/semver-bump, design/gradient-gen.
+  16 skills, 99 tests green.
