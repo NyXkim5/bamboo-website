@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SkillForge — 20 skills</title>
+<title>SkillForge — 24 skills</title>
 <style>
 :root{--bg:#fafafa;--fg:#18181b;--muted:#71717a;--card:#fff;--border:#e4e4e7;--accent:#3b7a57}
 @media(prefers-color-scheme:dark){:root{--bg:#0d0d0f;--fg:#f4f4f5;--muted:#a1a1aa;--card:#18181b;--border:#27272a;--accent:#5db088}}
@@ -25,9 +25,15 @@ h3{margin:2px 0 6px;font-size:17px}p{margin:0 0 12px;color:var(--muted)}
 .empty{max-width:1100px;margin:40px auto;padding:0 24px;color:var(--muted);display:none}
 footer{max-width:1100px;margin:40px auto;padding:16px 24px;color:var(--muted);font-size:13px;border-top:1px solid var(--border)}
 </style></head><body>
-<header><h1>Skill<span>Forge</span></h1><p class="sub">20 runnable skills across 4 domains. A growing capability library.</p></header>
+<header><h1>Skill<span>Forge</span></h1><p class="sub">24 runnable skills across 4 domains. A growing capability library.</p></header>
 <div class="controls"><input id="q" type="search" placeholder="Search skills, tags, descriptions…" aria-label="Search skills"><div class="chips"><button class="chip active" data-filter="all">all</button><button class="chip" data-filter="design">design</button><button class="chip" data-filter="devtools">devtools</button><button class="chip" data-filter="finance">finance</button><button class="chip" data-filter="research">research</button></div></div>
-<main class="grid" id="grid"><article class="card" data-search="design/contrast-check wcag contrast checker compute the wcag 2.1 contrast ratio for a foreground/background hex pair and report aa/aaa pass/fail for normal and large text. design color wcag accessibility contrast" data-domain="design">
+<main class="grid" id="grid"><article class="card" data-search="design/aspect-ratios aspect ratio helper reduce a width×height to its simplest aspect ratio, name common ratios (16:9, 4:3, 1:1…), compute a missing dimension, and emit css aspect-ratio. design aspect-ratio layout css responsive" data-domain="design">
+    <div class="card-head"><span class="domain domain-design">design</span><code class="id">design/aspect-ratios</code></div>
+    <h3>Aspect Ratio Helper</h3>
+    <p>Reduce a width×height to its simplest aspect ratio, name common ratios (16:9, 4:3, 1:1…), compute a missing dimension, and emit CSS aspect-ratio.</p>
+    <div class="tags"><span class="tag">design</span><span class="tag">aspect-ratio</span><span class="tag">layout</span><span class="tag">css</span><span class="tag">responsive</span></div>
+    <div class="run"><code>node core/cli.mjs run design/aspect-ratios '&lt;json&gt;'</code></div>
+  </article><article class="card" data-search="design/contrast-check wcag contrast checker compute the wcag 2.1 contrast ratio for a foreground/background hex pair and report aa/aaa pass/fail for normal and large text. design color wcag accessibility contrast" data-domain="design">
     <div class="card-head"><span class="domain domain-design">design</span><code class="id">design/contrast-check</code></div>
     <h3>WCAG Contrast Checker</h3>
     <p>Compute the WCAG 2.1 contrast ratio for a foreground/background hex pair and report AA/AAA pass/fail for normal and large text.</p>
@@ -75,6 +81,12 @@ footer{max-width:1100px;margin:40px auto;padding:16px 24px;color:var(--muted);fo
     <p>Validate and parse a Conventional Commits message (type(scope): subject) — checks allowed types, breaking-change markers, and subject rules.</p>
     <div class="tags"><span class="tag">devtools</span><span class="tag">git</span><span class="tag">commit</span><span class="tag">conventional-commits</span><span class="tag">ci</span><span class="tag">lint</span></div>
     <div class="run"><code>node core/cli.mjs run devtools/conventional-commit '&lt;json&gt;'</code></div>
+  </article><article class="card" data-search="devtools/env-validate env schema validator check a parsed env object against a schema of required/optional keys with type and pattern rules. reports missing/invalid keys by name only — never echoes secret values. devtools env config validation ci" data-domain="devtools">
+    <div class="card-head"><span class="domain domain-devtools">devtools</span><code class="id">devtools/env-validate</code></div>
+    <h3>Env Schema Validator</h3>
+    <p>Check a parsed env object against a schema of required/optional keys with type and pattern rules. Reports missing/invalid keys by name only — never echoes secret values.</p>
+    <div class="tags"><span class="tag">devtools</span><span class="tag">env</span><span class="tag">config</span><span class="tag">validation</span><span class="tag">ci</span></div>
+    <div class="run"><code>node core/cli.mjs run devtools/env-validate '&lt;json&gt;'</code></div>
   </article><article class="card" data-search="devtools/semver-bump semver next-version determine the next semantic version from the current version plus commit types (feat/fix/breaking) or an explicit level. handles pre-release resets. devtools semver release versioning ci" data-domain="devtools">
     <div class="card-head"><span class="domain domain-devtools">devtools</span><code class="id">devtools/semver-bump</code></div>
     <h3>SemVer Next-Version</h3>
@@ -111,6 +123,12 @@ footer{max-width:1100px;margin:40px auto;padding:16px 24px;color:var(--muted);fo
     <p>From a series of periodic returns, compute annualized return, volatility, Sharpe ratio, and max drawdown.</p>
     <div class="tags"><span class="tag">finance</span><span class="tag">portfolio</span><span class="tag">sharpe</span><span class="tag">volatility</span><span class="tag">drawdown</span><span class="tag">quant</span></div>
     <div class="run"><code>node core/cli.mjs run finance/portfolio-metrics '&lt;json&gt;'</code></div>
+  </article><article class="card" data-search="finance/position-size risk-based position sizing compute share quantity and capital allocation so a stop-loss risks only a fixed percent of the account, respecting an optional max-position cap. finance risk position-sizing trading quant stocks" data-domain="finance">
+    <div class="card-head"><span class="domain domain-finance">finance</span><code class="id">finance/position-size</code></div>
+    <h3>Risk-Based Position Sizing</h3>
+    <p>Compute share quantity and capital allocation so a stop-loss risks only a fixed percent of the account, respecting an optional max-position cap.</p>
+    <div class="tags"><span class="tag">finance</span><span class="tag">risk</span><span class="tag">position-sizing</span><span class="tag">trading</span><span class="tag">quant</span><span class="tag">stocks</span></div>
+    <div class="run"><code>node core/cli.mjs run finance/position-size '&lt;json&gt;'</code></div>
   </article><article class="card" data-search="finance/rsi relative strength index (rsi) compute wilder's rsi over a close-price series and flag overbought (&gt;70) / oversold (&lt;30) conditions on the latest bar. finance rsi indicator momentum quant stocks" data-domain="finance">
     <div class="card-head"><span class="domain domain-finance">finance</span><code class="id">finance/rsi</code></div>
     <h3>Relative Strength Index (RSI)</h3>
@@ -147,6 +165,12 @@ footer{max-width:1100px;margin:40px auto;padding:16px 24px;color:var(--muted);fo
     <p>Score text readability with Flesch Reading Ease and Flesch–Kincaid grade level, plus word/sentence/syllable counts.</p>
     <div class="tags"><span class="tag">research</span><span class="tag">readability</span><span class="tag">nlp</span><span class="tag">flesch</span><span class="tag">writing</span></div>
     <div class="run"><code>node core/cli.mjs run research/readability '&lt;json&gt;'</code></div>
+  </article><article class="card" data-search="research/sentiment lexicon sentiment score score text sentiment from a compact polarity lexicon with negation flipping, returning a normalized score, label, and the matched terms. research sentiment nlp news social" data-domain="research">
+    <div class="card-head"><span class="domain domain-research">research</span><code class="id">research/sentiment</code></div>
+    <h3>Lexicon Sentiment Score</h3>
+    <p>Score text sentiment from a compact polarity lexicon with negation flipping, returning a normalized score, label, and the matched terms.</p>
+    <div class="tags"><span class="tag">research</span><span class="tag">sentiment</span><span class="tag">nlp</span><span class="tag">news</span><span class="tag">social</span></div>
+    <div class="run"><code>node core/cli.mjs run research/sentiment '&lt;json&gt;'</code></div>
   </article></main>
 <p class="empty" id="empty">No skills match your search.</p>
 <footer>Generated by <code>core/build-catalog.mjs</code>. Run a skill: <code>node core/cli.mjs run &lt;id&gt; '&lt;json&gt;'</code></footer>

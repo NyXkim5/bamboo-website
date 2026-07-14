@@ -1,6 +1,6 @@
 {
   "generatedFrom": "core/registry.mjs",
-  "count": 20,
+  "count": 24,
   "domains": [
     "design",
     "devtools",
@@ -8,6 +8,28 @@
     "research"
   ],
   "skills": [
+    {
+      "id": "design/aspect-ratios",
+      "name": "Aspect Ratio Helper",
+      "domain": "design",
+      "version": "0.1.0",
+      "description": "Reduce a width×height to its simplest aspect ratio, name common ratios (16:9, 4:3, 1:1…), compute a missing dimension, and emit CSS aspect-ratio.",
+      "tags": [
+        "design",
+        "aspect-ratio",
+        "layout",
+        "css",
+        "responsive"
+      ],
+      "inputs": {
+        "width": "number",
+        "height": "number",
+        "target": "optional { width } or { height } to solve the other"
+      },
+      "outputs": "{ ratio: 'w:h', decimal, name, css, solved }",
+      "license": "MIT",
+      "source": "Original implementation; Euclid GCD reduction."
+    },
     {
       "id": "design/contrast-check",
       "name": "WCAG Contrast Checker",
@@ -184,6 +206,27 @@
       "source": "Original implementation of the Conventional Commits 1.0.0 grammar."
     },
     {
+      "id": "devtools/env-validate",
+      "name": "Env Schema Validator",
+      "domain": "devtools",
+      "version": "0.1.0",
+      "description": "Check a parsed env object against a schema of required/optional keys with type and pattern rules. Reports missing/invalid keys by name only — never echoes secret values.",
+      "tags": [
+        "devtools",
+        "env",
+        "config",
+        "validation",
+        "ci"
+      ],
+      "inputs": {
+        "env": "object of KEY→value",
+        "schema": "{ KEY: { required, type, pattern } }"
+      },
+      "outputs": "{ valid, missing: string[], invalid: [{ key, reason }], checked }",
+      "license": "MIT",
+      "source": "Original implementation; dotenv-schema style validation."
+    },
+    {
       "id": "devtools/semver-bump",
       "name": "SemVer Next-Version",
       "domain": "devtools",
@@ -319,6 +362,31 @@
       "source": "Original implementation; standard portfolio-statistics formulas."
     },
     {
+      "id": "finance/position-size",
+      "name": "Risk-Based Position Sizing",
+      "domain": "finance",
+      "version": "0.1.0",
+      "description": "Compute share quantity and capital allocation so a stop-loss risks only a fixed percent of the account, respecting an optional max-position cap.",
+      "tags": [
+        "finance",
+        "risk",
+        "position-sizing",
+        "trading",
+        "quant",
+        "stocks"
+      ],
+      "inputs": {
+        "account": "account equity",
+        "entry": "entry price",
+        "stop": "stop-loss price",
+        "riskPct": "percent of account to risk (default 1)",
+        "maxPositionPct": "cap on position size (default 100)"
+      },
+      "outputs": "{ shares, riskPerShare, dollarRisk, positionValue, capped }",
+      "license": "MIT",
+      "source": "Original implementation; standard fixed-fractional position sizing."
+    },
+    {
       "id": "finance/rsi",
       "name": "Relative Strength Index (RSI)",
       "domain": "finance",
@@ -448,6 +516,26 @@
       "outputs": "{ readingEase, gradeLevel, words, sentences, syllables, interpretation }",
       "license": "MIT",
       "source": "Original implementation of Flesch (1948) and Kincaid et al. (1975) formulas."
+    },
+    {
+      "id": "research/sentiment",
+      "name": "Lexicon Sentiment Score",
+      "domain": "research",
+      "version": "0.1.0",
+      "description": "Score text sentiment from a compact polarity lexicon with negation flipping, returning a normalized score, label, and the matched terms.",
+      "tags": [
+        "research",
+        "sentiment",
+        "nlp",
+        "news",
+        "social"
+      ],
+      "inputs": {
+        "text": "document string"
+      },
+      "outputs": "{ score, label, positives: string[], negatives: string[], tokens }",
+      "license": "MIT",
+      "source": "Original implementation; compact hand-built polarity lexicon."
     }
   ]
 }
