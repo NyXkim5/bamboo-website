@@ -1,6 +1,6 @@
 {
   "generatedFrom": "core/registry.mjs",
-  "count": 16,
+  "count": 20,
   "domains": [
     "design",
     "devtools",
@@ -72,6 +72,28 @@
       "outputs": "{ swatches: [{ hex, hsl, contrastOnWhite, contrastOnBlack, readableOn }] }",
       "license": "MIT",
       "source": "Original implementation; contrast math per WCAG 2.1 relative-luminance spec."
+    },
+    {
+      "id": "design/shadow-scale",
+      "name": "Elevation Shadow Scale",
+      "domain": "design",
+      "version": "0.1.0",
+      "description": "Generate a consistent elevation shadow scale (box-shadow tokens) from a base color and number of levels, emitting CSS custom properties.",
+      "tags": [
+        "design",
+        "shadow",
+        "elevation",
+        "design-tokens",
+        "css"
+      ],
+      "inputs": {
+        "levels": "int (default 5)",
+        "hue": "'neutral' | hex tint (default neutral)",
+        "strength": "0..1 opacity scale (default 1)"
+      },
+      "outputs": "{ shadows: [{ level, css }], css: string }",
+      "license": "MIT",
+      "source": "Original implementation; layered-shadow elevation convention."
     },
     {
       "id": "design/spacing-tokens",
@@ -182,6 +204,49 @@
       "outputs": "{ current, next, bump }",
       "license": "MIT",
       "source": "Original implementation per semver.org 2.0.0 + Conventional Commits mapping."
+    },
+    {
+      "id": "devtools/test-scaffold",
+      "name": "Test Scaffold Generator",
+      "domain": "devtools",
+      "version": "0.1.0",
+      "description": "Parse a function signature (function/const arrow/method) and generate a node:test skeleton with a case per parameter plus edge-case stubs.",
+      "tags": [
+        "devtools",
+        "testing",
+        "codegen",
+        "scaffold",
+        "ci"
+      ],
+      "inputs": {
+        "signature": "a JS/TS function declaration or signature string",
+        "importPath": "module path (default './module.mjs')"
+      },
+      "outputs": "{ name, params: string[], test: string }",
+      "license": "MIT",
+      "source": "Original implementation; simple signature parsing."
+    },
+    {
+      "id": "finance/atr",
+      "name": "Average True Range (ATR)",
+      "domain": "finance",
+      "version": "0.1.0",
+      "description": "Compute Wilder's Average True Range from OHLC bars — a volatility measure used for stops and position sizing.",
+      "tags": [
+        "finance",
+        "atr",
+        "indicator",
+        "volatility",
+        "quant",
+        "stocks"
+      ],
+      "inputs": {
+        "bars": "[{ high, low, close }] oldest→newest",
+        "period": "int (14)"
+      },
+      "outputs": "{ atr: number[], latest, latestPct }",
+      "license": "MIT",
+      "source": "Original implementation of Wilder's ATR (New Concepts in Technical Trading Systems, 1978)."
     },
     {
       "id": "finance/bollinger",
@@ -341,6 +406,28 @@
       "outputs": "{ summary: string[], keywords: [{ term, weight }] }",
       "license": "MIT",
       "source": "Original implementation of classic TF-based extractive summarization."
+    },
+    {
+      "id": "research/keyword-density",
+      "name": "Keyword Density (SEO)",
+      "domain": "research",
+      "version": "0.1.0",
+      "description": "Report unigram and bigram keyword density for a document and flag terms above an over-optimization threshold (SEO keyword stuffing).",
+      "tags": [
+        "research",
+        "seo",
+        "keywords",
+        "nlp",
+        "content"
+      ],
+      "inputs": {
+        "text": "document string",
+        "top": "int (default 10)",
+        "stuffingThreshold": "percent (default 4)"
+      },
+      "outputs": "{ totalWords, unigrams, bigrams, stuffing: [{ term, density }] }",
+      "license": "MIT",
+      "source": "Original implementation of TF density with SEO stuffing heuristic."
     },
     {
       "id": "research/readability",
