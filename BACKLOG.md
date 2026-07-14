@@ -23,7 +23,7 @@ keep a pure, testable core and tag `"network"`.
 - [ ] JSON-schema validation of `meta` in the registry loader
 - [ ] `core/new-skill.mjs` scaffolder (generates folder + stub + test)
 - [x] Catalog: live-run a *pure* skill in-browser (blob-module import; verified in Chromium)
-- [ ] GitHub Action: run `node --test` on every push (CI green gate)
+- [x] GitHub Action: run `node --test` on every push (CI green gate) + registry drift check
 - [ ] Publish `registry.json` so other repos can fetch the index over HTTP
 
 ## finance
@@ -73,7 +73,7 @@ keep a pure, testable core and tag `"network"`.
 - [ ] `research/dedupe`: add MinHash+LSH mode to scale beyond O(n²)
 - [ ] `finance/*`: add a fixtures-based cross-check test vs. TA-Lib/technicalindicators reference values
 - [ ] `devtools/semver-bump`: align type→bump table with semantic-release; hardcode types from @commitlint/config-conventional
-- [ ] Add `.github/workflows/ci.yml` (node --test matrix + registry drift check) — YAML ready in DISCOVERY.md
+- [x] Add `.github/workflows/ci.yml` (node --test matrix + registry drift check)
 - [ ] Add Ajv-based manifest JSON-Schema validation as a dev/CI gate (keep runtime SDK zero-dep)
 - [ ] Align skill manifest naming/description with Anthropic Agent Skills conventions
 - [ ] Publish path: JSR (ESM, no build) + serve registry.json over HTTP via esm.sh/unpkg
