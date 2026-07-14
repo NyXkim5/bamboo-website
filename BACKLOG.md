@@ -22,7 +22,7 @@ keep a pure, testable core and tag `"network"`.
 - [x] Skill contract + registry + SDK + CLI + browsable catalog
 - [ ] JSON-schema validation of `meta` in the registry loader
 - [ ] `core/new-skill.mjs` scaffolder (generates folder + stub + test)
-- [ ] Catalog: live-run a *pure* skill in-browser (bundle pure skills to the page)
+- [x] Catalog: live-run a *pure* skill in-browser (blob-module import; verified in Chromium)
 - [ ] GitHub Action: run `node --test` on every push (CI green gate)
 - [ ] Publish `registry.json` so other repos can fetch the index over HTTP
 
@@ -100,3 +100,8 @@ keep a pure, testable core and tag `"network"`.
 - 2026-07-13: Council batch 1 (12 Fable agents build + 12 harden): stochastic-oscillator,
   obv, cagr, vwap, slugify, gitignore-gen, json-schema-infer, nearest-css-color,
   tailwind-shades, tokenize, tf-idf, ngrams. 36 skills, 299 tests green.
+- 2026-07-13: Council batch 2: ema, roc, williams-r, sharpe-rolling, diff-summary,
+  case-convert, cron-describe, oklch-convert, color-mix, levenshtein, stopwords,
+  textrank-summary. 48 skills, 446 tests green.
+- 2026-07-13: Interactive catalog — per-skill drawer + live in-browser "Try it"
+  (blob-module import, verified in Chromium, zero page errors).
