@@ -34,16 +34,18 @@ keep a pure, testable core and tag `"network"`.
 - [ ] `finance/sector-screener` — filter a ticker list by sector (e.g. defense) + metrics
 - [x] `finance/macd` — MACD indicator (12/26/9)
 - [x] `finance/bollinger` — Bollinger Bands (SMA ± k·stddev)
+- [x] `finance/atr` — Average True Range volatility measure
 - [ ] `finance/position-size` — risk-based position sizing from stop distance + account risk
-- [ ] `finance/atr` — Average True Range volatility measure
+- [ ] `finance/sharpe-rolling` — rolling Sharpe ratio over a window
 
 ## devtools
 - [x] `devtools/code-review` — heuristic static review
 - [x] `devtools/conventional-commit` — validate/parse Conventional Commit messages
 - [ ] `devtools/diff-summary` — summarize a unified git diff into a changelog line
 - [x] `devtools/semver-bump` — compute the next version from commit types
+- [x] `devtools/test-scaffold` — generate a test stub from a function signature
 - [ ] `devtools/ci-pipeline-gen` — emit a CI YAML from a project description
-- [ ] `devtools/test-scaffold` — generate a test stub from a function signature
+- [ ] `devtools/env-validate` — check a .env against a required-keys schema
 
 ## design
 - [x] `design/palette-gen` — accessible palette generator
@@ -51,14 +53,16 @@ keep a pure, testable core and tag `"network"`.
 - [x] `design/type-scale` — modular typographic scale from a base + ratio
 - [x] `design/spacing-tokens` — generate a spacing scale + CSS variables
 - [x] `design/gradient-gen` — perceptually-even multi-stop gradient from 2 colors
-- [ ] `design/shadow-scale` — layered elevation shadow tokens
+- [x] `design/shadow-scale` — layered elevation shadow tokens
+- [ ] `design/aspect-ratios` — common aspect-ratio helpers + CSS
 
 ## research
 - [x] `research/extractive-summary` — TF summary + keywords
 - [x] `research/readability` — Flesch reading-ease + grade level
 - [x] `research/dedupe` — near-duplicate detection across a list of texts
+- [x] `research/keyword-density` — term frequency / density report for SEO
 - [ ] `research/feed-parse` — RSS/Atom parser (network; pure parser core)
-- [ ] `research/keyword-density` — term frequency / density report for SEO
+- [ ] `research/sentiment` — lexicon-based sentiment score
 
 ## Needs human input
 - Live in-browser execution vs. a small run server — decide before building the API.
@@ -72,3 +76,5 @@ keep a pure, testable core and tag `"network"`.
   13 skills, 79 tests green.
 - 2026-07-13: Added finance/bollinger, devtools/semver-bump, design/gradient-gen.
   16 skills, 99 tests green.
+- 2026-07-13: Added finance/atr, devtools/test-scaffold, design/shadow-scale,
+  research/keyword-density. 20 skills, 122 tests green.
