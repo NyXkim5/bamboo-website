@@ -6,6 +6,7 @@ import { LegalSection } from "../legal-section";
 export const metadata: Metadata = {
   title: "Terms of Service - Bamboo",
   description: "The terms that govern your use of the Bamboo nutrition app.",
+  alternates: { canonical: "/terms" },
 };
 
 export default function TermsPage() {

@@ -5,6 +5,7 @@ import { LegalHeader } from "../legal-header";
 export const metadata: Metadata = {
   title: "Support - Bamboo",
   description: "Get help with the Bamboo nutrition app.",
+  alternates: { canonical: "/support" },
 };
 
 export default function SupportPage() {
