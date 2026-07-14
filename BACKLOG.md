@@ -30,7 +30,7 @@ keep a pure, testable core and tag `"network"`.
 - [x] `finance/sma-backtest` — SMA crossover backtest
 - [x] `finance/rsi` — Relative Strength Index indicator (Wilder's smoothing)
 - [x] `finance/portfolio-metrics` — Sharpe, volatility, annualized return, max drawdown
-- [ ] `finance/price-history` — fetch OHLC from a public API (network; pure parser core)
+- [x] `finance/price-history` — parse OHLC from Stooq/Yahoo CSV (pure core; keyless Stooq fetch is external)
 - [ ] `finance/sector-screener` — filter a ticker list by sector (e.g. defense) + metrics
 - [x] `finance/macd` — MACD indicator (12/26/9)
 - [x] `finance/bollinger` — Bollinger Bands (SMA ± k·stddev)

@@ -1,6 +1,6 @@
 {
   "generatedFrom": "core/registry.mjs",
-  "count": 86,
+  "count": 87,
   "domains": [
     "design",
     "devtools",
@@ -1306,6 +1306,28 @@
       "outputs": "{ shares, riskPerShare, dollarRisk, positionValue, capped }",
       "license": "MIT",
       "source": "Original implementation; standard fixed-fractional position sizing."
+    },
+    {
+      "id": "finance/price-history",
+      "name": "OHLC Price History Parser",
+      "domain": "finance",
+      "version": "0.1.0",
+      "description": "Parse a Stooq/Yahoo-style OHLC CSV string into normalized bars [{date,open,high,low,close,volume}], oldest→newest, with basic sanity checks. Fetching is a separate, keyless concern (Stooq).",
+      "tags": [
+        "finance",
+        "ohlc",
+        "csv",
+        "prices",
+        "parser",
+        "network"
+      ],
+      "inputs": {
+        "csv": "CSV text with a header row (Date,Open,High,Low,Close,Volume[,Adj Close])",
+        "order": "'asc' | 'desc' output order by date (default 'asc')"
+      },
+      "outputs": "{ count, bars: [{ date, open, high, low, close, volume }], closes: number[] }",
+      "license": "MIT",
+      "source": "Stooq / Yahoo Finance CSV column format; original zero-dep parser."
     },
     {
       "id": "finance/returns",
