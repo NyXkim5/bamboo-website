@@ -1,6 +1,6 @@
 {
   "generatedFrom": "core/registry.mjs",
-  "count": 74,
+  "count": 86,
   "domains": [
     "design",
     "devtools",
@@ -120,6 +120,27 @@
       "outputs": "{ stops: hex[], css: string }",
       "license": "MIT",
       "source": "Original implementation; HSL linear interpolation."
+    },
+    {
+      "id": "design/hex-normalize",
+      "name": "Hex Color Normalize",
+      "domain": "design",
+      "version": "0.1.0",
+      "description": "Normalize CSS hex colors: expand 3-digit shorthand (#abc -> #aabbcc), shorten 6-digit hex to shorthand when every channel is a doubled nibble (#aabbcc -> #abc), and lowercase. form 'long' always expands, 'short' requires a shortenable color (throws otherwise), 'auto' shortens when possible else expands.",
+      "tags": [
+        "color",
+        "hex",
+        "css",
+        "normalize",
+        "design"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "hex": "string - a 3- or 6-digit hex color, with or without leading '#' (e.g. '#AbC' or 'aabbcc')",
+        "form": "string (optional) - 'long' (default), 'short', or 'auto'"
+      },
+      "outputs": "object { hex: string (normalized, lowercase, with leading '#'), canLong: boolean (always true for valid input), canShort: boolean (true when a 3-digit shorthand exists) }",
+      "source": "Original implementation for SkillForge; follows CSS Color hex notation rules."
     },
     {
       "id": "design/hsl-convert",
@@ -257,6 +278,27 @@
       "source": "OKLab/OKLCH color space and sRGB<->OKLab conversion matrices by Bjorn Ottosson, 'A perceptual color space for image processing' (bottosson.github.io/posts/oklab, public domain / MIT). Implementation written from the published math, no code copied."
     },
     {
+      "id": "design/readable-text-color",
+      "name": "Readable Text Color",
+      "domain": "design",
+      "version": "0.1.0",
+      "description": "Given a background hex color, picks black or white text (whichever has the higher WCAG 2.x contrast ratio) and returns both contrast ratios, computed via sRGB relative luminance and (L1+0.05)/(L2+0.05).",
+      "tags": [
+        "color",
+        "contrast",
+        "wcag",
+        "accessibility",
+        "a11y",
+        "design"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "bg": "Background color as a hex string: #RGB, #RRGGBB (leading '#' optional)."
+      },
+      "outputs": "{ textColor: '#000000' | '#ffffff', contrastBlack: number, contrastWhite: number } — ratios rounded to 2 decimals.",
+      "source": "Original implementation of the WCAG 2.x relative-luminance and contrast-ratio formulas (W3C WCAG 2.1, sections on relative luminance and contrast ratio)."
+    },
+    {
       "id": "design/shadow-scale",
       "name": "Elevation Shadow Scale",
       "domain": "design",
@@ -320,6 +362,28 @@
       },
       "outputs": "{ shades: { '50': hex, '100': hex, ..., '900': hex, '950': hex } } — 11 lowercase #rrggbb strings",
       "source": "Standard RGB<->HSL conversion formulas (CSS Color Module Level 3, W3C; also Foley & van Dam, 'Computer Graphics: Principles and Practice'). Shade-scale convention modeled on Tailwind CSS's numeric palette naming. Original implementation, no copied code."
+    },
+    {
+      "id": "design/tints-shades",
+      "name": "Tints & Shades",
+      "domain": "design",
+      "version": "0.1.0",
+      "description": "Generate evenly spaced tints (mixed toward white) and shades (mixed toward black) of a base hex color. Returns base-first arrays; the mix fraction never reaches 1, though 8-bit rounding can land on pure white/black for bases within half a rounding step of an extreme (e.g. #fefefe).",
+      "tags": [
+        "color",
+        "hex",
+        "tints",
+        "shades",
+        "palette",
+        "design"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "base": "string — hex color (#RGB, #RRGGBB, with or without leading #), required",
+        "steps": "integer — number of swatches per ramp including the base (default 5, min 1, max 100)"
+      },
+      "outputs": "{ base: string, steps: number, tints: string[], shades: string[] } — lowercase #rrggbb hex arrays, each starting with the base color",
+      "source": "Original implementation of standard tint/shade color mixing (linear RGB interpolation toward white/black)."
     },
     {
       "id": "design/type-scale",
@@ -518,6 +582,30 @@
       "source": "Original implementation of the standard unified diff format (POSIX diff -u / git diff) and git's diffstat --shortstat summary convention; no copied code."
     },
     {
+      "id": "devtools/dotenv-parse",
+      "name": "Dotenv Parse",
+      "domain": "devtools",
+      "version": "0.1.0",
+      "description": "Parse .env file text into an object of key/value pairs. Handles KEY=VALUE lines, blank lines, # comments, surrounding quotes, and 'export KEY=VALUE' syntax. Lines without '=' are skipped. Prototype-ish keys (e.g. __proto__) are assigned safely as own properties.",
+      "tags": [
+        "dotenv",
+        "env",
+        "config",
+        "parser",
+        "devtools"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "text": {
+          "type": "string",
+          "required": true,
+          "description": "Raw .env file contents to parse."
+        }
+      },
+      "outputs": "{ env: object } — map of parsed environment variable names to string values.",
+      "source": "Original implementation for SkillForge, informed by the de-facto dotenv file format conventions (no code copied)."
+    },
+    {
       "id": "devtools/duration",
       "name": "Duration Parser & Formatter",
       "domain": "devtools",
@@ -643,6 +731,28 @@
       "source": "Original implementation of the standard type-inference approach described by the JSON Schema draft-07 specification (json-schema.org, IETF draft handrews-json-schema-01). No code copied."
     },
     {
+      "id": "devtools/markdown-toc",
+      "name": "Markdown TOC Generator",
+      "domain": "devtools",
+      "version": "0.1.1",
+      "description": "Generates a table of contents from markdown ATX headings (# ... ######), allowing the CommonMark 0-3 leading spaces. Skips headings inside ``` or ~~~ fenced code blocks. Builds GitHub-style slug anchors (lowercase, spaces to hyphens, strip non-alphanumeric except hyphens) with -1/-2 suffixes for duplicates, guaranteed collision-free against previously emitted slugs. Respects maxDepth (default 3). Returns the TOC entries and a rendered markdown list indented by (level - 1) * 2 spaces.",
+      "tags": [
+        "markdown",
+        "toc",
+        "table-of-contents",
+        "headings",
+        "slug",
+        "docs"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "markdown": "string (required) — the markdown document to scan",
+        "maxDepth": "integer 1-6 (optional, default 3) — include headings up to this level"
+      },
+      "outputs": "{ toc: Array<{ level: number, text: string, slug: string }>, markdown: string } — toc entries in document order and a markdown bullet list of anchor links",
+      "source": "Original implementation; slug scheme modeled on the commonly documented GitHub heading-anchor convention."
+    },
+    {
       "id": "devtools/query-string",
       "name": "Query String Parser/Stringifier",
       "domain": "devtools",
@@ -685,6 +795,27 @@
       "outputs": "{ current, next, bump }",
       "license": "MIT",
       "source": "Original implementation per semver.org 2.0.0 + Conventional Commits mapping."
+    },
+    {
+      "id": "devtools/semver-compare",
+      "name": "Semver Compare",
+      "domain": "devtools",
+      "version": "0.1.0",
+      "description": "Compare two semantic version strings x.y.z[-prerelease][+build] and return -1, 0, or 1. Precedence follows major, minor, patch, then prerelease identifiers (a version with a prerelease sorts before the same version without one). Build metadata is validated but ignored for precedence, per SemVer 2.0.0.",
+      "tags": [
+        "semver",
+        "version",
+        "compare",
+        "sort",
+        "devtools"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "a": "string — first semver, e.g. \"1.2.3\" or \"1.2.3-alpha.1\"",
+        "b": "string — second semver to compare against a"
+      },
+      "outputs": "object { result: -1|0|1, aParsed: {major,minor,patch,prerelease,build}, bParsed: {major,minor,patch,prerelease,build} }",
+      "source": "Original implementation following the SemVer 2.0.0 precedence rules (semver.org)."
     },
     {
       "id": "devtools/slugify",
@@ -754,6 +885,41 @@
       },
       "outputs": "{ valid: boolean, version: number|null, variant: 'NCS'|'RFC4122'|'Microsoft'|'Future'|null, isNil: boolean }",
       "source": "UUID layout, version field, and variant bit rules per RFC 4122 / RFC 9562 (ISO/IEC 9834-8). Original implementation; no code copied."
+    },
+    {
+      "id": "finance/annualized-return",
+      "name": "Annualized Return",
+      "domain": "finance",
+      "version": "0.1.0",
+      "description": "Annualizes a total return over a number of periods using (1 + totalReturn)^(periodsPerYear / periods) - 1, rounded to 6 decimal places.",
+      "tags": [
+        "finance",
+        "return",
+        "annualized",
+        "cagr",
+        "performance"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "totalReturn": {
+          "type": "number",
+          "required": true,
+          "description": "Total return over the whole span as a decimal (e.g. 0.1 for +10%). Must satisfy 1 + totalReturn > 0."
+        },
+        "periods": {
+          "type": "number",
+          "required": true,
+          "description": "Number of periods the total return spans. Must be > 0."
+        },
+        "periodsPerYear": {
+          "type": "number",
+          "required": false,
+          "default": 252,
+          "description": "Periods per year (default 252 trading days). Must be > 0."
+        }
+      },
+      "outputs": "{ annualized: number } — the annualized return as a decimal, rounded to 6 decimal places.",
+      "source": "Standard annualization formula: (1 + R)^(N/n) - 1. Original implementation."
     },
     {
       "id": "finance/atr",
@@ -867,6 +1033,28 @@
       "source": "Standard Commodity Channel Index formula as introduced by Donald Lambert (Commodities magazine, 1980); implemented from the published definition, no code copied."
     },
     {
+      "id": "finance/donchian-channels",
+      "name": "Donchian Channels",
+      "domain": "finance",
+      "version": "0.1.0",
+      "description": "Computes Donchian Channels over a rolling window: upper band = highest high, lower band = lowest low, middle band = (upper + lower) / 2.",
+      "tags": [
+        "finance",
+        "technical-analysis",
+        "indicator",
+        "donchian",
+        "channels",
+        "volatility"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "bars": "Array of bar objects [{ high:number, low:number }], oldest first. Required.",
+        "period": "Rolling window length (positive integer). Default 20. bars.length must be >= period."
+      },
+      "outputs": "{ upper:number[], lower:number[], middle:number[], latest:{ upper:number, lower:number, middle:number } } — arrays have length bars.length - period + 1, one entry per completed window.",
+      "source": "Original implementation of Richard Donchian's channel indicator (public-domain formula)."
+    },
+    {
       "id": "finance/ema",
       "name": "Exponential Moving Average",
       "domain": "finance",
@@ -908,6 +1096,30 @@
       },
       "outputs": "{ kelly: number, halfKelly: number } — optimal bet fraction (clamped at 0) and half of it",
       "source": "Kelly criterion, J. L. Kelly Jr., 'A New Interpretation of Information Rate' (1956); standard formula f* = p - (1-p)/b. Original implementation, no copied code."
+    },
+    {
+      "id": "finance/keltner-channels",
+      "name": "Keltner Channels",
+      "domain": "finance",
+      "version": "0.1.0",
+      "description": "Computes Keltner Channels: middle line = EMA(close, period); band width = mult * ATR(period), where ATR uses Wilder-smoothed true range. Returns aligned middle/upper/lower arrays and the latest values.",
+      "tags": [
+        "keltner",
+        "channels",
+        "ema",
+        "atr",
+        "volatility",
+        "technical-analysis",
+        "indicator"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "bars": "Array of OHLC bars: [{ high:number, low:number, close:number }, ...]; length must be >= period + 1",
+        "period": "Lookback period for EMA and ATR (positive integer, default 20)",
+        "mult": "ATR multiplier for band width (finite number > 0, default 2)"
+      },
+      "outputs": "{ middle:number[], upper:number[], lower:number[], atr:number[], latest:{ middle:number, upper:number, lower:number, atr:number } } — arrays aligned, element j corresponds to bars[period + j]",
+      "source": "Original implementation from the standard Keltner Channel definition (Chester Keltner, popularized by Linda Bradford Raschke): EMA midline with Wilder ATR bands."
     },
     {
       "id": "finance/macd",
@@ -974,6 +1186,36 @@
       },
       "outputs": "{ mfi: number[] (one value per bar starting at index `period`), latest: number, signal: 'overbought' | 'oversold' | 'neutral' }",
       "source": "Standard Money Flow Index algorithm as introduced by Gene Quong and Avrum Soudack; implemented from the published formula (typical price money flow ratio), not from any copied code."
+    },
+    {
+      "id": "finance/momentum",
+      "name": "Momentum Indicator",
+      "domain": "finance",
+      "version": "0.1.0",
+      "description": "Computes the momentum indicator over a price series: momentum[i] = price[i] - price[i-period]. Returns the momentum series, the latest value, and a simple up/down/flat signal.",
+      "tags": [
+        "finance",
+        "momentum",
+        "technical-analysis",
+        "indicator",
+        "trading"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "prices": {
+          "type": "number[]",
+          "required": true,
+          "description": "Price series in chronological order. Length must be greater than period."
+        },
+        "period": {
+          "type": "number",
+          "required": false,
+          "default": 10,
+          "description": "Lookback period (positive integer). Defaults to 10."
+        }
+      },
+      "outputs": "{ momentum: number[] (length prices.length - period), latest: number, signal: 'up' | 'down' | 'flat' }",
+      "source": "Original implementation of the standard momentum indicator formula (price difference over a lookback period), a widely documented public-domain technical analysis concept."
     },
     {
       "id": "finance/obv",
@@ -1397,6 +1639,27 @@
       "source": "Standard bag-of-words frequency counting (term frequency), as described in classic information retrieval literature (e.g. Manning, Raghavan & Schutze, 'Introduction to Information Retrieval'). Original implementation; no code copied."
     },
     {
+      "id": "research/hashtag-extract",
+      "name": "Hashtag & Mention Extractor",
+      "domain": "research",
+      "version": "0.1.0",
+      "description": "Extracts #hashtags, @mentions, and URLs from free text. Hashtags and mentions are returned lowercased and deduplicated in order of first appearance; URLs are returned as-is (deduplicated).",
+      "tags": [
+        "hashtags",
+        "mentions",
+        "urls",
+        "social-media",
+        "text-extraction",
+        "parsing"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "text": "string — the text to scan for #hashtags, @mentions, and http(s) URLs"
+      },
+      "outputs": "{ hashtags: string[], mentions: string[], urls: string[] } — hashtags/mentions lowercased+deduped (no leading #/@), urls as-is deduped",
+      "source": "Original implementation for SkillForge; regex-based tokenizer written from scratch."
+    },
+    {
       "id": "research/jaccard",
       "name": "Jaccard Similarity",
       "domain": "research",
@@ -1460,6 +1723,28 @@
       },
       "outputs": "{ distance: number, similarity: number } — edit distance and normalized similarity in [0, 1]",
       "source": "Standard Levenshtein distance (V. Levenshtein, 1966) via the Wagner-Fischer dynamic programming algorithm with single-row optimization; original implementation, no copied code."
+    },
+    {
+      "id": "research/lorem",
+      "name": "Lorem Ipsum Generator",
+      "domain": "research",
+      "version": "0.1.0",
+      "description": "Deterministic lorem-ipsum placeholder text generator. Cycles a fixed latin word list (no randomness) to produce a requested number of words, sentences, or paragraphs.",
+      "tags": [
+        "lorem",
+        "placeholder",
+        "text",
+        "generator",
+        "deterministic"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "words": "optional positive integer (max 100000) — number of words (single sentence). Default 20 when no key given.",
+        "sentences": "optional positive integer (max 100000) — number of 8-word sentences.",
+        "paragraphs": "optional positive integer (max 100000) — number of paragraphs (4 sentences of 8 words each), joined by blank lines."
+      },
+      "outputs": "{ text: string } — generated lorem-ipsum text.",
+      "source": "Original implementation; word list is the traditional public-domain 'Lorem ipsum' opening derived from Cicero's De finibus bonorum et malorum."
     },
     {
       "id": "research/ngrams",

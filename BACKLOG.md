@@ -116,3 +116,6 @@ keep a pure, testable core and tag `"network"`.
 - 2026-07-13: Council batch 4: cci, sortino, pivot-points, mfi, json-path,
   query-string, base64, hsl-convert, luminance, color-scheme, word-count,
   frequency. 74 skills, 756 tests green.
+- 2026-07-13: Council batch 5: keltner-channels, donchian-channels, momentum,
+  annualized-return, dotenv-parse, semver-compare, markdown-toc, tints-shades,
+  readable-text-color, hex-normalize, hashtag-extract, lorem. 86 skills, 899 tests green.
