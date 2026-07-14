@@ -1,6 +1,6 @@
 {
   "generatedFrom": "core/registry.mjs",
-  "count": 36,
+  "count": 48,
   "domains": [
     "design",
     "devtools",
@@ -29,6 +29,31 @@
       "outputs": "{ ratio: 'w:h', decimal, name, css, solved }",
       "license": "MIT",
       "source": "Original implementation; Euclid GCD reduction."
+    },
+    {
+      "id": "design/color-mix",
+      "name": "Color Mix",
+      "domain": "design",
+      "version": "0.1.0",
+      "description": "Mix two hex colors by a weight ratio, interpolating either raw sRGB channel values or gamma-correct linear-light values.",
+      "tags": [
+        "color",
+        "hex",
+        "blend",
+        "interpolation",
+        "srgb",
+        "linear",
+        "gamma"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "a": "First hex color (#RGB or #RRGGBB). Returned when ratio = 0.",
+        "b": "Second hex color (#RGB or #RRGGBB). Returned when ratio = 1.",
+        "ratio": "Mix weight toward b, number in [0,1]. Optional, default 0.5.",
+        "space": "Interpolation space: \"srgb\" (raw channels) or \"linear\" (gamma-decoded). Optional, default \"srgb\"."
+      },
+      "outputs": "{ hex } — the mixed color as a lowercase \"#rrggbb\" string.",
+      "source": "Standard linear interpolation of color channels; sRGB transfer function per IEC 61966-2-1 (as used by CSS Color 4 color-mix()). Original implementation."
     },
     {
       "id": "design/contrast-check",
@@ -94,6 +119,31 @@
       },
       "outputs": "{ name: string, hex: string, distance: number } — the nearest CSS named color, its canonical hex value, and the squared RGB distance",
       "source": "Standard nearest-neighbor search using squared Euclidean distance in RGB space; color values from the CSS Color Module Level 4 named-colors table (W3C). Original implementation, no copied code."
+    },
+    {
+      "id": "design/oklch-convert",
+      "name": "OKLCH Converter",
+      "domain": "design",
+      "version": "0.1.1",
+      "description": "Convert between sRGB hex, OKLab, and OKLCH color spaces using Björn Ottosson's OKLab math. Accepts {hex} or {l,c,h}; returns hex plus OKLab and OKLCH coordinates.",
+      "tags": [
+        "color",
+        "oklch",
+        "oklab",
+        "srgb",
+        "hex",
+        "conversion",
+        "design-tokens"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "hex": "string — sRGB hex color like '#ff8800', '#f80', 'ff8800' (mutually exclusive with l/c/h)",
+        "l": "number — OKLCH lightness in [0,1] (with c and h)",
+        "c": "number — OKLCH chroma, >= 0",
+        "h": "number — OKLCH hue in degrees (any finite number; normalized to [0,360))"
+      },
+      "outputs": "{ hex: string ('#rrggbb', gamut-clamped), oklab: { L, a, b }, oklch: { l, c, h } }",
+      "source": "OKLab / OKLCH color space and matrices by Björn Ottosson, 'A perceptual color space for image processing' (bottosson.github.io/posts/oklab, public-domain reference math); sRGB transfer function per IEC 61966-2-1. Original implementation, no copied code."
     },
     {
       "id": "design/palette-gen",
@@ -205,6 +255,28 @@
       "source": "Original implementation of the classic modular-scale technique."
     },
     {
+      "id": "devtools/case-convert",
+      "name": "Case Convert",
+      "domain": "devtools",
+      "version": "0.1.0",
+      "description": "Convert an identifier between camel, pascal, snake, kebab, and constant case by detecting word boundaries (camelCase transitions, underscores, hyphens, spaces).",
+      "tags": [
+        "case",
+        "identifier",
+        "string",
+        "camelCase",
+        "snake_case",
+        "kebab-case"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "text": "string — the identifier to convert (any mix of cases/separators)",
+        "to": "string — target case: one of 'camel', 'pascal', 'snake', 'kebab', 'constant'"
+      },
+      "outputs": "{ result: string, words: string[], to: string } — converted identifier, detected lowercase words, and the target case",
+      "source": "Standard identifier case-conversion conventions (camelCase/PascalCase/snake_case/kebab-case/CONSTANT_CASE) with regex word-boundary splitting; original implementation."
+    },
+    {
       "id": "devtools/code-review",
       "name": "Heuristic Code Review",
       "domain": "devtools",
@@ -245,6 +317,46 @@
       "outputs": "{ valid, type, scope, breaking, subject, errors: string[] }",
       "license": "MIT",
       "source": "Original implementation of the Conventional Commits 1.0.0 grammar."
+    },
+    {
+      "id": "devtools/cron-describe",
+      "name": "Cron Describe",
+      "domain": "devtools",
+      "version": "0.1.0",
+      "description": "Translate a standard 5-field cron expression into a plain-English description, handling *, */n steps, a-b ranges, and a,b,c lists.",
+      "tags": [
+        "cron",
+        "scheduler",
+        "devtools",
+        "parser",
+        "human-readable"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "expr": "string — a 5-field cron expression: minute hour day-of-month month day-of-week"
+      },
+      "outputs": "{ description: string, fields: { minute, hour, dayOfMonth, month, dayOfWeek } } — plain-English description plus the raw value of each cron field",
+      "source": "Original implementation following the POSIX/Vixie crontab(5) field syntax; phrasing conventions inspired by common cron-description tools (e.g. cronstrue), no code copied."
+    },
+    {
+      "id": "devtools/diff-summary",
+      "name": "Diff Summary",
+      "domain": "devtools",
+      "version": "0.1.0",
+      "description": "Parse a unified diff string and report files changed, insertions, deletions, per-file stats, and a git-style one-line summary.",
+      "tags": [
+        "diff",
+        "git",
+        "unified-diff",
+        "diffstat",
+        "devtools"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "diff": "string — unified diff text (as produced by `git diff` / `diff -u`)"
+      },
+      "outputs": "{ filesChanged: number, insertions: number, deletions: number, files: [{ path: string, adds: number, dels: number }], summary: string }",
+      "source": "Original implementation of the standard unified diff format (POSIX diff -u / git diff) and git's diffstat --shortstat summary convention; no copied code."
     },
     {
       "id": "devtools/env-validate",
@@ -443,6 +555,27 @@
       "source": "Standard CAGR formula: (end/begin)^(1/years) - 1. Textbook finance definition (public domain mathematics); no code copied."
     },
     {
+      "id": "finance/ema",
+      "name": "Exponential Moving Average",
+      "domain": "finance",
+      "version": "0.1.0",
+      "description": "Computes the Exponential Moving Average of a price series. Uses smoothing factor k = 2/(period+1), seeded with the SMA of the first `period` prices.",
+      "tags": [
+        "finance",
+        "technical-analysis",
+        "moving-average",
+        "ema",
+        "time-series"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "prices": "number[] — price series (finite numbers), length must be >= period",
+        "period": "integer >= 1 — lookback period (default 12)"
+      },
+      "outputs": "{ ema: number[], latest: number } — ema[0] is the SMA seed at index period-1; latest is the final EMA value",
+      "source": "Standard EMA formula as described in classical technical analysis literature (e.g. J. Welles Wilder / common TA references); original implementation, no copied code."
+    },
+    {
       "id": "finance/macd",
       "name": "MACD Indicator",
       "domain": "finance",
@@ -535,6 +668,28 @@
       "source": "Original implementation; standard fixed-fractional position sizing."
     },
     {
+      "id": "finance/roc",
+      "name": "Rate of Change (ROC)",
+      "domain": "finance",
+      "version": "0.1.0",
+      "description": "Computes the Rate of Change momentum oscillator (percentage change over a lookback period) for a price series, with a rising/falling/flat signal from the latest value.",
+      "tags": [
+        "finance",
+        "momentum",
+        "oscillator",
+        "roc",
+        "technical-analysis",
+        "indicator"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "prices": "number[] — price series in chronological order (length must be greater than period)",
+        "period": "integer >= 1 — lookback period (default 12)"
+      },
+      "outputs": "{ roc: number[], latest: number, signal: 'rising'|'falling'|'flat' } — ROC%, the last ROC value, and a sign-based momentum signal",
+      "source": "Standard Rate of Change (ROC) momentum indicator as described in classical technical analysis literature (e.g. Murphy, 'Technical Analysis of the Financial Markets'); implemented from the mathematical definition, no copied code."
+    },
+    {
       "id": "finance/rsi",
       "name": "Relative Strength Index (RSI)",
       "domain": "finance",
@@ -555,6 +710,30 @@
       "outputs": "{ rsi: number[], latest, signal: 'overbought'|'oversold'|'neutral' }",
       "license": "MIT",
       "source": "Original implementation of Wilder's RSI (New Concepts in Technical Trading Systems, 1978)."
+    },
+    {
+      "id": "finance/sharpe-rolling",
+      "name": "Rolling Annualized Sharpe Ratio",
+      "domain": "finance",
+      "version": "0.1.0",
+      "description": "Computes the rolling annualized Sharpe ratio over a sliding window from a series of periodic returns. Each window's Sharpe is mean(excess)/sampleStddev(excess)*sqrt(periodsPerYear), with excess = return - riskFree/periodsPerYear. Windows with zero standard deviation produce null.",
+      "tags": [
+        "finance",
+        "sharpe",
+        "risk",
+        "rolling",
+        "returns",
+        "statistics"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "returns": "number[] - periodic returns (e.g. daily), length >= window",
+        "window": "integer >= 2 - rolling window size (default 20)",
+        "periodsPerYear": "positive number - periods per year for annualization (default 252)",
+        "riskFree": "number - annual risk-free rate (default 0)"
+      },
+      "outputs": "{ sharpe: (number|null)[], latest: number|null } - one entry per window (length = returns.length - window + 1); latest is the last entry",
+      "source": "Standard Sharpe ratio (W. F. Sharpe, 'Mutual Fund Performance', Journal of Business, 1966) with the conventional sqrt(periods-per-year) annualization; original implementation, no copied code."
     },
     {
       "id": "finance/sma-backtest",
@@ -620,6 +799,28 @@
       },
       "outputs": "{ vwap: number[], latest: number, lastClose: number, position: 'above'|'below'|'equal' }",
       "source": "Standard VWAP definition (cumulative sum of typical price times volume over cumulative volume), as described in public technical-analysis references (e.g. Wikipedia: Volume-weighted average price). Original implementation, no copied code."
+    },
+    {
+      "id": "finance/williams-r",
+      "name": "Williams %R",
+      "domain": "finance",
+      "version": "0.1.0",
+      "description": "Computes the Williams %R momentum oscillator over OHLC bars with a rolling lookback period, returning the %R series, the latest value, and an overbought/oversold/neutral signal.",
+      "tags": [
+        "finance",
+        "technical-analysis",
+        "indicator",
+        "oscillator",
+        "momentum",
+        "williams-r"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "bars": "Array of bar objects [{high, low, close}] in chronological order; finite numbers with low <= close <= high. Length must be >= period.",
+        "period": "Optional positive integer lookback window (default 14)."
+      },
+      "outputs": "{ wr: number[] (%R per bar starting at index period-1, each in [-100, 0]), latest: number, signal: 'overbought' | 'oversold' | 'neutral' }",
+      "source": "Standard Williams %R formula as introduced by Larry Williams; reference definition per common technical-analysis literature (e.g. StockCharts / Wilder-era TA texts). Original implementation, no copied code."
     },
     {
       "id": "research/dedupe",
@@ -688,6 +889,27 @@
       "source": "Original implementation of TF density with SEO stuffing heuristic."
     },
     {
+      "id": "research/levenshtein",
+      "name": "Levenshtein Edit Distance",
+      "domain": "research",
+      "version": "0.1.0",
+      "description": "Computes the Levenshtein edit distance between two strings (counted in Unicode code points) and a normalized similarity score (1 - distance / max length).",
+      "tags": [
+        "string",
+        "edit-distance",
+        "levenshtein",
+        "similarity",
+        "fuzzy-matching"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "a": "string — first string",
+        "b": "string — second string"
+      },
+      "outputs": "{ distance: number, similarity: number } — edit distance and normalized similarity in [0, 1]",
+      "source": "Standard Levenshtein distance (V. Levenshtein, 1966) via the Wagner-Fischer dynamic programming algorithm with single-row optimization; original implementation, no copied code."
+    },
+    {
       "id": "research/ngrams",
       "name": "Word N-grams",
       "domain": "research",
@@ -748,6 +970,48 @@
       "outputs": "{ score, label, positives: string[], negatives: string[], tokens }",
       "license": "MIT",
       "source": "Original implementation; compact hand-built polarity lexicon."
+    },
+    {
+      "id": "research/stopwords",
+      "name": "English Stopword Filter",
+      "domain": "research",
+      "version": "0.1.0",
+      "description": "Tokenizes text into lowercase alphanumeric tokens and removes common English stopwords, with optional user-supplied additional stopwords.",
+      "tags": [
+        "nlp",
+        "stopwords",
+        "tokenization",
+        "text-processing",
+        "preprocessing"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "text": "string — the text to filter",
+        "extra": "string[] (optional) — additional stopwords to remove (case-insensitive)"
+      },
+      "outputs": "{ tokens: string[] (tokens kept after stopword removal, in order), removed: number, kept: number }",
+      "source": "Standard stopword-filtering preprocessing step from information retrieval (cf. Manning, Raghavan & Schütze, 'Introduction to Information Retrieval'); stopword list based on common English function words."
+    },
+    {
+      "id": "research/textrank-summary",
+      "name": "TextRank Summary",
+      "domain": "research",
+      "version": "0.1.0",
+      "description": "Extractive text summarization via TextRank: sentence similarity graph plus PageRank scoring, returning the top-N sentences in original document order.",
+      "tags": [
+        "textrank",
+        "summarization",
+        "nlp",
+        "pagerank",
+        "extractive"
+      ],
+      "license": "MIT",
+      "inputs": {
+        "text": "string (required) — the document to summarize",
+        "sentences": "integer >= 1 (optional, default 3) — number of sentences to include in the summary"
+      },
+      "outputs": "{ summary: string[] (top-N sentences in original document order), scores: number[] (TextRank score per sentence of the full document, in document order) }",
+      "source": "TextRank algorithm as described in Mihalcea & Tarau, 'TextRank: Bringing Order into Text', EMNLP 2004. Original implementation; no code copied."
     },
     {
       "id": "research/tf-idf",
