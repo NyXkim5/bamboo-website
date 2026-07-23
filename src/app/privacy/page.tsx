@@ -16,7 +16,7 @@ export default function PrivacyPage() {
         <h1 className="font-[family-name:var(--font-heading)] text-3xl mb-1">
           Privacy Policy
         </h1>
-        <p className="text-sm text-[var(--ink-soft)] mb-8">Effective date: July 18, 2026</p>
+        <p className="text-sm text-[var(--ink-soft)] mb-8">Effective date: July 23, 2026</p>
 
         <p className="mb-4">
           Bamboo is a local-first nutrition app. Your food logs, profile, goals, and wellness data
@@ -46,7 +46,7 @@ export default function PrivacyPage() {
             <li><strong>Food logs:</strong> foods you add, amounts, meal types, and timestamps.</li>
             <li><strong>Profile and goals:</strong> name, body details, activity level, and goal.</li>
             <li><strong>Scores and trends:</strong> nutrition estimates computed on the device.</li>
-            <li><strong>Wellness data:</strong> mood entries and any sleep, recovery, or activity numbers you enter by hand.</li>
+            <li><strong>Wellness data:</strong> mood entries and any sleep, recovery, or activity numbers you enter by hand or import from Apple Health.</li>
             <li><strong>Workouts:</strong> exercises you log by hand, including strength sets, reps, and the weight you lift.</li>
             <li><strong>Water and weight:</strong> daily water count and weight entries.</li>
             <li><strong>Cycle and menstrual data:</strong> period dates, cycle lengths, and symptom entries.</li>
@@ -99,7 +99,7 @@ export default function PrivacyPage() {
             <li>We do not use your data to train AI or machine-learning models.</li>
             <li>We do not run advertising or third-party tracking.</li>
             <li>We do not build a profile of you linked to your real identity.</li>
-            <li>We do not connect to Apple HealthKit or read data from other apps.</li>
+            <li>We never write to Apple Health, and we do not use Apple Health data for advertising.</li>
           </ul>
         </LegalSection>
 
@@ -113,10 +113,14 @@ export default function PrivacyPage() {
           </ul>
         </LegalSection>
 
-        <LegalSection title="Apple HealthKit">
+        <LegalSection title="Apple Health">
           <p className="text-[15px]">
-            Bamboo does not connect to Apple HealthKit in this release. All workout, sleep, and activity data
-            is entered by hand in the app. Nothing is read from or written to Apple Health.
+            If you connect Apple Health, Bamboo reads your steps, active minutes, workouts, and sleep to show
+            your daily activity and wellness. Access is read-only: we request read permission only, and Bamboo
+            never writes to Apple Health. This data is treated like your other wellness data, so it stays on
+            your device and reaches our server only if you turn on cloud backup. We never use Apple Health data
+            for advertising and we never sell it. Connecting is optional, and you can review or revoke access at
+            any time in the Apple Health app. Activity, sleep, and workouts can also be entered by hand.
           </p>
         </LegalSection>
 
@@ -146,8 +150,8 @@ export default function PrivacyPage() {
         <LegalSection title="Contact">
           <p className="text-[15px]">
             Questions about privacy:{" "}
-            <a href="mailto:privacy@bamboonutrition.app" className="text-[var(--green-dark)] underline">
-              privacy@bamboonutrition.app
+            <a href="mailto:bamboobaoapp@gmail.com" className="text-[var(--green-dark)] underline">
+              bamboobaoapp@gmail.com
             </a>
           </p>
         </LegalSection>
