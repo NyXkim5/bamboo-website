@@ -16,144 +16,100 @@ export default function PrivacyPage() {
         <h1 className="font-[family-name:var(--font-heading)] text-3xl mb-1">
           Privacy Policy
         </h1>
-        <p className="text-sm text-[var(--ink-soft)] mb-8">Effective date: July 23, 2026</p>
+        {/* Set the effective date to the actual publication date before deployment. */}
+        <p className="text-sm text-[var(--ink-soft)] mb-8">Prepared September 16, 2026; effective on publication.</p>
 
-        <p className="mb-4">
-          Bamboo is a local-first nutrition app. Your food logs, profile, goals, and wellness data
-          live on your phone. This policy explains what stays on the device, what leaves it, and
-          how to remove your data.
-        </p>
-
-        <LegalSection title="The short version">
-          <ul className="list-disc pl-5 space-y-2 text-[15px]">
-            <li>Everything you log is stored on your device. If you turn on optional cloud backup, a copy of your data (including food, weight, cycle, workouts, sleep, and wellness entries) is also stored on our server so you can restore it. You can delete that copy at any time.</li>
-            <li>You get an anonymous account automatically. No name or email required. You can optionally add email or Sign in with Apple to back up your account.</li>
-            <li>We run lightweight analytics (event names and counts, no food content) to understand how the app is used. Analytics are tied to your account ID. If you never add an email or Sign in with Apple, that ID is anonymous. Analytics never contain your name, email, or food content, and you can opt out in Settings.</li>
-            <li>We do not sell your data, and we do not use it to train AI models.</li>
-            <li>Photo meal analysis sends a compressed image, and the Describe feature sends your typed meal text, to DeepInfra via our secure server. Anthropic (Claude) may be used as a backup provider. Neither is stored on our end.</li>
-            <li>Bao&apos;s optional daily insight sends a small derived summary of your day (calorie and protein progress, logging streak, goal, and gut score, and for cycle-tracking users the current cycle phase, cycle day, and the labels of that day&apos;s logged symptoms) to the same AI providers, only after you consent. No food names or raw entries are sent, and you can turn it off in Settings.</li>
-            <li>Food search goes to USDA FoodData Central. Barcode scans go to Open Food Facts.</li>
-            <li>You can delete your cloud backup, or your whole account and all associated data, at any time from Settings.</li>
-          </ul>
-        </LegalSection>
-
-        <LegalSection title="What we store and where">
-          <h3 className="font-[family-name:var(--font-body)] font-bold text-base mt-4 mb-1">On your device only</h3>
-          <p className="text-sm mb-2">
-            All of the following is saved in on-device storage. It reaches our server only if you turn on cloud backup (see below):
-          </p>
-          <ul className="list-disc pl-5 space-y-1 text-[15px]">
-            <li><strong>Food logs:</strong> foods you add, amounts, meal types, and timestamps.</li>
-            <li><strong>Profile and goals:</strong> name, body details, activity level, and goal.</li>
-            <li><strong>Scores and trends:</strong> nutrition estimates computed on the device.</li>
-            <li><strong>Wellness data:</strong> mood entries and any sleep, recovery, or activity numbers you enter by hand or import from Apple Health.</li>
-            <li><strong>Workouts:</strong> exercises you log by hand, including strength sets, reps, and the weight you lift.</li>
-            <li><strong>Water and weight:</strong> daily water count and weight entries.</li>
-            <li><strong>Cycle and menstrual data:</strong> period dates, cycle lengths, and symptom entries.</li>
-            <li><strong>Settings:</strong> theme choice, notification preferences, and feature flags.</li>
-          </ul>
-
-          <h3 className="font-[family-name:var(--font-body)] font-bold text-base mt-4 mb-1">On our server (Supabase)</h3>
-          <ul className="list-disc pl-5 space-y-1 text-[15px]">
-            <li><strong>Your anonymous account ID</strong> (a UUID), created automatically on first launch.</li>
-            <li><strong>Behavioral analytics events:</strong> event names and non-PII metadata. No food names, calorie values, or free text leave the device.</li>
-            <li><strong>Session metadata:</strong> app version, session ID, and timestamp.</li>
-            <li><strong>Your cloud backup, if you turn it on:</strong> a snapshot of your app data (food logs, profile and goals, water, weight, cycle and menstrual entries, workouts including strength sets, reps, and weight, sleep entries, wellness entries, and settings), keyed to your account. Backup is optional and user-initiated. It is encrypted in transit and at rest but is not end-to-end encrypted. Only your signed-in account can read its backup, enforced by database row-level security. You can delete the server copy at any time from Settings, Cloud backup, Delete cloud backup, without deleting your account.</li>
-          </ul>
-          <p className="text-sm mt-2">
-            If you add email or Apple sign-in, your email is stored in Supabase Auth. Your app data stays on-device unless you turn on cloud backup.
-          </p>
-        </LegalSection>
-
-        <LegalSection title="What leaves your device">
-          <div className="space-y-4 text-[15px]">
-            <div>
-              <h3 className="font-bold">1. USDA FoodData Central</h3>
-              <p>When you search for a food by name, the search text is sent to USDA. Nothing about your identity or logs is sent.</p>
-            </div>
-            <div>
-              <h3 className="font-bold">2. Open Food Facts</h3>
-              <p>When you scan a barcode, the barcode number is sent to retrieve nutrition facts.</p>
-            </div>
-            <div>
-              <h3 className="font-bold">3. DeepInfra and Anthropic (via our server)</h3>
-              <p>DeepInfra is our primary AI provider, with Anthropic Claude as a backup. These are the only two AI providers we use. Three features send data to them through our secure server, each behind a one-time consent prompt. Processing is transient and we do not retain any of it. Both providers state they do not use API data to train models.</p>
-              <p className="mt-2"><strong>Camera meal analysis:</strong> the photo is compressed and forwarded to DeepInfra&apos;s vision model for food identification. Only the photo is sent.</p>
-              <p className="mt-2"><strong>Describe (text meal analysis):</strong> when you type what you ate, that description is forwarded to a DeepInfra text model to estimate foods and amounts. Only the text you typed is sent. Photo and Describe share a limit of 20 AI analyses per day.</p>
-              <p className="mt-2"><strong>Bao&apos;s daily insight:</strong> a small derived summary of your day (calorie and protein progress, logging streak, goal, and gut score, and for cycle-tracking users the current cycle phase, the cycle day number, and the labels of that day&apos;s logged symptoms) is sent so the model can write one encouraging sentence. No food names, raw entries, or period dates are sent, and free text is never sent. A consent prompt appears before the first time this runs, and you can turn it off in Settings.</p>
-            </div>
-            <div>
-              <h3 className="font-bold">4. Supabase (analytics and auth)</h3>
-              <p>Anonymous behavioral analytics and your anonymous account ID are sent to Supabase. No food content or health data is included.</p>
-            </div>
-            <div>
-              <h3 className="font-bold">5. Sentry (crash reporting)</h3>
-              <p>Crash reports include device type, OS version, app version, error message, and anonymous UUID. No food names or health values are included.</p>
-            </div>
+        <LegalSection title="About Bamboo">
+          <div className="space-y-4 text-[15px] leading-relaxed">
+<p>{"Bamboo is a local-first nutrition and wellness app. This policy explains what is stored on your phone, what is sent to service providers, and your choices. The app's owner has identified the rights holder as ArchvAI."}</p>
+<p>{"Your food logs, profile, goals, and wellness entries are stored on your device. Optional cloud backup stores a copy in your account. AI features also send the content or derived summary described below when you consent. Local-first does not mean that no data leaves your device."}</p>
           </div>
         </LegalSection>
 
-        <LegalSection title="What we do not do">
-          <ul className="list-disc pl-5 space-y-1 text-[15px]">
-            <li>We do not sell, rent, or share your personal data.</li>
-            <li>We do not use your data to train AI or machine-learning models.</li>
-            <li>We do not run advertising or third-party tracking.</li>
-            <li>We do not build a profile of you linked to your real identity.</li>
-            <li>We never write to Apple Health, and we do not use Apple Health data for advertising.</li>
-          </ul>
+        <LegalSection title="The short version">
+          <div className="space-y-4 text-[15px] leading-relaxed">
+<ul className="list-disc pl-5 space-y-2"><li>{"No email sign-up is required to start. Bamboo creates an anonymous backend account when available; email and Sign in with Apple are optional."}</li>
+<li>{"We do not sell or rent personal data, show ads, or use your data for advertising or cross-app tracking."}</li>
+<li>{"Bamboo does not use your photos, logs, or messages to train AI models. Our AI providers have their own processing and retention practices, described below."}</li>
+<li>{"We share data with the service providers needed to deliver the features you use. We do not make a blanket promise that personal data is never shared."}</li>
+<li>{"AI analysis, cloud backup, and Apple Health are optional. You can export data, delete a cloud backup, or delete your account and app data from inside the app."}</li></ul>
+          </div>
         </LegalSection>
 
-        <LegalSection title="Data deletion">
-          <p className="text-[15px]">Every user gets an anonymous account automatically. You can:</p>
-          <ul className="list-disc pl-5 space-y-1 text-[15px] mt-2">
-            <li><strong>Export your data</strong> from Settings, Manage Data, Export.</li>
-            <li><strong>Clear all on-device data</strong> from Settings, Manage Data, Delete all data.</li>
-            <li><strong>Delete your account</strong> from Profile, Account, Delete account. This is permanent.</li>
-            <li><strong>Uninstall the app</strong> to erase all on-device storage.</li>
-          </ul>
+        <LegalSection title="Data stored on your device">
+          <div className="space-y-4 text-[15px] leading-relaxed">
+<p>{"On-device records include foods and amounts, meal names, nutrition estimates, profile and goals, water and weight, workouts and exercise sets, sleep and wellness entries, optional period dates and symptoms, achievements, and settings. AI results you save become ordinary food-log entries. Daily-insight responses may be cached on the device."}</p>
+<p>{"These records can be included in an optional cloud backup. Separately, the AI features described below send submitted content or selected derived information through Bamboo's server. The daily insight does not send raw food entries, period dates, or free-text notes."}</p>
+          </div>
         </LegalSection>
 
-        <LegalSection title="Apple Health">
-          <p className="text-[15px]">
-            If you connect Apple Health, Bamboo reads your steps, active minutes, workouts, and sleep to show
-            your daily activity and wellness. Access is read-only: we request read permission only, and Bamboo
-            never writes to Apple Health. This data is treated like your other wellness data, so it stays on
-            your device and reaches our server only if you turn on cloud backup. We never use Apple Health data
-            for advertising and we never sell it. Connecting is optional, and you can review or revoke access at
-            any time in the Apple Health app. Activity, sleep, and workouts can also be entered by hand.
-          </p>
+        <LegalSection title="Accounts, analytics, and cloud backup">
+          <div className="space-y-4 text-[15px] leading-relaxed">
+<p>{"Supabase hosts Bamboo's account services, backend, analytics, and optional cloud backups. An account identifier is used for authentication, usage limits, and account-linked records. If you add email or Sign in with Apple, the account and its records can be associated with your email or Apple identity. An identifier without an email is still an account identifier, not a guarantee that every record is unidentifiable."}</p>
+<p>{"Usage analytics contain allowlisted event names and limited metadata, such as feature use, result categories, account/session identifiers, app version, and timestamps. They are designed not to contain food names, photos, meal descriptions, weight values, or cycle entries. Analytics help us understand and improve the app; you can opt out in Settings."}</p>
+<p>{"Cloud backup is optional. Choosing Back up now or enabling automatic backup uploads a snapshot of your app records, including food logs, user-entered meal names, profile, water, weight, workouts, sleep, wellness, cycle and symptom entries, achievements, and settings. A snapshot may include saved AI results and cached insights. It is stored against your account, encrypted in transit and through our backend provider's encryption at rest, but it is not end-to-end encrypted. Account authorization controls access; this is not a promise that the service operator cannot process the data."}</p>
+<p>{"You can delete the cloud copy separately in Settings > Cloud backup > Delete cloud backup. This leaves your local records and account in place and switches automatic backup off."}</p>
+          </div>
         </LegalSection>
 
-        <LegalSection title="Cycle and menstrual data">
-          <p className="text-[15px]">
-            Your period dates, cycle lengths, and symptom entries are stored on your device. This raw data
-            stays on your device unless you turn on cloud backup, which uploads a copy to your own account so
-            you can restore it. If you enable Bao&apos;s daily insight, the derived summary can include your
-            current cycle phase (for example &quot;luteal&quot;), the cycle day number, and the labels of the
-            symptoms you logged that day, only after you consent, and never the underlying dates or any free
-            text. You can turn off the daily insight, and delete your cloud backup, at any time in Settings.
-          </p>
+        <LegalSection title="AI features and your consent">
+          <div className="space-y-4 text-[15px] leading-relaxed">
+<p>{"Bamboo sends AI requests through its authenticated server to DeepInfra as the primary provider, with Anthropic Claude configured as a backup. Credentials stay on the server. Consent is requested before sending data for the relevant feature, and it can be declined or revoked in Settings. Turning a feature off prevents future requests from that feature; it does not retroactively erase data a provider has already received."}</p>
+<ul className="list-disc pl-5 space-y-2"><li>{"Photo analysis sends a compressed meal photo for food identification and nutrition estimation. The current photo model is google/gemma-3-27b-it hosted through DeepInfra. Review foods and portions before saving."}</li>
+<li>{"Describe sends the meal description you type to a text model to estimate foods and amounts. Photo and Describe share a daily analysis limit."}</li>
+<li>{"Bao's daily insight sends calorie and protein progress relative to targets, logging streak, goal, and gut score. For cycle-tracking users it can also include current cycle phase, cycle day, and the fixed labels of that day's logged symptoms, such as cramps, discharge, or libido. It does not send raw food entries, period dates, cycle lengths, weight values, or free text."}</li></ul>
+<p>{"Bamboo's analysis endpoints do not intentionally persist submitted photos, typed meal-analysis requests, or insight request bodies as server-side content records. This statement does not cover the results you save to your log, local caches, optional cloud backups, account/usage records, or provider-side retention."}</p>
+<p>{"Provider practices are not the same as Bamboo's request handling. DeepInfra describes generally transient inference processing, with debugging/security and model-specific exceptions. Its documentation includes exceptions for requests routed to Google or Anthropic services; a model's author or name alone does not establish that such routing occurs. We do not claim a separately negotiated zero-retention arrangement. Anthropic's standard API policy generally retains inputs and outputs for up to 30 days, with exceptions for safety, legal requirements, and applicable agreements or services. Review the providers' current policies for details."}</p>
+<p>{"Provider information: "}<a href="https://docs.deepinfra.com/account/data-privacy" className="text-[var(--green-dark)] underline">{"DeepInfra data privacy"}</a>{" and "}<a href="https://privacy.claude.com/en/articles/7996866-how-long-do-you-store-my-organization-s-data" className="text-[var(--green-dark)] underline">{"Anthropic API retention"}</a>{". We do not promise that providers retain no request content under all circumstances."}</p>
+          </div>
         </LegalSection>
 
-        <LegalSection title="Children">
-          <p className="text-[15px]">
-            This app is not directed to children under 13. We do not knowingly collect data from children.
-          </p>
+        <LegalSection title="Apple Health and cycle information">
+          <div className="space-y-4 text-[15px] leading-relaxed">
+<p>{"If you connect Apple Health and grant permission, Bamboo reads steps, activity, workouts, and sleep to show your wellness. Access is read-only: Bamboo does not request authorization to write HealthKit records. You can revoke permission in Apple Health. Imported records are stored locally and can be included in cloud backup if you choose that feature. Manual logging remains available."}</p>
+<p>{"Cycle tracking is optional. Period dates, cycle lengths, symptom labels and severity are stored locally and can be included in your cloud backup. Separately, the consented daily insight can send the derived phase, day, and symptom labels described above. These include intimate reproductive-health information. Do not interpret a local-first description as a promise that cycle information is never transmitted."}</p>
+<p>{"We do not sell Apple Health data or use it for advertising. Cycle projections and nutrition scores are estimates, not medical measurements or contraception."}</p>
+          </div>
         </LegalSection>
 
-        <LegalSection title="Changes to this policy">
-          <p className="text-[15px]">
-            If we change how the app handles data, we will update this policy and the effective date.
-          </p>
+        <LegalSection title="Food lookup and diagnostics">
+          <div className="space-y-4 text-[15px] leading-relaxed">
+<p>{"When you search for a food, the search text is sent to USDA FoodData Central. Barcode lookup sends the barcode to Open Food Facts. Bamboo does not intentionally attach its account identifier or your food-log history to these lookups. Like other network services, the recipient may receive technical connection information; this is not a promise that a request contains no information about its sender."}</p>
+<p>{"Sentry receives production crash and performance diagnostics, such as device/OS/app information, technical error data, and identifiers associated with app use. Bamboo uses filtering to remove sensitive food, health, and authentication content before reporting. Diagnostic identifiers are not described as guaranteed anonymous. Sentry is not used for advertising."}</p>
+          </div>
         </LegalSection>
 
-        <LegalSection title="Contact">
-          <p className="text-[15px]">
-            Questions about privacy:{" "}
-            <a href="mailto:bamboobaoapp@gmail.com" className="text-[var(--green-dark)] underline">
-              bamboobaoapp@gmail.com
-            </a>
-          </p>
+        <LegalSection title="Retention, deletion, and export">
+          <div className="space-y-4 text-[15px] leading-relaxed">
+<p>{"Local logs remain until you delete them. Account records and optional cloud backups are kept to provide the account and backup features until removed through the relevant deletion flow. Service metadata and diagnostics may be retained for reliability and security under applicable service policies. Routine backups and legal/security records may not disappear immediately when an active account record is deleted; we do not promise instantaneous erasure from every provider."}</p>
+<ul className="list-disc pl-5 space-y-2"><li>{"Export your data from Profile > Data > Manage data > Export my data."}</li>
+<li>{"Delete only your cloud backup from Settings > Cloud backup > Delete cloud backup."}</li>
+<li>{"Users without email/Apple sign-in can use Profile > Data > Manage data > Delete all data to clear local app data and request removal of their server account and associated app records."}</li>
+<li>{"Signed-in users can delete their account from Profile > Account > Delete account. This removes the account and associated active app records and clears local app data."}</li>
+<li>{"Server deletion needs network access. If it fails, the app reports the problem; retry rather than assuming the remote deletion succeeded."}</li>
+<li>{"Uninstalling is not a server-account deletion request and may leave credentials in platform secure storage. Use the in-app deletion flow to remove your account and associated data."}</li></ul>
+<p>{"Deletion of Bamboo records does not itself override an AI or diagnostic provider's separate safety/legal retention. Contact us about access, correction, deletion, or portability requests; additional rights may apply depending on where you live."}</p>
+          </div>
+        </LegalSection>
+
+        <LegalSection title="Security">
+          <div className="space-y-4 text-[15px] leading-relaxed">
+<p>{"We use TLS for network transport and our backend provider's encryption at rest. Cloud backup is not end-to-end encrypted. No system is perfectly secure, and we do not promise absolute security."}</p>
+          </div>
+        </LegalSection>
+
+        <LegalSection title="Children and health disclaimer">
+          <div className="space-y-4 text-[15px] leading-relaxed">
+<p>{"Bamboo is not directed at children under 13, and we do not knowingly collect their data. If you believe a child has provided data, contact us so we can address it."}</p>
+<p>{"Bamboo is a general-wellness tool, not a medical device, and does not provide medical advice. Food identification, nutrition estimates, scores, and cycle projections may be inaccurate. Consult a qualified professional for medical or dietary decisions."}</p>
+          </div>
+        </LegalSection>
+
+        <LegalSection title="Changes and contact">
+          <div className="space-y-4 text-[15px] leading-relaxed">
+<p>{"We may update this policy and its effective date when our practices change. Significant changes will be highlighted in the app or by another reasonable method."}</p>
+<p>{"Questions or requests: "}<a href="mailto:bamboobaoapp@gmail.com" className="text-[var(--green-dark)] underline">{"bamboobaoapp@gmail.com"}</a>{"."}</p>
+          </div>
         </LegalSection>
 
         <div className="mt-12 pt-6 border-t border-[var(--border)]">

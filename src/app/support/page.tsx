@@ -51,23 +51,23 @@ export default function SupportPage() {
             <div className="space-y-4 text-[15px]">
               <div>
                 <p className="font-bold">Where is my data stored?</p>
-                <p>All your food logs, weight, water, and cycle data stay on your phone. We do not store health data on our servers.</p>
+                <p>Your logs are stored on your phone. Optional cloud backup stores an account-linked copy, including health and cycle entries, on our server. Consented AI features separately send submitted content or a derived summary to providers. See our Privacy Policy for details.</p>
               </div>
               <div>
                 <p className="font-bold">How do I delete my account?</p>
-                <p>Go to Profile, then Account, then Delete account. This removes your anonymous account from our server and clears all on-device data.</p>
+                <p>Signed-in users can go to Profile, Account, Delete account. Without email or Apple sign-in, use Profile, Data, Manage data, Delete all data. These flows clear local app data and request deletion of the server account and associated active app records. Network access is required; if deletion fails, retry. Provider retention and routine backups are separate. Uninstalling alone does not delete your server account.</p>
               </div>
               <div>
                 <p className="font-bold">How does photo meal logging work?</p>
-                <p>Point your camera at a meal and Bamboo sends the photo to our AI provider (DeepInfra, with Anthropic Claude as backup) for food identification. The photo is not stored. You can opt in or out from Settings.</p>
+                <p>After consent, Bamboo sends a compressed meal photo to DeepInfra, with Anthropic Claude configured as backup, for food and nutrition estimates. Review the results before saving. Bamboo does not intentionally persist the image in its analysis endpoint; provider retention is described in our Privacy Policy. You can revoke consent in Settings.</p>
               </div>
               <div>
                 <p className="font-bold">Is my cycle data private?</p>
-                <p>Yes. All period dates, cycle lengths, and symptoms are stored only on your device. This data never leaves your phone.</p>
+                <p>Cycle tracking is optional. Period dates, cycle lengths, and symptoms are stored locally and can be included in optional cloud backup. With daily-insight consent, current cycle phase, cycle day, and logged symptom labels can also be sent to our AI providers. The daily insight does not send period dates, cycle lengths, or free text. You can turn it off and delete your cloud backup in Settings.</p>
               </div>
               <div>
                 <p className="font-bold">Can I export my data?</p>
-                <p>Yes. Go to Profile, then Manage Data, then Export. You will get a JSON file with all your logs.</p>
+                <p>Yes. Go to Profile, Data, Manage data, Export my data to export your app records as a JSON file.</p>
               </div>
             </div>
           </div>
