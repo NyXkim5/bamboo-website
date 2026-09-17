@@ -16,8 +16,7 @@ export default function PrivacyPage() {
         <h1 className="font-[family-name:var(--font-heading)] text-3xl mb-1">
           Privacy Policy
         </h1>
-        {/* Set the effective date to the actual publication date before deployment. */}
-        <p className="text-sm text-[var(--ink-soft)] mb-8">Prepared September 16, 2026; effective on publication.</p>
+        <p className="text-sm text-[var(--ink-soft)] mb-8">Effective September 16, 2026.</p>
 
         <LegalSection title="About Bamboo">
           <div className="space-y-4 text-[15px] leading-relaxed">
