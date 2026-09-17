@@ -1,13 +1,14 @@
-# Privacy update — pending publication
+# Privacy update — published September 16, 2026
 
 Prepared September 16, 2026 against commit
 `119e2a3a56d49c50f5b6d492db0f973eb31a3040` from
 `https://github.com/NyXkim5/bamboo-website.git`.
 
-This change is prepared for teammate review and deployment through a pull
-request. No production deployment or merge is performed by this handoff.
-Keep `https://bamboonutrition.app/privacy` as the App Store URL. GitHub reports
-an active Vercel integration; a branch push may create a preview deployment.
+The privacy, support, and homepage FAQ updates from PR #2 are merged and verified
+on the live site. Commit `af47f16` subsequently set the effective date to
+September 16, 2026. Keep `https://bamboonutrition.app/privacy` as the App Store URL.
+The Vercel integration deploys repository changes; no separate migration or
+domain change is needed.
 
 ## Changes
 
@@ -24,7 +25,8 @@ an active Vercel integration; a branch push may create a preview deployment.
 
 ## Verification
 
-- `npm test`: 11 passed (8 existing waitlist tests, 3 new disclosure tests).
+- `npm test`: 12 passed (8 existing waitlist tests, 4 disclosure tests including
+  a regression check against draft effective-date wording).
 - `npm run type-check`: passed.
 - `npm run lint`: no errors; existing unused `tabButtons` warning in
   `scripts/capture-screens.mjs`.
@@ -35,18 +37,15 @@ an active Vercel integration; a branch push may create a preview deployment.
   build scripts. npm ran the verification scripts against those dependencies
   successfully; no dependency scripts were newly approved.
 
-## Before publishing
+## Publication verification
 
-1. Confirm the Vercel project/domain is connected to this repository and the
-   intended production branch. A push may auto-deploy; do not assume it is a
-   draft-only action.
-2. Replace the prepared-revision date on the privacy page with the actual
-   effective publication date.
-3. Preview the change and deploy to the existing project once access is ready.
-4. Verify live `/privacy` and `/support` return HTTP 200 and serve the corrected
-   text; verify homepage FAQ too. Local build success is not publication proof.
-5. Record the deployment ID, commit, and publication date in the app's submission
-   handoff. Check that App Store privacy labels remain aligned.
+Live `/privacy`, `/support`, and `/` returned HTTP 200, and the corrected policy,
+support explanations, and expanded homepage FAQ answers were verified. The old
+blanket no-sharing/local-only assertions checked in those sections are absent.
+The effective-date change is covered by a rendered-page regression test.
+
+For future changes, review the Vercel preview before merging and verify actual
+live page text afterward. Local build success alone is not publication proof.
 
 The website's waitlist and existing domain email delivery configuration were not
 changed or verified by this app-policy update.

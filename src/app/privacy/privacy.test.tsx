@@ -10,6 +10,13 @@ beforeAll(() => vi.stubGlobal("React", React));
 afterAll(() => vi.unstubAllGlobals());
 
 describe("privacy disclosures", () => {
+  it("shows the published effective date without draft wording", () => {
+    const html = renderToStaticMarkup(<PrivacyPage />);
+    expect(html).toContain("Effective September 16, 2026.");
+    expect(html).not.toContain("effective on publication");
+    expect(html).not.toContain("Prepared September");
+  });
+
   it("renders the current photo model and provider retention disclosures", () => {
     const html = renderToStaticMarkup(<PrivacyPage />);
     expect(html).toContain("google/gemma-3-27b-it");
