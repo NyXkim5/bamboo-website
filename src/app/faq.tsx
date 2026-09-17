@@ -13,11 +13,11 @@ export const FAQ_ITEMS = [
   },
   {
     q: "How does photo logging work?",
-    a: "Point your camera at a meal. Bamboo sends a compressed photo to our AI provider (DeepInfra, with Anthropic Claude as backup) for food identification and logs the items and macros. The photo is not stored, and you can opt out in Settings.",
+    a: "With your consent, Bamboo sends a compressed meal photo to DeepInfra, with Anthropic Claude configured as backup, to estimate foods and macros. Review the results before saving. Bamboo does not intentionally persist the submitted image in its analysis endpoint; provider retention is explained in our Privacy Policy. You can revoke consent in Settings.",
   },
   {
     q: "Is my data private?",
-    a: "Yes. Bamboo is local-first. Food logs, weight, cycle, and wellness data stay on your phone. We never sell your data or use it to train AI models.",
+    a: "Bamboo stores your logs on your phone. Optional cloud backup saves an account-linked copy, including health and cycle entries. Consented AI features separately send submitted content or an explained summary to our providers. We do not sell your data or use it for advertising or Bamboo model training. See our Privacy Policy for provider processing and your choices.",
   },
   {
     q: "What is the gut health score?",
