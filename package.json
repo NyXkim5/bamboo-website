@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "audit:meta": "node tools/audit-meta.mjs",
+    "audit:meta:strict": "node tools/audit-meta.mjs --strict"
   },
   "dependencies": {
     "next": "16.2.9",

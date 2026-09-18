@@ -6,6 +6,7 @@ import { LegalSection } from "../legal-section";
 export const metadata: Metadata = {
   title: "Privacy Policy - Bamboo",
   description: "How Bamboo handles your nutrition and wellness data.",
+  alternates: { canonical: "/privacy" },
 };
 
 export default function PrivacyPage() {
