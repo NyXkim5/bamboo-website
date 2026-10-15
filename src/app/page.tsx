@@ -12,17 +12,17 @@ import { StructuredData } from "./structured-data";
 const FEATURES = [
   {
     img: "/panda/cooking.png",
-    title: "Log meals in 10 seconds",
+    title: "Log meals your way",
     description:
-      "Point your camera at any plate. Bamboo identifies every item, estimates portions, and logs the macros. Works with barcodes and manual search too.",
+      "Use a meal photo to estimate foods, portions, and macros. Review and correct AI estimates before saving. Barcode lookup and manual search are available too.",
     color: "var(--green-light)",
     borderColor: "var(--green)",
   },
   {
     img: "/panda/broccoli.png",
-    title: "A gut health score no other app gives you",
+    title: "Explore the foods you log",
     description:
-      "Bamboo tracks your daily fiber, fermented food intake, and plant diversity to generate a real gut health forecast. An actionable score you can improve today.",
+      "See fiber, fermented foods, and plant variety together in a food-log score. Bamboo’s scoring rules are explained in the app; the score does not measure your microbiome or digestive health.",
     color: "#FFF3E0",
     borderColor: "var(--honey)",
   },
@@ -40,13 +40,13 @@ const STEPS = [
   {
     num: "1",
     title: "Tell Bao your goals",
-    desc: "A 60-second setup. Pick your targets. Bamboo calculates your calories and macros using real sports-science formulas.",
+    desc: "Choose your goals. Bamboo estimates calorie and macro targets for adults from profile information. These estimates are not personalized medical or dietary advice.",
     img: "/panda/writing.png",
   },
   {
     num: "2",
     title: "Snap, scan, or search",
-    desc: "Photo AI handles full plates. Barcodes handle packaged food. Your saved meals handle the rest. Most logs take under 10 seconds.",
+    desc: "Review AI estimates from a meal photo, look up a barcode, search for food, or reuse a saved meal. Check portions and nutrition before saving.",
     img: "/panda/cooking.png",
   },
   {
@@ -60,9 +60,8 @@ const STEPS = [
 const SCREENS = [
   { src: "/screens/dashboard.png", label: "Dashboard", alt: "Today view with 493 kcal ring, macro bars, streak, and food suggestions", bubble: "493 kcal to go. Bao believes in you." },
   { src: "/screens/macros.png", label: "Stats", alt: "Weekly macro rings, breakdown bars, and clean food percentage", bubble: "Weekly rings, zero spreadsheets." },
-  { src: "/screens/gut-forecast.png", label: "Gut health", alt: "Gut forecast score 58 with fiber, fermented foods, and plant diversity", bubble: "58 today. Feed it fiber, watch it climb." },
   { src: "/screens/quests-streaks.png", label: "Quests", alt: "Daily quests, water tracking, 14-day streak calendar, and cycle nudges", bubble: "Three quests a day keeps the streak alive." },
-  { src: "/screens/cycle-tracking.png", label: "Cycle", alt: "Luteal phase ring, period logging, and symptom tracker", bubble: "Your cycle stays on your phone. Always." },
+  { src: "/screens/cycle-tracking.png", label: "Cycle", alt: "Estimated cycle phase, period logging, and symptom tracker", bubble: "Optional cycle logs, with backup and AI sharing controls." },
 ] as const;
 
 export default function Home() {
@@ -99,7 +98,7 @@ export default function Home() {
           <div className="flex-1 text-center lg:text-left">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[var(--green-light)] text-[var(--green-dark)] text-sm font-medium mb-6">
               <span className="w-2 h-2 rounded-full bg-[var(--green)] animate-pulse" />
-              Launching Summer 2026
+              Coming to iOS
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-semibold text-[var(--ink)] leading-[1.1] tracking-tight mb-5">
@@ -108,7 +107,7 @@ export default function Home() {
             </h1>
 
             <p className="text-lg text-[var(--ink-soft)] max-w-lg mb-4 leading-relaxed mx-auto lg:mx-0">
-              Bamboo is an iOS app that makes food tracking fast, fun, and actually rewarding. Snap a photo. Earn XP. Watch your gut health improve.
+              Bring food logs and daily habits together with Bao the panda. Review meal estimates, earn XP, and explore patterns in the foods you log.
             </p>
 
             <p className="text-base text-[var(--ink)] font-medium max-w-lg mb-8 mx-auto lg:mx-0">
@@ -120,7 +119,7 @@ export default function Home() {
             </div>
 
             <p className="text-sm text-[var(--ink-muted)]">
-              Early signups get free access to every feature on day one.
+              Join the list for launch updates. Bamboo’s initial release is free.
             </p>
             <WaitlistCounter />
           </div>
@@ -171,10 +170,10 @@ export default function Home() {
       <section className="w-full max-w-5xl mx-auto px-6 py-24">
         <div className="reveal">
           <h2 className="text-3xl md:text-4xl font-semibold text-center text-[var(--ink)] mb-4">
-            Three things your current app can&apos;t do
+            Food logs, daily habits, and a little encouragement
           </h2>
           <p className="text-center text-[var(--ink-soft)] mb-16 max-w-md mx-auto">
-            Bamboo is built different. Here is what makes it worth switching.
+            Bring your everyday routines together with Bao.
           </p>
         </div>
 
@@ -220,7 +219,7 @@ export default function Home() {
       <section className="w-full py-20 bg-[var(--bg-warm)]">
         <div className="reveal max-w-6xl mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-semibold text-center text-[var(--ink)] mb-3">
-            See every screen
+            A look inside Bamboo
           </h2>
           <p className="text-center text-[var(--ink-soft)] mb-10 max-w-lg mx-auto">
             Tap to explore. Every screen designed to show you what matters.
@@ -240,7 +239,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-6">
           <div className="reveal">
             <h2 className="text-3xl md:text-4xl font-semibold text-center text-[var(--ink)] mb-16">
-              Start tracking in under 2 minutes
+            Make room for your daily habits
             </h2>
           </div>
 
@@ -290,7 +289,7 @@ export default function Home() {
             Stop dreading your food tracker
           </h2>
           <p className="text-[var(--ink-soft)] mb-8 max-w-md mx-auto leading-relaxed">
-            Bamboo launches this summer on iOS. Sign up now and we will let you in first. No spam. Just one email when it is time.
+            Bamboo is preparing for its iOS launch. Join the list for launch updates.
           </p>
           <div className="flex justify-center">
             <WaitlistForm id="cta-email" />

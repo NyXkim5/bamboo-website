@@ -7,7 +7,7 @@ const APP_SCHEMA = {
   operatingSystem: "iOS",
   applicationCategory: "HealthApplication",
   description:
-    "Gamified nutrition tracking. Snap a photo to log meals, earn XP, and watch your gut health improve.",
+    "Log meals, review nutrition estimates, and track daily habits with Bao the panda. Optional read-only Apple Health (HealthKit) integration.",
   offers: {
     "@type": "Offer",
     price: "0",

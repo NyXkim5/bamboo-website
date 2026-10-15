@@ -5,7 +5,7 @@ const rateLimit = new Map<string, number>();
 const RATE_LIMIT_MS = 60_000;
 
 const WELCOME_SUBJECT = "You're on the list";
-const WELCOME_TEXT = `You're in.\n\nYou just secured early access to Bamboo. When we launch this summer, you will be first in line. Every feature. No charge.\n\nThat is it for now. No spam. Just one more email when it is time.\n\n- The Bamboo team`;
+const WELCOME_TEXT = `You're on the Bamboo launch list.\n\nBamboo is preparing for its iOS launch. We will send you launch updates. Bamboo's initial release is free.\n\n- The Bamboo team`;
 
 function isRateLimited(ip: string): boolean {
   const last = rateLimit.get(ip);

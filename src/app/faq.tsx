@@ -1,11 +1,11 @@
 export const FAQ_ITEMS = [
   {
     q: "When does Bamboo launch?",
-    a: "Summer 2026 on iOS. Waitlist members get access first.",
+    a: "Bamboo is preparing for its iOS launch. Join the list for launch updates.",
   },
   {
     q: "Is Bamboo free?",
-    a: "Early signups get free access to every feature on day one. That is our thank-you for joining before launch.",
+    a: "Bamboo’s initial release is free, with no subscriptions or in-app purchases.",
   },
   {
     q: "Is it iPhone only?",
@@ -20,8 +20,12 @@ export const FAQ_ITEMS = [
     a: "Bamboo stores your logs on your phone. Optional cloud backup saves an account-linked copy, including health and cycle entries. Consented AI features separately send submitted content or an explained summary to our providers. We do not sell your data or use it for advertising or Bamboo model training. See our Privacy Policy for provider processing and your choices.",
   },
   {
-    q: "What is the gut health score?",
-    a: "A daily estimate built from your fiber intake, fermented foods, and plant diversity. It is a wellness guide, not a medical test or diagnosis.",
+    q: "What is the Gut score?",
+    a: "A food-log score built from fiber, fermented foods, and plant variety using Bamboo’s own rules. It does not measure your microbiome or digestive health and is not a medical test or diagnosis. The app explains its methods, limitations, and background references.",
+  },
+  {
+    q: "How does Apple Health work?",
+    a: "Apple Health (HealthKit) is optional and read-only. With your permission, Bamboo reads steps, exercise minutes, active energy, workouts, and sleep to show your daily activity and wellness. Bamboo does not write HealthKit records. You can use manual logging without connecting and manage access in Apple Health. The connection screen explains the integration even on devices where HealthKit is unavailable.",
   },
   {
     q: "Do I need an account?",
