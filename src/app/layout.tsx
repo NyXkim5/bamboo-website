@@ -18,20 +18,20 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://bamboonutrition.app"),
   title: "Bamboo - Nutrition tracking that feels like a game",
   description:
-    "Track macros, gut health, and your wellness journey with Bao the panda. Gamified nutrition that actually sticks. Join the waitlist.",
+    "Log meals, review nutrition estimates, and track daily habits with Bao the panda. Optional read-only Apple Health (HealthKit) integration. Join the launch list.",
   openGraph: {
     title: "Bamboo - Nutrition tracking that feels like a game",
     description:
-      "Track macros, gut health, and your wellness journey with Bao the panda. Join the waitlist.",
+      "Log meals, review nutrition estimates, and track daily habits with Bao the panda. Join the launch list.",
     type: "website",
-    images: ["/og-image.png"],
+    images: ["/app-icon-new.png"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Bamboo - Nutrition tracking that feels like a game",
     description:
-      "Track macros, gut health, and your wellness journey with Bao the panda.",
-    images: ["/og-image.png"],
+      "Log meals, review nutrition estimates, and track daily habits with Bao the panda.",
+    images: ["/app-icon-new.png"],
   },
 };
 

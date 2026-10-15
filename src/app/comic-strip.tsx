@@ -13,12 +13,6 @@ const TOP_PANELS = [
     width: 470,
     height: 890,
   },
-  {
-    src: "/panda/step-3.png",
-    alt: "Step 3, improve your gut health. Gut forecast score 58 with fiber and fermented food factors.",
-    width: 470,
-    height: 890,
-  },
 ] as const;
 
 const BOTTOM_PANELS = [
@@ -61,7 +55,7 @@ export function ComicStrip() {
       </div>
 
       <div className="max-w-5xl mx-auto px-6">
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 gap-6">
           {TOP_PANELS.map((panel, i) => (
             <div key={panel.src} className={`reveal stagger-${i + 1} ${PANEL_CLASS}`}>
               <Image
