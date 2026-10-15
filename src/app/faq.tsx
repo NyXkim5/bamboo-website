@@ -25,7 +25,7 @@ export const FAQ_ITEMS = [
   },
   {
     q: "How does Apple Health work?",
-    a: "Apple Health (HealthKit) is optional and read-only. With your permission, Bamboo reads steps, exercise minutes, active energy, workouts, and sleep to show your daily activity and wellness. Bamboo does not write HealthKit records. You can use manual logging without connecting and manage access in Apple Health. The connection screen explains the integration even on devices where HealthKit is unavailable.",
+    a: "Apple Health (HealthKit) is optional and read-only. With your permission, Bamboo reads steps, exercise minutes, workouts, and sleep to show your daily activity and wellness. Bamboo does not write HealthKit records. You can use manual logging without connecting and manage access in Apple Health. The connection screen explains the integration even on devices where HealthKit is unavailable.",
   },
   {
     q: "Do I need an account?",
